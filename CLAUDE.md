@@ -121,5 +121,7 @@ tests/         Vitest physics tests (tests/physics), Playwright e2e (tests/e2e)
 - Never commit failing tests or a broken build (except `wip:` commits per the resume protocol).
 - End of each phase: `npm test`, `npm run build`, `npm run test:e2e`, check new sims in the browser
   pane (desktop + 375 px mobile, light + dark), commit, push, tick PLAN.md.
-- Repo stays **private** until the end of Phase 1, then public + GitHub Pages (approved by the user
-  on 2026-11-09). After that every push to `main` deploys automatically.
+- The repository is **public** and the site is live at https://jaroslavhyhlik.github.io/physics-lab/
+  (approved by the user on 2026-11-09). Every push to `main` runs CI and deploys automatically.
+- Unattended / scheduled runs work on branch `night` (push only to `origin night`); the user reviews
+  it and only then it is merged into `main`. Never change repository visibility or Pages settings.

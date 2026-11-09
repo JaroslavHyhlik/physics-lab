@@ -17,8 +17,10 @@
       "Bash(git log:*)",
       "Bash(git add:*)",
       "Bash(git commit:*)",
-      "Bash(git push)",
-      "Bash(git push origin main)"
+      "Bash(git switch night)",
+      "Bash(git switch -c night)",
+      "Bash(git push -u origin night)",
+      "Bash(git push origin night)"
     ]
   }
 }

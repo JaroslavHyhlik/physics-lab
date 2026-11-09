@@ -18,7 +18,7 @@ Inspirace PhET, ale vlastní kód a vlastní, modernější design.
 | **Aktuální fáze** | 1 – hotovo vše kromě kroků, které vyžadují uživatele; další na řadě je fáze 2 |
 | **Naposledy hotovo** | základ (jádro, design, grafy, nástroje, CSV, PWA, Web Worker, testy fyziky + testy webu, GitHub Actions) a 3 ukázkové simulace: kyvadlo, auto, náboje a pole |
 | **Další krok** | Fáze 2 (A.1–A.3), začít simulací **Projectile motion** |
-| **Rozpracováno / poznámky** | Čeká na uživatele: zveřejnění (repo veřejné + GitHub Pages), kontrola na iPhonu, zpětná vazba k designu (viz OTAZKY.md). Nová simulace = složka `src/sims/<id>/` (meta.ts, render.ts, Sim.svelte) podle vzoru `c1-pendulum`, model v `src/physics/`, testy v `tests/physics/`, v `src/app/registry.ts` přidat `load`, v `tests/e2e/smoke.spec.ts` přidat id do `READY`. |
+| **Rozpracováno / poznámky** | Web je zveřejněný. Čeká na uživatele: kontrola na iPhonu, zpětná vazba k designu (viz OTAZKY.md). Noční/automatické běhy pracují ve větvi `night`, do `main` až po schválení. Nová simulace = složka `src/sims/<id>/` (meta.ts, render.ts, Sim.svelte) podle vzoru `c1-pendulum`, model v `src/physics/`, testy v `tests/physics/`, v `src/app/registry.ts` přidat `load`, v `tests/e2e/smoke.spec.ts` přidat id do `READY`. |
 
 **Jak navázat v nové session:** otevři v Claude novou session ve složce `~/Projects/physics-lab`
 a napiš: *„Pokračuj podle PLAN.md.“* Pravidla v CLAUDE.md se načtou automaticky.
@@ -186,7 +186,7 @@ Ukázkové simulace:
 
 Záloha a zveřejnění:
 - [x] Hned na začátku: instalace GitHub CLI, tvoje přihlášení, **soukromý** repozitář → od té chvíle se každá hotová část nahrává na GitHub (záloha pro další session)
-- [ ] Na konci fáze: repozitář přepnout na veřejný, GitHub Actions: testy → sestavení → nasazení na GitHub Pages (HTTPS) — *workflow je hotový (`.github/workflows/ci.yml`), testy běží na GitHubu; nasazení se zapne samo po zveřejnění repozitáře, které čeká na tvé potvrzení*
+- [x] Na konci fáze: repozitář přepnut na veřejný, GitHub Actions: testy → sestavení → nasazení na GitHub Pages — **web běží na https://jaroslavhyhlik.github.io/physics-lab/**
 - [ ] Kontrola webu na iPhonu (ty) + úprava designu podle tvé zpětné vazby
 
 **Hotovo, když:** 3 simulace splňují definici hotové simulace, testy procházejí, web běží na
