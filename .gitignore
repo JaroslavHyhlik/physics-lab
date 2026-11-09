@@ -1,0 +1,13 @@
+# dependencies and build output
+node_modules/
+dist/
+coverage/
+playwright-report/
+test-results/
+*.local
+
+# IBO copyrighted reference material (local only, never commit)
+reference/
+
+# macOS
+.DS_Store
