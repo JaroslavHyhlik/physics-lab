@@ -32,8 +32,13 @@ phyphox-style **mobile sensor lab**. Own code and design (PhET is only inspirati
 - Node.js 24 LTS is in `~/.local/node/bin` (added to PATH in `~/.zshrc`). If a shell can't find
   `node`: `export PATH="$HOME/.local/node/bin:$PATH"`.
 - GitHub CLI (`gh`) goes to `~/.local/bin` (Phase 1).
-- Scripts (create in Phase 1, keep this list in sync with package.json):
-  `npm run dev` · `npm test` (Vitest) · `npm run test:e2e` (Playwright) · `npm run build` · `npm run check` (types + lint).
+- Scripts (keep in sync with package.json): `npm run dev` · `npm test` (Vitest, physics + unit) ·
+  `npm run test:e2e` (Playwright; builds the site, uses the installed Google Chrome locally) ·
+  `npm run build` · `npm run check` (svelte-check, types).
+- Dev server for the browser pane: run `npm run dev` in a terminal tab, then open http://localhost:5173.
+- A new simulation follows the pattern of `src/sims/c1-pendulum/` (meta.ts = params, presets, channels,
+  graphs, info; render.ts = canvas drawing; Sim.svelte = wiring with SimShell + SimController).
+  Register it with `load` in `src/app/registry.ts` and add its id to `READY` in `tests/e2e/smoke.spec.ts`.
 
 ## Architecture
 
@@ -86,8 +91,9 @@ tests/         Vitest physics tests (tests/physics), Playwright e2e (tests/e2e)
   and dark themes; never hard-code colours.
 - Use `src/ui` components. Pointer events (mouse + touch), touch targets ≥ 44 px, keyboard access,
   WCAG AA contrast, respect `prefers-reduced-motion`.
-- Layout: desktop = canvas + right control panel + bottom graphs; mobile = canvas on top + bottom
-  sheet with tabs (Controls / Graphs / Tools / Info).
+- Layout (SimShell): desktop = canvas + right panel (Controls / Info) + graphs below the canvas;
+  mobile = canvas on top + tabs (Controls / Graphs / Info). Measuring tools are a floating toolbar
+  on the canvas; the transport bar floats at the bottom of the canvas (hidden for static sims).
 - Numbers: tabular figures, sensible significant figures, units always visible.
 
 ## Mobile lab (iOS Safari specifics)

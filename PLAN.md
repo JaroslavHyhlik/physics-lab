@@ -15,10 +15,10 @@ Inspirace PhET, ale vlastní kód a vlastní, modernější design.
 
 | | |
 |---|---|
-| **Aktuální fáze** | 1 – základ + 3 ukázkové simulace |
-| **Naposledy hotovo** | jádro + testy, design systém, úvodní stránka, rozvržení simulace, grafy, CSV, pravítko a stopky; kyvadlo, auto, náboje a pole (model + testy + obrazovka), Web Worker |
-| **Další krok** | Playwright smoke testy → PWA (ověřit build) → GitHub Actions → README |
-| **Rozpracováno / poznámky** | Všechny 3 ukázkové simulace čekají na Playwright smoke test (pak je odškrtnout). Dev server: `npm run dev`. |
+| **Aktuální fáze** | 1 – hotovo vše kromě kroků, které vyžadují uživatele; další na řadě je fáze 2 |
+| **Naposledy hotovo** | základ (jádro, design, grafy, nástroje, CSV, PWA, Web Worker, testy fyziky + testy webu, GitHub Actions) a 3 ukázkové simulace: kyvadlo, auto, náboje a pole |
+| **Další krok** | Fáze 2 (A.1–A.3), začít simulací **Projectile motion** |
+| **Rozpracováno / poznámky** | Čeká na uživatele: zveřejnění (repo veřejné + GitHub Pages), kontrola na iPhonu, zpětná vazba k designu (viz OTAZKY.md). Nová simulace = složka `src/sims/<id>/` (meta.ts, render.ts, Sim.svelte) podle vzoru `c1-pendulum`, model v `src/physics/`, testy v `tests/physics/`, v `src/app/registry.ts` přidat `load`, v `tests/e2e/smoke.spec.ts` přidat id do `READY`. |
 
 **Jak navázat v nové session:** otevři v Claude novou session ve složce `~/Projects/physics-lab`
 a napiš: *„Pokračuj podle PLAN.md.“* Pravidla v CLAUDE.md se načtou automaticky.
@@ -164,7 +164,7 @@ npm test           # spustí testy fyziky
 ## Fáze 1 – Základ + 3 ukázkové simulace
 
 Základ:
-- [ ] Projekt: Vite + TypeScript + Svelte, formátování kódu, Vitest, Playwright
+- [x] Projekt: Vite + TypeScript + Svelte, formátování kódu, Vitest, Playwright
 - [x] Design systém: barvy a rozměry (tokeny), světlý/tmavý režim, komponenty (posuvník s jednotkou, tlačítka, přepínače, panely, záložky)
 - [x] Rozvržení stránky simulace (počítač + mobilní vysouvací panel)
 - [x] Úvodní stránka: témata A–E, karty, vyhledávání, filtr HL
@@ -176,17 +176,17 @@ Základ:
 - [x] Export CSV (+ formát pro český Excel)
 - [x] Infrastruktura pro Web Workery
 - [x] Měřič výkonu (fps, čas fyziky na snímek)
-- [ ] PWA: offline, ikona na ploše iPhonu
-- [ ] Testy jádra (řád přesnosti integrátorů, zachování energie) + smoke test každé simulace
+- [x] PWA: offline, ikona na ploše iPhonu
+- [x] Testy jádra (řád přesnosti integrátorů, zachování energie) + smoke test každé simulace
 
 Ukázkové simulace:
-- [ ] **A.1 Car acceleration** – výkonová/momentová křivka motoru, hmotnost, převodové stupně a řazení, valivý odpor, mez přilnavosti pneumatik (μ), odpor vzduchu ½ρC_dAv²; grafy x–t, v–t, a–t, síly a výkon; měření 0–100 km/h; presets (malé auto, sporťák, elektromobil, kamion). *Test:* maximální rychlost tam, kde výkon na kolech = (odpor vzduchu + valivý odpor)·v; bez odporů a při stálém výkonu v = √(2Pt/m); energetická bilance ∫P dt = E_k + ztráty.
-- [ ] **D.2 Charges and fields** – přetahování nábojů (±, velikost), vektory pole, siločáry, ekvipotenciály (HL), mapa potenciálu (HL), sonda E a V (HL), pravítko; presets: bodový náboj, dipól, dva stejné náboje, kvadrupól, deskový kondenzátor. *Test:* E = kq/r² a V = kq/r v sondě, princip superpozice, siločáry kolmé na ekvipotenciály, pole mezi deskami ≈ V/d uprostřed (do 1 %).
-- [ ] **C.1 Pendulum** – přesný nelineární model i pro velké výchylky, „duch“ s přiblížením malých úhlů pro srovnání, tlumení, graf úhlu/rychlosti/energie, fázový portrét, měření periody. *Test:* T = 2π√(l/g) pro malé výchylky; pro velké výchylky přesná perioda T = 4√(l/g)·K(sin(θ₀/2)) (eliptický integrál); zachování energie bez tlumení (< 10⁻⁶ za 1000 kmitů); útlum amplitudy podle analytického řešení.
+- [x] **A.1 Car acceleration** – výkonová/momentová křivka motoru, hmotnost, převodové stupně a řazení, valivý odpor, mez přilnavosti pneumatik (μ), odpor vzduchu ½ρC_dAv²; grafy x–t, v–t, a–t, síly a výkon; měření 0–100 km/h; presets (malé auto, sporťák, elektromobil, kamion). *Test:* maximální rychlost tam, kde výkon na kolech = (odpor vzduchu + valivý odpor)·v; bez odporů a při stálém výkonu v = √(2Pt/m); energetická bilance ∫P dt = E_k + ztráty.
+- [x] **D.2 Charges and fields** – přetahování nábojů (±, velikost), vektory pole, siločáry, ekvipotenciály (HL), mapa potenciálu (HL), sonda E a V (HL), pravítko; presets: bodový náboj, dipól, dva stejné náboje, kvadrupól, deskový kondenzátor. *Test:* E = kq/r² a V = kq/r v sondě, princip superpozice, siločáry kolmé na ekvipotenciály, pole mezi deskami ≈ V/d uprostřed (do 1 %).
+- [x] **C.1 Pendulum** – přesný nelineární model i pro velké výchylky, „duch“ s přiblížením malých úhlů pro srovnání, tlumení, graf úhlu/rychlosti/energie, fázový portrét, měření periody. *Test:* T = 2π√(l/g) pro malé výchylky; pro velké výchylky přesná perioda T = 4√(l/g)·K(sin(θ₀/2)) (eliptický integrál); zachování energie bez tlumení (< 10⁻⁶ za 1000 kmitů); útlum amplitudy podle analytického řešení.
 
 Záloha a zveřejnění:
-- [ ] Hned na začátku: instalace GitHub CLI, tvoje přihlášení, **soukromý** repozitář → od té chvíle se každá hotová část nahrává na GitHub (záloha pro další session)
-- [ ] Na konci fáze: repozitář přepnout na veřejný, GitHub Actions: testy → sestavení → nasazení na GitHub Pages (HTTPS)
+- [x] Hned na začátku: instalace GitHub CLI, tvoje přihlášení, **soukromý** repozitář → od té chvíle se každá hotová část nahrává na GitHub (záloha pro další session)
+- [ ] Na konci fáze: repozitář přepnout na veřejný, GitHub Actions: testy → sestavení → nasazení na GitHub Pages (HTTPS) — *workflow je hotový (`.github/workflows/ci.yml`), testy běží na GitHubu; nasazení se zapne samo po zveřejnění repozitáře, které čeká na tvé potvrzení*
 - [ ] Kontrola webu na iPhonu (ty) + úprava designu podle tvé zpětné vazby
 
 **Hotovo, když:** 3 simulace splňují definici hotové simulace, testy procházejí, web běží na
