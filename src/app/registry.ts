@@ -72,7 +72,10 @@ export const sims: SimEntry[] = [
     ...s('a1-car-acceleration', 'Car acceleration', 'Engine power, gears, grip and air resistance — x–t, v–t and a–t graphs.', 'none', ['power', 'drag', 'gears', 'suvat', 'P = Fv']),
     load: () => import('../sims/a1-car-acceleration/Sim.svelte'),
   },
-  s('a1-projectile', 'Projectile motion', 'Launch in a vacuum and with air resistance side by side.', 'none', ['range', 'drag', 'trajectory']),
+  {
+    ...s('a1-projectile', 'Projectile motion', 'Launch in a vacuum and with air resistance side by side.', 'none', ['range', 'drag', 'trajectory', 'parabola']),
+    load: () => import('../sims/a1-projectile/Sim.svelte'),
+  },
   s('a1-motion-graphs', 'Motion graphs lab', 'Drive the motion and read gradients and areas of x–t, v–t, a–t.', 'none', ['gradient', 'area', 'suvat'], true),
   // A.2
   s('a2-inclined-plane', 'Inclined plane with friction', 'Static and dynamic friction, free-body diagram, slipping.', 'none', ['friction', 'μ', 'free-body']),

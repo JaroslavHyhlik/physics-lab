@@ -72,6 +72,7 @@
           label: c.unit ? `${c.label} (${c.unit})` : c.label,
           stroke: cssVar(c.color ?? `--series-${(n % 6) + 1}`),
           width: 2,
+          dash: c.dash,
           points: { show: false },
           value: (_u: uPlot, v: number | null) => (v == null ? '—' : Number(v.toPrecision(4)).toString()),
         })),

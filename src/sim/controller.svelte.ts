@@ -6,8 +6,8 @@ export interface SimHooks {
   step(dt: number): void;
   /** Draw the current state. Never changes physics state. */
   render(): void;
-  /** Return one data sample (values in channel order, first channel = time). */
-  sample?(t: number, out: Float64Array): void;
+  /** Fill one data sample (values in channel order, first channel = time). Return false to skip it. */
+  sample?(t: number, out: Float64Array): void | boolean;
   /** Rebuild the initial state from the current parameters. */
   reset(): void;
 }
@@ -107,8 +107,7 @@ export class SimController {
     this.hooks.step(dt);
     const t = this.stepper.time + dt; // time after this step
     if (this.recorder && this.hooks.sample && t >= this.nextSample - 1e-9) {
-      this.hooks.sample(t, this.sampleBuf);
-      this.recorder.push(this.sampleBuf);
+      if (this.hooks.sample(t, this.sampleBuf) !== false) this.recorder.push(this.sampleBuf);
       this.nextSample += this.sampleInterval;
       if (this.nextSample < t) this.nextSample = t + this.sampleInterval;
     }

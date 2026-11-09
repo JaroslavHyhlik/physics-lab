@@ -15,9 +15,9 @@ Inspirace PhET, ale vlastní kód a vlastní, modernější design.
 
 | | |
 |---|---|
-| **Aktuální fáze** | 1 – hotovo vše kromě kroků, které vyžadují uživatele; další na řadě je fáze 2 |
+| **Aktuální fáze** | 2 – Téma A: A.1–A.3 (fáze 1 hotová kromě kontroly na iPhonu) |
 | **Naposledy hotovo** | základ (jádro, design, grafy, nástroje, CSV, PWA, Web Worker, testy fyziky + testy webu, GitHub Actions) a 3 ukázkové simulace: kyvadlo, auto, náboje a pole |
-| **Další krok** | Fáze 2 (A.1–A.3), začít simulací **Projectile motion** |
+| **Další krok** | Fáze 2: **Inclined plane with friction** (pak Collisions 1D, …) |
 | **Rozpracováno / poznámky** | Web je zveřejněný. Čeká na uživatele: kontrola na iPhonu, zpětná vazba k designu (viz OTAZKY.md). Noční/automatické běhy pracují ve větvi `night`, do `main` až po schválení. Nová simulace = složka `src/sims/<id>/` (meta.ts, render.ts, Sim.svelte) podle vzoru `c1-pendulum`, model v `src/physics/`, testy v `tests/physics/`, v `src/app/registry.ts` přidat `load`, v `tests/e2e/smoke.spec.ts` přidat id do `READY`. |
 
 **Jak navázat v nové session:** otevři v Claude novou session ve složce `~/Projects/physics-lab`
@@ -197,7 +197,7 @@ Záloha a zveřejnění:
 ## Fáze 2 – Téma A: A.1–A.3
 
 **A.1 Kinematics**
-- [ ] **Projectile motion** – vrh ve vakuu vs. s odporem vzduchu vedle sebe; rychlost, úhel, výška, hmotnost, průměr, C_d, hustota vzduchu; dosah, max. výška, doba letu; hledání optimálního úhlu; grafy x–t, y–t, v–t, a–t. *Test:* ve vakuu R = u²sin2θ/g a doba letu; s odporem svislá mezní rychlost v_t = √(2mg/ρC_dA) a přesné v(t) = v_t·tanh(gt/v_t).
+- [x] **Projectile motion** – vrh ve vakuu vs. s odporem vzduchu vedle sebe; rychlost, úhel, výška, hmotnost, průměr, C_d, hustota vzduchu; dosah, max. výška, doba letu; hledání optimálního úhlu; grafy x–t, y–t, v–t, a–t. *Test:* ve vakuu R = u²sin2θ/g a doba letu; s odporem svislá mezní rychlost v_t = √(2mg/ρC_dA) a přesné v(t) = v_t·tanh(gt/v_t).
 - [ ] ➕ **Motion graphs lab** – ovládání pohybu (posuvník/tažení), živé x–t, v–t, a–t; nástroje směrnice a plochy pod grafem; výzvy „napodob graf“. *Test:* směrnice a plochy proti rovnicím rovnoměrně zrychleného pohybu (suvat).
 
 **A.2 Forces and momentum**

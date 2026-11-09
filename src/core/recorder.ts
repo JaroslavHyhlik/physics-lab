@@ -9,6 +9,8 @@ export interface ChannelDef {
   unit: string;
   /** Optional colour token name used by graphs (e.g. "--series-1"). */
   color?: string;
+  /** Optional dash pattern for graphs, e.g. [6, 4]. */
+  dash?: number[];
 }
 
 export class Recorder {
