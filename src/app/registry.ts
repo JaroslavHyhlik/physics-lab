@@ -84,7 +84,10 @@ export const sims: SimEntry[] = [
   },
   s('a2-newton-lift', "Newton's laws: lift & connected bodies", 'Apparent weight in a lift and the Atwood machine.', 'none', ['atwood', 'apparent weight'], true),
   s('a2-drag-buoyancy', 'Drag, buoyancy & terminal velocity', "Stokes' law and Archimedes' principle in fluids.", 'none', ['stokes', 'viscosity', 'terminal'], true),
-  s('a2-collisions-1d', 'Collisions 1D', 'Elastic and inelastic collisions, momentum and impulse.', 'none', ['momentum', 'impulse', 'restitution']),
+  {
+    ...s('a2-collisions-1d', 'Collisions 1D', 'Elastic and inelastic collisions, momentum and impulse.', 'none', ['momentum', 'impulse', 'restitution', 'elastic', 'inelastic']),
+    load: () => import('../sims/a2-collisions-1d/Sim.svelte'),
+  },
   s('a2-collisions-2d', 'Collisions 2D', 'Air-table pucks, momentum vectors, centre-of-mass frame.', 'none', ['momentum', 'vector']),
   s('a2-rocket', 'Rocket with variable mass', 'Thrust, drag in a thinning atmosphere, gravity falling with height.', 'none', ['thrust', 'tsiolkovsky']),
   s('a2-banked-curve', 'Circular motion & banked curve', 'Centripetal force, banking angle, loop-the-loop.', 'none', ['centripetal', 'banked']),
