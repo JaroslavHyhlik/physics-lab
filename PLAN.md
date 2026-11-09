@@ -16,9 +16,9 @@ Inspirace PhET, ale vlastní kód a vlastní, modernější design.
 | | |
 |---|---|
 | **Aktuální fáze** | 1 – základ + 3 ukázkové simulace |
-| **Naposledy hotovo** | plán schválen; Node.js 24 LTS a GitHub CLI nainstalovány |
-| **Další krok** | soukromý repozitář na GitHubu → kostra projektu (Vite + Svelte + TS) |
-| **Rozpracováno / poznámky** | – |
+| **Naposledy hotovo** | jádro + testy, design systém, úvodní stránka, rozvržení simulace, grafy, CSV, pravítko a stopky; kyvadlo (model + testy + obrazovka) |
+| **Další krok** | simulace Car acceleration → Charges and fields (+ sonda, Web Worker) → Playwright testy → PWA → zveřejnění |
+| **Rozpracováno / poznámky** | `src/sims/a1-car-acceleration` a `d2-charges-and-fields` jsou zatím jen zástupné soubory. Dev server: `npm run dev`. |
 
 **Jak navázat v nové session:** otevři v Claude novou session ve složce `~/Projects/physics-lab`
 a napiš: *„Pokračuj podle PLAN.md.“* Pravidla v CLAUDE.md se načtou automaticky.
@@ -165,17 +165,17 @@ npm test           # spustí testy fyziky
 
 Základ:
 - [ ] Projekt: Vite + TypeScript + Svelte, formátování kódu, Vitest, Playwright
-- [ ] Design systém: barvy a rozměry (tokeny), světlý/tmavý režim, komponenty (posuvník s jednotkou, tlačítka, přepínače, panely, záložky)
-- [ ] Rozvržení stránky simulace (počítač + mobilní vysouvací panel)
-- [ ] Úvodní stránka: témata A–E, karty, vyhledávání, filtr HL
-- [ ] Jádro simulací: pevný časový krok, pauza/krok/zpomalení/reset, presets, parametry v URL
-- [ ] Numerika: semi-implicitní Euler, RK4, RK45, rychlostní Verlet, Yoshida 4, Boris; vektory; konstanty z data bookletu; generátor náhodných čísel se semínkem
-- [ ] Živé grafy (uPlot): více veličin, odečítání hodnot kurzorem, pauza, přiblížení
+- [x] Design systém: barvy a rozměry (tokeny), světlý/tmavý režim, komponenty (posuvník s jednotkou, tlačítka, přepínače, panely, záložky)
+- [x] Rozvržení stránky simulace (počítač + mobilní vysouvací panel)
+- [x] Úvodní stránka: témata A–E, karty, vyhledávání, filtr HL
+- [x] Jádro simulací: pevný časový krok, pauza/krok/zpomalení/reset, presets, parametry v URL
+- [x] Numerika: semi-implicitní Euler, RK4, RK45, rychlostní Verlet, Yoshida 4, Boris; vektory; konstanty z data bookletu; generátor náhodných čísel se semínkem
+- [x] Živé grafy (uPlot): více veličin, odečítání hodnot kurzorem, pauza, přiblížení
 - [ ] Měřicí nástroje: pravítko, stopky, sonda (napojitelné na každou simulaci)
-- [ ] Panel Info: vysvětlení, vzorce (KaTeX), štítek HL, *Model assumptions*
-- [ ] Export CSV (+ formát pro český Excel)
+- [x] Panel Info: vysvětlení, vzorce (KaTeX), štítek HL, *Model assumptions*
+- [x] Export CSV (+ formát pro český Excel)
 - [ ] Infrastruktura pro Web Workery
-- [ ] Měřič výkonu (fps, čas fyziky na snímek)
+- [x] Měřič výkonu (fps, čas fyziky na snímek)
 - [ ] PWA: offline, ikona na ploše iPhonu
 - [ ] Testy jádra (řád přesnosti integrátorů, zachování energie) + smoke test každé simulace
 
