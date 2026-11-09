@@ -31,11 +31,30 @@ export function drawArrow(
   ctx.lineTo(x2 - ux * head + uy * head * 0.5, y2 - uy * head - ux * head * 0.5);
   ctx.closePath();
   ctx.fill();
-  if (label) {
-    ctx.font = 'italic 700 14px "Times New Roman", Georgia, serif';
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    ctx.fillText(label, x2 + ux * 12, y2 + uy * 12);
+  if (label) drawSymbol(ctx, label, x2 + ux * 13, y2 + uy * 13, color);
+}
+
+/**
+ * Physics symbol in italic serif with an optional subscript after "_" (e.g. "F_N", "v_y"),
+ * centred at (x, y).
+ */
+export function drawSymbol(ctx: CanvasRenderingContext2D, sym: string, x: number, y: number, color: string, size = 14): void {
+  const [base, sub] = sym.split('_');
+  const fBase = `italic 700 ${size}px "Times New Roman", Georgia, serif`;
+  const fSub = `italic 700 ${Math.round(size * 0.72)}px "Times New Roman", Georgia, serif`;
+  ctx.font = fBase;
+  const wb = ctx.measureText(base).width;
+  ctx.font = fSub;
+  const ws = sub ? ctx.measureText(sub).width + 1 : 0;
+  const x0 = x - (wb + ws) / 2;
+  ctx.fillStyle = color;
+  ctx.textAlign = 'left';
+  ctx.textBaseline = 'middle';
+  ctx.font = fBase;
+  ctx.fillText(base, x0, y);
+  if (sub) {
+    ctx.font = fSub;
+    ctx.fillText(sub, x0 + wb + 1, y + size * 0.3);
   }
 }
 

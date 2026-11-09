@@ -17,7 +17,7 @@ Inspirace PhET, ale vlastní kód a vlastní, modernější design.
 |---|---|
 | **Aktuální fáze** | 2 – Téma A: A.1–A.3 (fáze 1 hotová kromě kontroly na iPhonu) |
 | **Naposledy hotovo** | základ (jádro, design, grafy, nástroje, CSV, PWA, Web Worker, testy fyziky + testy webu, GitHub Actions) a 3 ukázkové simulace: kyvadlo, auto, náboje a pole |
-| **Další krok** | Fáze 2: **Inclined plane with friction** (pak Collisions 1D, …) |
+| **Další krok** | Fáze 2: **Collisions 1D** (pak Collisions 2D, Banked curve, …) |
 | **Rozpracováno / poznámky** | Web je zveřejněný. Čeká na uživatele: kontrola na iPhonu, zpětná vazba k designu (viz OTAZKY.md). Noční/automatické běhy pracují ve větvi `night`, do `main` až po schválení. Nová simulace = složka `src/sims/<id>/` (meta.ts, render.ts, Sim.svelte) podle vzoru `c1-pendulum`, model v `src/physics/`, testy v `tests/physics/`, v `src/app/registry.ts` přidat `load`, v `tests/e2e/smoke.spec.ts` přidat id do `READY`. |
 
 **Jak navázat v nové session:** otevři v Claude novou session ve složce `~/Projects/physics-lab`
@@ -201,7 +201,7 @@ Záloha a zveřejnění:
 - [ ] ➕ **Motion graphs lab** – ovládání pohybu (posuvník/tažení), živé x–t, v–t, a–t; nástroje směrnice a plochy pod grafem; výzvy „napodob graf“. *Test:* směrnice a plochy proti rovnicím rovnoměrně zrychleného pohybu (suvat).
 
 **A.2 Forces and momentum**
-- [ ] **Inclined plane with friction** – silový diagram s rozkladem sil, statické vs. dynamické tření, tahová síla, rozpoznání prokluzu. *Test:* a = g(sinθ − μ_d cosθ); těleso stojí právě když tanθ ≤ μ_s (F_f ≤ μ_s F_N).
+- [x] **Inclined plane with friction** – silový diagram s rozkladem sil, statické vs. dynamické tření, tahová síla, rozpoznání prokluzu. *Test:* a = g(sinθ − μ_d cosθ); těleso stojí právě když tanθ ≤ μ_s (F_f ≤ μ_s F_N).
 - [ ] ➕ **Newton's laws: lift & connected bodies** – zdánlivá tíha ve výtahu, Atwoodův stroj, tělesa spojená lanem. *Test:* a = (m₁ − m₂)g/(m₁ + m₂), N = m(g + a).
 - [ ] ➕ **Drag, buoyancy & terminal velocity** – kulička v oleji, vodě, medu, vzduchu; Stokesův zákon F_d = 6πηrv, vztlak F_b = ρVg. *Test:* v_t = 2r²g(ρ_s − ρ_f)/(9η) a exponenciální náběh.
 - [ ] **Collisions 1D** – pružné i nepružné (koeficient restituce), hybnost a E_k ve sloupcích, graf F–t (impulz = plocha), „exploze“. *Test:* hybnost zachována na 10⁻¹², E_k zachována při pružné srážce, výsledné rychlosti podle vzorce.

@@ -78,7 +78,10 @@ export const sims: SimEntry[] = [
   },
   s('a1-motion-graphs', 'Motion graphs lab', 'Drive the motion and read gradients and areas of x–t, v–t, a–t.', 'none', ['gradient', 'area', 'suvat'], true),
   // A.2
-  s('a2-inclined-plane', 'Inclined plane with friction', 'Static and dynamic friction, free-body diagram, slipping.', 'none', ['friction', 'μ', 'free-body']),
+  {
+    ...s('a2-inclined-plane', 'Inclined plane with friction', 'Static and dynamic friction, free-body diagram, slipping.', 'none', ['friction', 'μ', 'free-body', 'slope']),
+    load: () => import('../sims/a2-inclined-plane/Sim.svelte'),
+  },
   s('a2-newton-lift', "Newton's laws: lift & connected bodies", 'Apparent weight in a lift and the Atwood machine.', 'none', ['atwood', 'apparent weight'], true),
   s('a2-drag-buoyancy', 'Drag, buoyancy & terminal velocity', "Stokes' law and Archimedes' principle in fluids.", 'none', ['stokes', 'viscosity', 'terminal'], true),
   s('a2-collisions-1d', 'Collisions 1D', 'Elastic and inelastic collisions, momentum and impulse.', 'none', ['momentum', 'impulse', 'restitution']),
