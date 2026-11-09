@@ -422,6 +422,13 @@
     .bar {
       padding: 0 var(--space-2);
     }
+    .preset select {
+      max-width: 112px;
+      padding-left: 10px;
+    }
+    .title :global(.badge.code) {
+      display: none;
+    }
     .transport {
       bottom: var(--space-2);
     }

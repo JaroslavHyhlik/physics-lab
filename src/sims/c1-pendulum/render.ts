@@ -140,11 +140,11 @@ export function drawPendulum(
 }
 
 function drawEnergyBars(ctx: CanvasRenderingContext2D, view: View, p: Pendulum, pal: Palette, E0: number) {
-  const h = Math.min(150, view.height * 0.34);
+  const h = Math.min(150, view.height * 0.3);
   const w = 14;
-  const x0 = view.width - 112;
-  const y0 = view.height - 92;
-  if (x0 < view.width * 0.55) return;
+  const x0 = 22; // bottom-left corner: free on both desktop and mobile layouts
+  const y0 = view.height - 96;
+  if (y0 - h < 120) return;
   const vals = [
     { v: p.Ek, c: pal.series[1], l: 'Eₖ' },
     { v: p.Ep, c: pal.series[2], l: 'Eₚ' },
