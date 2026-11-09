@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { untrack } from 'svelte';
+  import { onMount, untrack } from 'svelte';
   import { Crosshair, Gauge, Plus, Minus, Trash2, Download } from '@lucide/svelte';
   import SimShell from '../../sim/SimShell.svelte';
   import SimCanvas from '../../sim/SimCanvas.svelte';
@@ -261,7 +261,7 @@
     return out;
   });
 
-  $effect(() => {
+  onMount(() => {
     ctrl.mount();
     return () => {
       ctrl.destroy();

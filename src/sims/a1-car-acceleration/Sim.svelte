@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { untrack } from 'svelte';
+  import { onMount, untrack } from 'svelte';
   import SimShell from '../../sim/SimShell.svelte';
   import SimCanvas from '../../sim/SimCanvas.svelte';
   import Readouts from '../../sim/Readouts.svelte';
@@ -167,7 +167,7 @@
     ];
   });
 
-  $effect(() => {
+  onMount(() => {
     ctrl.mount();
     return () => ctrl.destroy();
   });

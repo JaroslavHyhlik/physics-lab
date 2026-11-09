@@ -73,8 +73,13 @@ export class SimController {
     this.stepper.timeScale = v;
   }
 
-  /** Start the animation loop (call once the canvas exists). */
+  /**
+   * Start the animation loop. Call from onMount (never from $effect: reset() reads parameters,
+   * and an effect would restart the loop on every parameter change).
+   */
   mount(): void {
+    cancelAnimationFrame(this.raf);
+    this.destroyed = false;
     this.reset();
     this.last = performance.now();
     this.statT = this.last;
