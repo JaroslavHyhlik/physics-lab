@@ -16,9 +16,9 @@ Inspirace PhET, ale vlastní kód a vlastní, modernější design.
 | | |
 |---|---|
 | **Aktuální fáze** | 1 – základ + 3 ukázkové simulace |
-| **Naposledy hotovo** | jádro + testy, design systém, úvodní stránka, rozvržení simulace, grafy, CSV, pravítko a stopky; kyvadlo a auto (model + testy + obrazovka) |
-| **Další krok** | simulace Charges and fields (+ sonda, Web Worker) → Playwright testy → PWA → GitHub Actions |
-| **Rozpracováno / poznámky** | `src/sims/d2-charges-and-fields` je zatím jen zástupný soubor. Kyvadlo a auto čekají na Playwright smoke test (pak je odškrtnout). Dev server: `npm run dev`. |
+| **Naposledy hotovo** | jádro + testy, design systém, úvodní stránka, rozvržení simulace, grafy, CSV, pravítko a stopky; kyvadlo, auto, náboje a pole (model + testy + obrazovka), Web Worker |
+| **Další krok** | Playwright smoke testy → PWA (ověřit build) → GitHub Actions → README |
+| **Rozpracováno / poznámky** | Všechny 3 ukázkové simulace čekají na Playwright smoke test (pak je odškrtnout). Dev server: `npm run dev`. |
 
 **Jak navázat v nové session:** otevři v Claude novou session ve složce `~/Projects/physics-lab`
 a napiš: *„Pokračuj podle PLAN.md.“* Pravidla v CLAUDE.md se načtou automaticky.
@@ -171,10 +171,10 @@ Základ:
 - [x] Jádro simulací: pevný časový krok, pauza/krok/zpomalení/reset, presets, parametry v URL
 - [x] Numerika: semi-implicitní Euler, RK4, RK45, rychlostní Verlet, Yoshida 4, Boris; vektory; konstanty z data bookletu; generátor náhodných čísel se semínkem
 - [x] Živé grafy (uPlot): více veličin, odečítání hodnot kurzorem, pauza, přiblížení
-- [ ] Měřicí nástroje: pravítko, stopky, sonda (napojitelné na každou simulaci)
+- [x] Měřicí nástroje: pravítko, stopky, sonda (napojitelné na každou simulaci)
 - [x] Panel Info: vysvětlení, vzorce (KaTeX), štítek HL, *Model assumptions*
 - [x] Export CSV (+ formát pro český Excel)
-- [ ] Infrastruktura pro Web Workery
+- [x] Infrastruktura pro Web Workery
 - [x] Měřič výkonu (fps, čas fyziky na snímek)
 - [ ] PWA: offline, ikona na ploše iPhonu
 - [ ] Testy jádra (řád přesnosti integrátorů, zachování energie) + smoke test každé simulace

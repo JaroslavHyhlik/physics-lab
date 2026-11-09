@@ -25,6 +25,7 @@
     onpreset,
     ruler,
     stopwatch = true,
+    transport = true,
     stage,
     controls,
     readouts,
@@ -39,6 +40,8 @@
     onpreset?: (id: string) => void;
     ruler?: Ruler;
     stopwatch?: boolean;
+    /** Hide play/pause/step for static simulations (e.g. electrostatics). */
+    transport?: boolean;
     stage: Snippet;
     controls: Snippet;
     readouts?: Snippet;
@@ -63,6 +66,7 @@
   });
 
   function onKey(e: KeyboardEvent) {
+    if (!transport) return;
     const t = e.target as HTMLElement;
     if (t && (t.tagName === 'INPUT' || t.tagName === 'SELECT' || t.tagName === 'TEXTAREA' || t.isContentEditable))
       return;
@@ -143,7 +147,7 @@
         {#if perf}
           <div class="perf num">{ctrl.fps} fps · physics {ctrl.physicsMs.toFixed(2)} ms/frame</div>
         {/if}
-        <div class="transport"><Transport {ctrl} /></div>
+        {#if transport}<div class="transport"><Transport {ctrl} /></div>{/if}
       </div>
       {#if !media.mobile && ctrl.recorder}
         <div class="graphs" class:closed={!graphsOpen}>

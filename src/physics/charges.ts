@@ -199,10 +199,13 @@ export function traceAllLines(src: Sources, o: LineOptions, linesPerNC = 8): num
     for (const p of src.plates) {
       if (Math.sign(p.sigma) !== sign) continue;
       // density: lines per metre ∝ σ (σ in nC m^-2)
-      const n = Math.max(2, Math.min(24, Math.round(Math.abs(p.sigma) * 1e9 * linesPerNC * p.w * 0.6)));
+      const n = Math.max(2, Math.min(16, Math.round(Math.abs(p.sigma) * 1e9 * linesPerNC * p.w * 0.4)));
+      // the outer side of a plate (away from the origin) carries a weak field: seed half as many
+      const outer = Math.sign(p.vertical ? p.cx : p.cy) || 1;
       for (let i = 0; i < n; i++) {
         const t = -p.w / 2 + ((i + 0.5) * p.w) / n;
         for (const side of [1, -1]) {
+          if (side === outer && i % 2 === 1) continue;
           const eps = 1e-4 * side;
           const x = p.vertical ? p.cx + eps : p.cx + t;
           const y = p.vertical ? p.cy + t : p.cy + eps;
