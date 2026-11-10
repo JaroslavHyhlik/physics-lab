@@ -125,7 +125,7 @@
     <section class="stage-col">
       <div class="stage">
         {@render stage()}
-        <div class="tools" role="toolbar" aria-label="Measuring tools">
+        {#if ruler || stopwatch || toolbar}<div class="tools" role="toolbar" aria-label="Measuring tools">
           {#if ruler}<IconButton
               icon={RulerIcon}
               label="Ruler"
@@ -141,7 +141,7 @@
               onclick={() => (showStopwatch = !showStopwatch)}
             />{/if}
           {@render toolbar?.()}
-        </div>
+        </div>{/if}
         {#if showStopwatch}<div class="sw"><Stopwatch {ctrl} /></div>{/if}
         {#if readouts}<div class="readouts">{@render readouts()}</div>{/if}
         {#if perf}

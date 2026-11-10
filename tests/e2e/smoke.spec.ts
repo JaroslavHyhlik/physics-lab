@@ -1,6 +1,6 @@
 import { test, expect, type Page } from '@playwright/test';
 
-const READY = ['a1-car-acceleration', 'a1-projectile', 'a2-inclined-plane', 'a2-collisions-1d', 'a2-collisions-2d', 'a2-banked-curve', 'a2-drag-buoyancy', 'a2-newton-lift', 'a2-rocket', 'a3-spring-launcher', 'a3-work-power', 'a3-roller-coaster', 'c1-pendulum', 'd2-charges-and-fields'];
+const READY = ['a1-car-acceleration', 'a1-projectile', 'a1-motion-graphs', 'a2-inclined-plane', 'a2-collisions-1d', 'a2-collisions-2d', 'a2-banked-curve', 'a2-drag-buoyancy', 'a2-newton-lift', 'a2-rocket', 'a3-spring-launcher', 'a3-work-power', 'a3-roller-coaster', 'c1-pendulum', 'd2-charges-and-fields'];
 
 function collectErrors(page: Page): string[] {
   const errors: string[] = [];
