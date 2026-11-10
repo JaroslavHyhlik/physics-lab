@@ -165,7 +165,10 @@ export const sims: SimEntry[] = [
     load: () => import('../sims/a5-lorentz/Sim.svelte'),
   },
   // B.1
-  s('b1-particle-model', 'Particle model of matter', 'Solids, liquids and gases from interacting particles.', 'none', ['states', 'molecular dynamics']),
+  {
+    ...s('b1-particle-model', 'Particle model of matter', 'Solids, liquids and gases from interacting particles.', 'none', ['states', 'molecular dynamics', 'internal energy', 'kinetic theory']),
+    load: () => import('../sims/b1-particle-model/Sim.svelte'),
+  },
   {
     ...s('b1-heating-curve', 'Heating curve', 'Specific heat capacity and latent heat from ice to steam.', 'none', ['latent heat', 'specific heat', 'melting', 'boiling']),
     load: () => import('../sims/b1-heating-curve/Sim.svelte'),

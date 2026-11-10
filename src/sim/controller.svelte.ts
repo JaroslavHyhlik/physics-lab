@@ -174,8 +174,7 @@ export class SimController {
     this.recorder?.clear();
     this.hooks.reset();
     if (this.recorder && this.hooks.sample) {
-      this.hooks.sample(0, this.sampleBuf);
-      this.recorder.push(this.sampleBuf);
+      if (this.hooks.sample(0, this.sampleBuf) !== false) this.recorder.push(this.sampleBuf);
       this.nextSample = this.sampleInterval;
     }
     this.time = 0;

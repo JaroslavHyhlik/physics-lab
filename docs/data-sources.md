@@ -9,3 +9,4 @@ External data used in the simulations (also cited in each simulation's info pane
 | b1-black-body | Approximate effective temperatures: Sun ≈ 5800 K, Sirius A ≈ 9900 K, red dwarf ≈ 3000 K | Rounded literature values (e.g. IAU nominal solar T_eff = 5772 K) | Physical facts |
 | b1-calorimetry | c: copper 385, aluminium 900, iron 450, lead 130, water 4180 J kg⁻¹ K⁻¹ | Typical textbook values, CRC Handbook (rounded) | Physical facts |
 | b1-conduction | k, ρ, c for copper, aluminium, steel, glass, brick, pine wood, polystyrene foam | Typical room-temperature values, CRC Handbook / engineering tables (rounded) | Physical facts |
+| b1-particle-model | Argon Lennard-Jones parameters σ = 3.4 × 10⁻¹⁰ m, ε = 1.65 × 10⁻²¹ J (ε/k_B ≈ 120 K), m = 6.63 × 10⁻²⁶ kg | Standard literature values (e.g. Rahman 1964, Phys. Rev. 136, A405) | Physical facts |
