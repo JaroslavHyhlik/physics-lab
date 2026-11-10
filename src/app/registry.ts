@@ -108,7 +108,10 @@ export const sims: SimEntry[] = [
   },
   s('a2-car-drift', 'Car drift', 'Tyre forces, static vs dynamic friction and the friction circle.', 'none', ['tyre', 'friction', 'drift']),
   // A.3
-  s('a3-roller-coaster', 'Roller coaster energy', 'Energy bars on an editable track, with and without friction.', 'none', ['energy', 'conservation']),
+  {
+    ...s('a3-roller-coaster', 'Roller coaster energy', 'Energy bars, a vertical loop and the g-force felt by the riders.', 'none', ['energy', 'conservation', 'loop', 'g-force']),
+    load: () => import('../sims/a3-roller-coaster/Sim.svelte'),
+  },
   {
     ...s('a3-work-power', 'Work, power & efficiency', 'W = Fs cosθ, P = Fv and a live Sankey diagram.', 'none', ['sankey', 'efficiency', 'power', 'work', 'motor']),
     load: () => import('../sims/a3-work-power/Sim.svelte'),

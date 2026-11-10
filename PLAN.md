@@ -16,8 +16,8 @@ Inspirace PhET, ale vlastní kód a vlastní, modernější design.
 | | |
 |---|---|
 | **Aktuální fáze** | 2 – Téma A: A.1–A.3 (fáze 1 hotová kromě kontroly na iPhonu) |
-| **Naposledy hotovo** | (9.–10. 11.) Projectile motion, Inclined plane, Collisions 1D, Collisions 2D, Banked curve, Drag & buoyancy, Newton's laws (lift), Rocket (1 stupeň; vícestupňová raketa zatím ne), Spring launcher, Work & power (Sankey: `src/sim/sankey.ts`); sdílené pomocníky `src/sim/setup.svelte.ts`. Dříve: základ (jádro, design, grafy, nástroje, CSV, PWA, Web Worker, testy fyziky + testy webu, GitHub Actions) a 3 ukázkové simulace: kyvadlo, auto, náboje a pole |
-| **Další krok** | Fáze 2: **Roller coaster** (pak Motion graphs lab, Car drift, A.3; svislá smyčka přesunuta do Roller coaster) |
+| **Naposledy hotovo** | (9.–10. 11.) Projectile motion, Inclined plane, Collisions 1D, Collisions 2D, Banked curve, Drag & buoyancy, Newton's laws (lift), Rocket (1 stupeň; vícestupňová raketa zatím ne), Spring launcher, Work & power (Sankey: `src/sim/sankey.ts`), Roller coaster; sdílené pomocníky `src/sim/setup.svelte.ts`. Dříve: základ (jádro, design, grafy, nástroje, CSV, PWA, Web Worker, testy fyziky + testy webu, GitHub Actions) a 3 ukázkové simulace: kyvadlo, auto, náboje a pole |
+| **Další krok** | Fáze 2: **Motion graphs lab** (pak Car drift; potom fáze 3). Pozn.: editor vlastní dráhy u Roller coaster zatím není (jen 4 předvolené dráhy) Motion graphs lab, Car drift, A.3; svislá smyčka přesunuta do Roller coaster) |
 | **Rozpracováno / poznámky** | Web je zveřejněný. Čeká na uživatele: kontrola na iPhonu, zpětná vazba k designu (viz OTAZKY.md). Noční/automatické běhy pracují ve větvi `night`, do `main` až po schválení. Nová simulace = složka `src/sims/<id>/` (meta.ts, render.ts, Sim.svelte) podle vzoru `c1-pendulum`, model v `src/physics/`, testy v `tests/physics/`, v `src/app/registry.ts` přidat `load`, v `tests/e2e/smoke.spec.ts` přidat id do `READY`. |
 
 **Jak navázat v nové session:** otevři v Claude novou session ve složce `~/Projects/physics-lab`
@@ -211,7 +211,7 @@ Záloha a zveřejnění:
 - [ ] **Car drift** – auto shora (jednostopý model), model pneumatik (zjednodušený Pacejka + kruh tření, statické vs. dynamické tření), plyn/brzda/volant (klávesnice i dotyk), stopy smyku, úhly skluzu, síly na kolech. *Test:* boční zrychlení v ustálené zatáčce ≤ μ_s g; síla pneumatiky nikdy nepřekročí μF_N; brzdná dráha se zablokovanými koly v²/(2μ_d g).
 
 **A.3 Work, energy and power**
-- [ ] **Roller coaster with energy bars** – editovatelná dráha (spline), smyčky, tření, sloupce/koláč E_k, E_p, teplo; normálová síla (přetížení „g“), odlepení od dráhy. *Test:* bez tření energie zachována (< 10⁻⁶), v = √(2gΔh); s třením teplo = μ∫N ds.
+- [x] **Roller coaster with energy bars** – editovatelná dráha (spline), smyčky, tření, sloupce/koláč E_k, E_p, teplo; normálová síla (přetížení „g“), odlepení od dráhy. *Test:* bez tření energie zachována (< 10⁻⁶), v = √(2gΔh); s třením teplo = μ∫N ds.
 - [x] **Work, power & efficiency** – motor zvedá náklad / táhne bednu: W = Fs cosθ, P = Fv, účinnost, živý Sankeyův diagram. *Test:* W = mgh + ztráty, P = Fv, η = užitečný výkon / příkon.
 - [x] ➕ **Spring launcher & elastic energy** – pružina, Hookeův zákon, elastická potenciální energie, výška výstřelu. *Test:* ½kΔx² = mgh (bez ztrát), F = −kx.
 
