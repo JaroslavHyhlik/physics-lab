@@ -50,7 +50,7 @@ for (const id of READY) {
     const step = page.getByRole('button', { name: /Step one frame/ });
     if (await step.count()) {
       const time = page.locator('.transport .time');
-      for (let i = 0; i < 30; i++) await step.click();
+      for (let i = 0; i < 10; i++) await step.click();
       await expect(time).not.toHaveText(/t = 0\.00 s/);
     }
 

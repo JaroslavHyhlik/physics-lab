@@ -17,7 +17,7 @@ Inspirace PhET, ale vlastní kód a vlastní, modernější design.
 |---|---|
 | **Aktuální fáze** | 2 – Téma A: A.1–A.3 (fáze 1 hotová kromě kontroly na iPhonu) |
 | **Naposledy hotovo** | (9.–10. 11.) Projectile motion, Inclined plane, Collisions 1D, Collisions 2D, Banked curve, Drag & buoyancy, Newton's laws (lift), Rocket (1 stupeň; vícestupňová raketa zatím ne), Spring launcher, Work & power (Sankey: `src/sim/sankey.ts`), Roller coaster; sdílené pomocníky `src/sim/setup.svelte.ts`. Dříve: základ (jádro, design, grafy, nástroje, CSV, PWA, Web Worker, testy fyziky + testy webu, GitHub Actions) a 3 ukázkové simulace: kyvadlo, auto, náboje a pole |
-| **Další krok** | Fáze 2: **Motion graphs lab** (pak Car drift; potom fáze 3). Pozn.: editor vlastní dráhy u Roller coaster zatím není (jen 4 předvolené dráhy) Motion graphs lab, Car drift, A.3; svislá smyčka přesunuta do Roller coaster) |
+| **Další krok** | Fáze 2: **Motion graphs lab**, pak **Car drift**; potom fáze 3 (A.4–A.5). Pozn.: Roller coaster zatím nemá editor vlastní dráhy (4 předvolené dráhy), raketa je jednostupňová. |
 | **Rozpracováno / poznámky** | Web je zveřejněný. Čeká na uživatele: kontrola na iPhonu, zpětná vazba k designu (viz OTAZKY.md). Noční/automatické běhy pracují ve větvi `night`, do `main` až po schválení. Nová simulace = složka `src/sims/<id>/` (meta.ts, render.ts, Sim.svelte) podle vzoru `c1-pendulum`, model v `src/physics/`, testy v `tests/physics/`, v `src/app/registry.ts` přidat `load`, v `tests/e2e/smoke.spec.ts` přidat id do `READY`. |
 
 **Jak navázat v nové session:** otevři v Claude novou session ve složce `~/Projects/physics-lab`
