@@ -16,8 +16,8 @@ Inspirace PhET, ale vlastní kód a vlastní, modernější design.
 | | |
 |---|---|
 | **Aktuální fáze** | 5 – Téma B (fáze 2 a 3 jsou hotové; fáze 4 = mobilní laboratoř je odložená, dokud ji nepůjde zkoušet na iPhonu) |
-| **Naposledy hotovo** | Fáze 3 celá (10. 11.). Fáze 5: Heating curve. Celkem 26 hotových simulací z 84. |
-| **Další krok** | Fáze 5: **Black-body radiation** (pak Calorimetry, Thermal conduction; Particle model jako poslední z B.1, potřebuje Worker). Zdroje dat zapisuj do `docs/data-sources.md`. |
+| **Naposledy hotovo** | Fáze 3 celá (10. 11.). Fáze 5: Heating curve, Black-body radiation. Celkem 27 hotových simulací z 84. |
+| **Další krok** | Fáze 5: **Calorimetry** (pak Thermal conduction; Particle model jako poslední z B.1, potřebuje Worker). Zdroje dat zapisuj do `docs/data-sources.md`. |
 | **Rozpracováno / poznámky** | Web je zveřejněný. Čeká na uživatele: kontrola na iPhonu (OTAZKY.md). Noční/automatické běhy pracují ve větvi `night`. Pomocníci: `src/sim/setup.svelte.ts` (useParams, usePalette, resetOn, redrawOn), `src/sim/sankey.ts`, `drawGridAxes`/`drawSymbol` v `src/sim/draw.ts`. Nová simulace = `src/sims/<id>/` (meta.ts, render.ts, Sim.svelte, vzor např. `a2-drag-buoyancy`), model v `src/physics/`, testy v `tests/physics/`, `load` v registry, id do `READY` v `tests/e2e/smoke.spec.ts`. Zatím vynecháno: editor vlastní dráhy (Roller coaster), vícestupňová raketa. |
 
 **Jak navázat v nové session:** otevři v Claude novou session ve složce `~/Projects/physics-lab`
@@ -293,7 +293,7 @@ Společné:
 **B.1 Thermal energy transfers**
 - [ ] **Particle model of matter** – 2D molekulová dynamika (Lennard-Jones) ve Workeru, ohřev/ochlazení, přechody pevná–kapalná–plynná, histogram E_k. *Test:* zachování energie v izolované soustavě, ekvipartice ⟨E_k⟩ = kT (2D).
 - [x] **Heating curve** – led → voda → pára, výkon ohřívače, hmotnost, c, L; graf T–t s prodlevami. *Test:* délka prodlevy = mL/P, sklon = P/(mc).
-- [ ] **Black-body radiation** – Planckova křivka, Wienův zákon, Stefanův–Boltzmannův zákon, barva tělesa, presets (Slunce, člověk, žárovka, Sirius). *Test:* numerický integrál Planckovy funkce = σT⁴, λ_max·T = 2.9 × 10⁻³ m K.
+- [x] **Black-body radiation** – Planckova křivka, Wienův zákon, Stefanův–Boltzmannův zákon, barva tělesa, presets (Slunce, člověk, žárovka, Sirius). *Test:* numerický integrál Planckovy funkce = σT⁴, λ_max·T = 2.9 × 10⁻³ m K.
 - [ ] ➕ **Thermal conduction** – tyč/deska mezi lázněmi, materiál, Fourierův zákon ΔQ/Δt = kAΔT/Δx. *Test:* ustálený lineární průběh teploty a tok podle vzorce.
 - [ ] ➕ **Calorimetry (method of mixtures)** – smíchání teplé a studené vody / kovu ve vodě. *Test:* výsledná teplota z bilance Σmc·ΔT = 0.
 

@@ -170,7 +170,10 @@ export const sims: SimEntry[] = [
     ...s('b1-heating-curve', 'Heating curve', 'Specific heat capacity and latent heat from ice to steam.', 'none', ['latent heat', 'specific heat', 'melting', 'boiling']),
     load: () => import('../sims/b1-heating-curve/Sim.svelte'),
   },
-  s('b1-black-body', 'Black-body radiation', "Planck curves, Wien's law and the Stefan–Boltzmann law.", 'none', ['wien', 'stefan']),
+  {
+    ...s('b1-black-body', 'Black-body radiation', "Planck curves, Wien's law and the Stefan–Boltzmann law.", 'none', ['wien', 'stefan', 'planck', 'star colour']),
+    load: () => import('../sims/b1-black-body/Sim.svelte'),
+  },
   s('b1-conduction', 'Thermal conduction', 'Heat flow through a slab: ΔQ/Δt = kAΔT/Δx.', 'none', ['conductivity'], true),
   s('b1-calorimetry', 'Calorimetry', 'Method of mixtures for specific heat capacity.', 'none', ['mixtures'], true),
   // B.2
