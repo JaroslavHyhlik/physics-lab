@@ -16,8 +16,8 @@ Inspirace PhET, ale vlastní kód a vlastní, modernější design.
 | | |
 |---|---|
 | **Aktuální fáze** | 3 – Téma A, HL: A.4–A.5 (fáze 2 je hotová) |
-| **Naposledy hotovo** | Fáze 2 celá (10. 11.): Projectile, Motion graphs lab, Inclined plane, Newton's laws (lift), Drag & buoyancy, Collisions 1D/2D, Rocket, Banked curve, Car drift, Roller coaster, Work & power, Spring launcher. Celkem 19 simulací z 84. Fáze 3: Torque & equilibrium. |
-| **Další krok** | Fáze 3: **Rolling race** (pak Angular momentum, Rotational dynamics, A.5 relativita) |
+| **Naposledy hotovo** | Fáze 2 celá (10. 11.): Projectile, Motion graphs lab, Inclined plane, Newton's laws (lift), Drag & buoyancy, Collisions 1D/2D, Rocket, Banked curve, Car drift, Roller coaster, Work & power, Spring launcher. Celkem 19 simulací z 84. Fáze 3: Torque & equilibrium, Rolling race. |
+| **Další krok** | Fáze 3: **Conservation of angular momentum** (pak Angular momentum, Rotational dynamics, A.5 relativita) |
 | **Rozpracováno / poznámky** | Web je zveřejněný. Čeká na uživatele: kontrola na iPhonu (OTAZKY.md). Noční/automatické běhy pracují ve větvi `night`. Pomocníci: `src/sim/setup.svelte.ts` (useParams, usePalette, resetOn, redrawOn), `src/sim/sankey.ts`, `drawGridAxes`/`drawSymbol` v `src/sim/draw.ts`. Nová simulace = `src/sims/<id>/` (meta.ts, render.ts, Sim.svelte, vzor např. `a2-drag-buoyancy`), model v `src/physics/`, testy v `tests/physics/`, `load` v registry, id do `READY` v `tests/e2e/smoke.spec.ts`. Zatím vynecháno: editor vlastní dráhy (Roller coaster), vícestupňová raketa. |
 
 **Jak navázat v nové session:** otevři v Claude novou session ve složce `~/Projects/physics-lab`
@@ -223,7 +223,7 @@ Záloha a zveřejnění:
 
 **A.4 Rigid body mechanics (HL)**
 - [x] **Torque & equilibrium** – nosník/houpačka s posuvnými závažími, poloha podpěry, šikmé síly, podmínky ΣF = 0 a Στ = 0, žebřík u zdi. *Test:* m₁d₁ = m₂d₂, reakční síly z rovnováhy.
-- [ ] **Rolling race** – koule, válec, obruč, dutá koule (a klouzající kvádr) na nakloněné rovině; moment setrvačnosti, podíl translační a rotační E_k, valení s prokluzem při malém μ. *Test:* a = g sinθ/(1 + I/mr²); zachování energie při valení bez prokluzu.
+- [x] **Rolling race** – koule, válec, obruč, dutá koule (a klouzající kvádr) na nakloněné rovině; moment setrvačnosti, podíl translační a rotační E_k, valení s prokluzem při malém μ. *Test:* a = g sinθ/(1 + I/mr²); zachování energie při valení bez prokluzu.
 - [ ] **Conservation of angular momentum** – krasobruslařka/otočná židle s rukama, člověk chodící po kolotoči, disk spadlý na rotující disk. *Test:* Iω = konst., změna E_k podle vzorce.
 - [ ] ➕ **Rotational dynamics (τ = Iα)** – setrvačník s padajícím závažím. *Test:* a = mg/(m + I/r²).
 

@@ -131,7 +131,10 @@ export const sims: SimEntry[] = [
     ...s('a4-torque-equilibrium', 'Torque & equilibrium', 'Beams, see-saws and ladders in rotational equilibrium.', 'full', ['torque', 'moment', 'see-saw', 'ladder', 'principle of moments']),
     load: () => import('../sims/a4-torque-equilibrium/Sim.svelte'),
   },
-  s('a4-rolling-race', 'Rolling race', 'Sphere, cylinder and hoop race down a slope.', 'full', ['moment of inertia', 'rolling']),
+  {
+    ...s('a4-rolling-race', 'Rolling race', 'Sphere, cylinder and hoop race down a slope.', 'full', ['moment of inertia', 'rolling', 'rotational kinetic energy']),
+    load: () => import('../sims/a4-rolling-race/Sim.svelte'),
+  },
   s('a4-angular-momentum', 'Conservation of angular momentum', 'Spinning skater, merry-go-round and rotational collisions.', 'full', ['angular momentum']),
   s('a4-rotational-dynamics', 'Rotational dynamics', 'τ = Iα with a flywheel and a falling mass.', 'full', ['torque', 'flywheel'], true),
   // A.5 (HL)
