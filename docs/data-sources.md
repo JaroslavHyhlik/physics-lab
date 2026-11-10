@@ -8,3 +8,4 @@ External data used in the simulations (also cited in each simulation's info pane
 | b1-black-body | CIE 1931 colour-matching functions (analytic multi-lobe fit) | C. Wyman, P.-P. Sloan, P. Shirley, "Simple Analytic Approximations to the CIE XYZ Color Matching Functions", JCGT 2(2), 2013 | Published formulas, own implementation |
 | b1-black-body | Approximate effective temperatures: Sun ≈ 5800 K, Sirius A ≈ 9900 K, red dwarf ≈ 3000 K | Rounded literature values (e.g. IAU nominal solar T_eff = 5772 K) | Physical facts |
 | b1-calorimetry | c: copper 385, aluminium 900, iron 450, lead 130, water 4180 J kg⁻¹ K⁻¹ | Typical textbook values, CRC Handbook (rounded) | Physical facts |
+| b1-conduction | k, ρ, c for copper, aluminium, steel, glass, brick, pine wood, polystyrene foam | Typical room-temperature values, CRC Handbook / engineering tables (rounded) | Physical facts |

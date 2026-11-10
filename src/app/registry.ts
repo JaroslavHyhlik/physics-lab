@@ -174,7 +174,10 @@ export const sims: SimEntry[] = [
     ...s('b1-black-body', 'Black-body radiation', "Planck curves, Wien's law and the Stefan–Boltzmann law.", 'none', ['wien', 'stefan', 'planck', 'star colour']),
     load: () => import('../sims/b1-black-body/Sim.svelte'),
   },
-  s('b1-conduction', 'Thermal conduction', 'Heat flow through a slab: ΔQ/Δt = kAΔT/Δx.', 'none', ['conductivity'], true),
+  {
+    ...s('b1-conduction', 'Thermal conduction', 'Heat flow through a slab: ΔQ/Δt = kAΔT/Δx.', 'none', ['conductivity', 'insulation', 'heat flow'], true),
+    load: () => import('../sims/b1-conduction/Sim.svelte'),
+  },
   {
     ...s('b1-calorimetry', 'Calorimetry', 'Method of mixtures for specific heat capacity.', 'none', ['mixtures', 'specific heat', 'equilibrium'], true),
     load: () => import('../sims/b1-calorimetry/Sim.svelte'),

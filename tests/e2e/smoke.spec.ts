@@ -1,6 +1,6 @@
 import { test, expect, type Page } from '@playwright/test';
 
-const READY = ['a1-car-acceleration', 'a1-projectile', 'a1-motion-graphs', 'a2-inclined-plane', 'a2-collisions-1d', 'a2-collisions-2d', 'a2-banked-curve', 'a2-drag-buoyancy', 'a2-newton-lift', 'a2-rocket', 'a2-car-drift', 'a3-spring-launcher', 'a3-work-power', 'a3-roller-coaster', 'a4-torque-equilibrium', 'a4-rolling-race', 'a4-angular-momentum', 'a4-rotational-dynamics', 'a5-galilean', 'a5-spacetime-diagram', 'a5-time-dilation', 'a5-length-contraction', 'a5-lorentz', 'b1-heating-curve', 'b1-black-body', 'b1-calorimetry', 'c1-pendulum', 'd2-charges-and-fields'];
+const READY = ['a1-car-acceleration', 'a1-projectile', 'a1-motion-graphs', 'a2-inclined-plane', 'a2-collisions-1d', 'a2-collisions-2d', 'a2-banked-curve', 'a2-drag-buoyancy', 'a2-newton-lift', 'a2-rocket', 'a2-car-drift', 'a3-spring-launcher', 'a3-work-power', 'a3-roller-coaster', 'a4-torque-equilibrium', 'a4-rolling-race', 'a4-angular-momentum', 'a4-rotational-dynamics', 'a5-galilean', 'a5-spacetime-diagram', 'a5-time-dilation', 'a5-length-contraction', 'a5-lorentz', 'b1-heating-curve', 'b1-black-body', 'b1-calorimetry', 'b1-conduction', 'c1-pendulum', 'd2-charges-and-fields'];
 
 function collectErrors(page: Page): string[] {
   const errors: string[] = [];

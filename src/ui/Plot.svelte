@@ -41,7 +41,22 @@
       width,
       height,
       padding: [8, 8, 0, 0],
-      scales: { x: { time: false } },
+      scales: {
+        x: { time: false },
+        // a nearly flat series (e.g. 20 → 20.000001) would make uPlot ask for millions of ticks
+        y: {
+          range: (_u, min, max) => {
+            if (min == null || max == null || !Number.isFinite(min) || !Number.isFinite(max)) return [0, 1];
+            const minSpan = Math.max(1e-12, 1e-3 * Math.max(Math.abs(min), Math.abs(max)));
+            if (max - min < minSpan) {
+              const mid = (min + max) / 2;
+              min = mid - minSpan / 2;
+              max = mid + minSpan / 2;
+            }
+            return uPlot.rangeNum(min, max, 0.1, true);
+          },
+        },
+      },
       legend: { show: true, live: true },
       cursor: { drag: { x: false, y: false }, points: { size: 6 } },
       axes: [
