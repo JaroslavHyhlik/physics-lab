@@ -44,6 +44,16 @@ export interface GasConfig {
   seed: number;
 }
 
+/** time step for a mixture: the fastest likely atom (≈ 4 × rms of the lightest at ≥ 1000 K) moves 0.2 diameters */
+export function gasTimeStep(counts: Record<string, number>): number {
+  const sp = Object.keys(counts)
+    .filter((k) => counts[k] > 0)
+    .map((k) => GASES[k]);
+  const mMin = Math.min(...sp.map((s) => s.mass));
+  const vFast = 4 * Math.sqrt((3 * k_B * 1000) / mMin);
+  return (0.2 * Math.min(...sp.map((s) => s.diameter))) / vFast;
+}
+
 export class Gas3D {
   readonly N: number;
   readonly L: number;
@@ -84,7 +94,8 @@ export class Gas3D {
   areaTime = 0;
   private rng: Rng;
 
-  constructor(cfg: GasConfig, window = 2000) {
+  /** windowTime: averaging time for the pressure gauge [s] */
+  constructor(cfg: GasConfig, windowTime = 1e-11) {
     this.rng = new Rng(cfg.seed);
     this.speciesList = Object.keys(cfg.counts)
       .filter((k) => cfg.counts[k] > 0)
@@ -104,6 +115,8 @@ export class Gas3D {
     this.r = new Float64Array(N);
     this.species = new Uint8Array(N);
     this.order = new Int32Array(N);
+    this.dt = gasTimeStep(cfg.counts);
+    const window = Math.max(10, Math.round(windowTime / this.dt));
     this.ring = new Float64Array(window);
     this.ringArea = new Float64Array(window);
     let i = 0;
@@ -116,10 +129,6 @@ export class Gas3D {
       }
       this.dmax = Math.max(this.dmax, sp.diameter);
     });
-    // time step: the fastest likely atom (≈ 4 × rms of the lightest) moves 0.2 diameters
-    const mMin = Math.min(...this.speciesList.map((s) => s.mass));
-    const vFast = 4 * Math.sqrt((3 * k_B * Math.max(cfg.T0, 1000)) / mMin);
-    this.dt = (0.2 * Math.min(...this.speciesList.map((s) => s.diameter))) / vFast;
     this.place();
     this.thermalize(cfg.T0);
   }

@@ -11,3 +11,4 @@ External data used in the simulations (also cited in each simulation's info pane
 | b1-conduction | k, ρ, c for copper, aluminium, steel, glass, brick, pine wood, polystyrene foam | Typical room-temperature values, CRC Handbook / engineering tables (rounded) | Physical facts |
 | b1-particle-model | Argon Lennard-Jones parameters σ = 3.4 × 10⁻¹⁰ m, ε = 1.65 × 10⁻²¹ J (ε/k_B ≈ 120 K), m = 6.63 × 10⁻²⁶ kg | Standard literature values (e.g. Rahman 1964, Phys. Rev. 136, A405) | Physical facts |
 | b2-energy-balance | Solar constant at Mars 586 W m⁻², Venus 2601 W m⁻²; Bond albedo Earth 0.30, Mars 0.25, Venus 0.77; mean surface temperatures 288 K, 210 K, 737 K | NASA Planetary Fact Sheets (nssdc.gsfc.nasa.gov/planetary/factsheet) | US government work, public domain |
+| b3-gas-container | Kinetic diameters He 0.26, Ne 0.275, Ar 0.34, Xe 0.396 nm; atomic masses | D. W. Breck, Zeolite Molecular Sieves (Wiley, 1974); IUPAC standard atomic weights | Physical facts |

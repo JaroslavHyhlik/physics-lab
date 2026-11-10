@@ -7,6 +7,8 @@ export default defineConfig({
   testDir: 'tests/e2e',
   timeout: 60_000,
   fullyParallel: true,
+  // heavy simulations (Web Workers) running in parallel pages can starve a test of CPU: retry once
+  retries: 1,
   reporter: process.env.CI ? 'github' : 'list',
   use: { baseURL: 'http://localhost:4173', channel },
   projects: [

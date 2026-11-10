@@ -195,7 +195,10 @@ export const sims: SimEntry[] = [
     load: () => import('../sims/b2-greenhouse-photons/Sim.svelte'),
   },
   // B.3
-  s('b3-gas-container', 'Gas in a container', 'Particles colliding, pressure from wall impacts, a piston.', 'none', ['pressure', 'kinetic theory']),
+  {
+    ...s('b3-gas-container', 'Gas in a container', 'Particles colliding, pressure from wall impacts, a piston.', 'none', ['pressure', 'kinetic theory', 'piston', 'ideal gas']),
+    load: () => import('../sims/b3-gas-container/Sim.svelte'),
+  },
   s('b3-maxwell-boltzmann', 'Maxwell–Boltzmann distribution', 'Speed histogram of a simulated gas against theory.', 'none', ['speed distribution']),
   s('b3-gas-laws', 'Gas laws lab', "Boyle's, Charles's and Gay-Lussac's laws with graphs.", 'none', ['boyle', 'charles']),
   // B.4 (HL)
