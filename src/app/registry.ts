@@ -127,7 +127,10 @@ export const sims: SimEntry[] = [
     load: () => import('../sims/a3-spring-launcher/Sim.svelte'),
   },
   // A.4 (HL)
-  s('a4-torque-equilibrium', 'Torque & equilibrium', 'Beams, see-saws and ladders in rotational equilibrium.', 'full', ['torque', 'moment']),
+  {
+    ...s('a4-torque-equilibrium', 'Torque & equilibrium', 'Beams, see-saws and ladders in rotational equilibrium.', 'full', ['torque', 'moment', 'see-saw', 'ladder', 'principle of moments']),
+    load: () => import('../sims/a4-torque-equilibrium/Sim.svelte'),
+  },
   s('a4-rolling-race', 'Rolling race', 'Sphere, cylinder and hoop race down a slope.', 'full', ['moment of inertia', 'rolling']),
   s('a4-angular-momentum', 'Conservation of angular momentum', 'Spinning skater, merry-go-round and rotational collisions.', 'full', ['angular momentum']),
   s('a4-rotational-dynamics', 'Rotational dynamics', 'τ = Iα with a flywheel and a falling mass.', 'full', ['torque', 'flywheel'], true),
