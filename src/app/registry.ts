@@ -88,7 +88,10 @@ export const sims: SimEntry[] = [
     ...s('a2-collisions-1d', 'Collisions 1D', 'Elastic and inelastic collisions, momentum and impulse.', 'none', ['momentum', 'impulse', 'restitution', 'elastic', 'inelastic']),
     load: () => import('../sims/a2-collisions-1d/Sim.svelte'),
   },
-  s('a2-collisions-2d', 'Collisions 2D', 'Air-table pucks, momentum vectors, centre-of-mass frame.', 'none', ['momentum', 'vector']),
+  {
+    ...s('a2-collisions-2d', 'Collisions 2D', 'Air-table pucks, momentum vectors, centre-of-mass frame.', 'none', ['momentum', 'vector', 'glancing', 'air table']),
+    load: () => import('../sims/a2-collisions-2d/Sim.svelte'),
+  },
   s('a2-rocket', 'Rocket with variable mass', 'Thrust, drag in a thinning atmosphere, gravity falling with height.', 'none', ['thrust', 'tsiolkovsky']),
   s('a2-banked-curve', 'Circular motion & banked curve', 'Centripetal force, banking angle, loop-the-loop.', 'none', ['centripetal', 'banked']),
   s('a2-car-drift', 'Car drift', 'Tyre forces, static vs dynamic friction and the friction circle.', 'none', ['tyre', 'friction', 'drift']),
