@@ -15,10 +15,10 @@ Inspirace PhET, ale vlastní kód a vlastní, modernější design.
 
 | | |
 |---|---|
-| **Aktuální fáze** | 2 – Téma A: A.1–A.3 (fáze 1 hotová kromě kontroly na iPhonu) |
-| **Naposledy hotovo** | (9.–10. 11.) Projectile motion, Inclined plane, Collisions 1D, Collisions 2D, Banked curve, Drag & buoyancy, Newton's laws (lift), Rocket (1 stupeň; vícestupňová raketa zatím ne), Spring launcher, Work & power (Sankey: `src/sim/sankey.ts`), Roller coaster; sdílené pomocníky `src/sim/setup.svelte.ts`. Dříve: základ (jádro, design, grafy, nástroje, CSV, PWA, Web Worker, testy fyziky + testy webu, GitHub Actions) a 3 ukázkové simulace: kyvadlo, auto, náboje a pole |
-| **Další krok** | Fáze 2: **Motion graphs lab**, pak **Car drift**; potom fáze 3 (A.4–A.5). Pozn.: Roller coaster zatím nemá editor vlastní dráhy (4 předvolené dráhy), raketa je jednostupňová. |
-| **Rozpracováno / poznámky** | Web je zveřejněný. Čeká na uživatele: kontrola na iPhonu, zpětná vazba k designu (viz OTAZKY.md). Noční/automatické běhy pracují ve větvi `night`, do `main` až po schválení. Nová simulace = složka `src/sims/<id>/` (meta.ts, render.ts, Sim.svelte) podle vzoru `c1-pendulum`, model v `src/physics/`, testy v `tests/physics/`, v `src/app/registry.ts` přidat `load`, v `tests/e2e/smoke.spec.ts` přidat id do `READY`. |
+| **Aktuální fáze** | 3 – Téma A, HL: A.4–A.5 (fáze 2 je hotová) |
+| **Naposledy hotovo** | Fáze 2 celá (10. 11.): Projectile, Motion graphs lab, Inclined plane, Newton's laws (lift), Drag & buoyancy, Collisions 1D/2D, Rocket, Banked curve, Car drift, Roller coaster, Work & power, Spring launcher. Celkem 19 simulací z 84. |
+| **Další krok** | Fáze 3: **Torque & equilibrium** (pak Rolling race, Angular momentum, Rotational dynamics, A.5 relativita) |
+| **Rozpracováno / poznámky** | Web je zveřejněný. Čeká na uživatele: kontrola na iPhonu (OTAZKY.md). Noční/automatické běhy pracují ve větvi `night`. Pomocníci: `src/sim/setup.svelte.ts` (useParams, usePalette, resetOn, redrawOn), `src/sim/sankey.ts`, `drawGridAxes`/`drawSymbol` v `src/sim/draw.ts`. Nová simulace = `src/sims/<id>/` (meta.ts, render.ts, Sim.svelte, vzor např. `a2-drag-buoyancy`), model v `src/physics/`, testy v `tests/physics/`, `load` v registry, id do `READY` v `tests/e2e/smoke.spec.ts`. Zatím vynecháno: editor vlastní dráhy (Roller coaster), vícestupňová raketa. |
 
 **Jak navázat v nové session:** otevři v Claude novou session ve složce `~/Projects/physics-lab`
 a napiš: *„Pokračuj podle PLAN.md.“* Pravidla v CLAUDE.md se načtou automaticky.
@@ -208,7 +208,7 @@ Záloha a zveřejnění:
 - [x] **Collisions 2D** – vzduchový stůl, puky s poloměrem, parametr srážky, vektory hybnosti, soustava těžiště. *Test:* vektor hybnosti zachován; pružná srážka stejných hmotností → úhel 90°.
 - [x] **Rocket with variable mass** – hmotnostní tok, výtoková rychlost, tah, odpor vzduchu s hustotou klesající s výškou, g(h) = GM/(R + h)², stupně rakety. *Test:* bez gravitace a odporu Ciolkovského Δv = v_e ln(m₀/m_f); tah F = v_e·Δm/Δt.
 - [x] **Circular motion & banked curve** – auto v klopené zatáčce (poloměr, sklon, μ, rychlost), silový diagram, ideální rychlost, meze smyku; svislá kružnice (smyčka). *Test:* v_ideal = √(rg tanθ), max. a min. rychlost s třením; minimální rychlost ve smyčce √(gr).
-- [ ] **Car drift** – auto shora (jednostopý model), model pneumatik (zjednodušený Pacejka + kruh tření, statické vs. dynamické tření), plyn/brzda/volant (klávesnice i dotyk), stopy smyku, úhly skluzu, síly na kolech. *Test:* boční zrychlení v ustálené zatáčce ≤ μ_s g; síla pneumatiky nikdy nepřekročí μF_N; brzdná dráha se zablokovanými koly v²/(2μ_d g).
+- [x] **Car drift** – auto shora (jednostopý model), model pneumatik (zjednodušený Pacejka + kruh tření, statické vs. dynamické tření), plyn/brzda/volant (klávesnice i dotyk), stopy smyku, úhly skluzu, síly na kolech. *Test:* boční zrychlení v ustálené zatáčce ≤ μ_s g; síla pneumatiky nikdy nepřekročí μF_N; brzdná dráha se zablokovanými koly v²/(2μ_d g).
 
 **A.3 Work, energy and power**
 - [x] **Roller coaster with energy bars** – editovatelná dráha (spline), smyčky, tření, sloupce/koláč E_k, E_p, teplo; normálová síla (přetížení „g“), odlepení od dráhy. *Test:* bez tření energie zachována (< 10⁻⁶), v = √(2gΔh); s třením teplo = μ∫N ds.

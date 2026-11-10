@@ -109,7 +109,10 @@ export const sims: SimEntry[] = [
     ...s('a2-banked-curve', 'Circular motion & banked curve', 'Centripetal force, banking angle and the limits of grip.', 'none', ['centripetal', 'banked', 'circular motion', 'curve']),
     load: () => import('../sims/a2-banked-curve/Sim.svelte'),
   },
-  s('a2-car-drift', 'Car drift', 'Tyre forces, static vs dynamic friction and the friction circle.', 'none', ['tyre', 'friction', 'drift']),
+  {
+    ...s('a2-car-drift', 'Car drift', 'Drive it yourself: static vs dynamic tyre friction and the friction circle.', 'none', ['tyre', 'friction', 'drift', 'oversteer', 'game']),
+    load: () => import('../sims/a2-car-drift/Sim.svelte'),
+  },
   // A.3
   {
     ...s('a3-roller-coaster', 'Roller coaster energy', 'Energy bars, a vertical loop and the g-force felt by the riders.', 'none', ['energy', 'conservation', 'loop', 'g-force']),

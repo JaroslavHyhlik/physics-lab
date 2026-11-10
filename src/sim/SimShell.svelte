@@ -26,6 +26,7 @@
     ruler,
     stopwatch = true,
     transport = true,
+    shortcuts = true,
     stage,
     controls,
     readouts,
@@ -42,6 +43,8 @@
     stopwatch?: boolean;
     /** Hide play/pause/step for static simulations (e.g. electrostatics). */
     transport?: boolean;
+    /** Keyboard shortcuts (Space, →, R); off when the sim uses the keyboard itself. */
+    shortcuts?: boolean;
     stage: Snippet;
     controls: Snippet;
     readouts?: Snippet;
@@ -66,7 +69,7 @@
   });
 
   function onKey(e: KeyboardEvent) {
-    if (!transport) return;
+    if (!transport || !shortcuts) return;
     const t = e.target as HTMLElement;
     if (t && (t.tagName === 'INPUT' || t.tagName === 'SELECT' || t.tagName === 'TEXTAREA' || t.isContentEditable))
       return;
