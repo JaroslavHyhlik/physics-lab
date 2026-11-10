@@ -109,3 +109,23 @@ describe('A.5 train in a tunnel (length contraction)', () => {
     expect(trainTunnel(0.3, 100, 80).fits).toBe(false);
   });
 });
+
+describe('A.5 Lorentz calculator and velocity addition', () => {
+  it('worked example: x = 900 m, t = 4.00 μs, v = 0.6c → x′ = 225 m, t′ = 2.75 μs', () => {
+    const v = 0.6 * c;
+    const [xp, tp] = lorentzSI(900, 4e-6, v);
+    // with the booklet value c = 3.00 × 10⁸ m s⁻¹ the numbers come out exact
+    expect(xp).toBeCloseTo(225, 9);
+    expect(tp).toBeCloseTo(2.75e-6, 15);
+  });
+
+  it('adding v and then removing it again gives back the original speed; c is the limit', () => {
+    for (const u of [-0.9, -0.3, 0, 0.5, 0.99]) {
+      for (const v of [0.1, 0.6, 0.95]) {
+        const inS = velocityAdd(u, -v); // (u′ + v)/(1 + u′v/c²)
+        expect(Math.abs(inS)).toBeLessThan(1);
+        expect(velocityAdd(inS, v)).toBeCloseTo(u, 12);
+      }
+    }
+  });
+});

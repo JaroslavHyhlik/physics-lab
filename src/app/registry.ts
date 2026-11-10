@@ -160,7 +160,10 @@ export const sims: SimEntry[] = [
     ...s('a5-length-contraction', 'Length contraction', 'A train in a tunnel and the pole-barn paradox.', 'full', ['contraction', 'simultaneity', 'ladder paradox']),
     load: () => import('../sims/a5-length-contraction/Sim.svelte'),
   },
-  s('a5-lorentz', 'Lorentz transformation', 'Transform events and add velocities relativistically.', 'full', ['lorentz', 'interval']),
+  {
+    ...s('a5-lorentz', 'Lorentz transformation', 'Transform events and add velocities relativistically.', 'full', ['lorentz', 'interval', 'velocity addition', 'simultaneity']),
+    load: () => import('../sims/a5-lorentz/Sim.svelte'),
+  },
   // B.1
   s('b1-particle-model', 'Particle model of matter', 'Solids, liquids and gases from interacting particles.', 'none', ['states', 'molecular dynamics']),
   s('b1-heating-curve', 'Heating curve', 'Specific heat capacity and latent heat from ice to steam.', 'none', ['latent heat', 'specific heat']),

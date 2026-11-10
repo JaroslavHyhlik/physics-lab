@@ -15,9 +15,9 @@ Inspirace PhET, ale vlastní kód a vlastní, modernější design.
 
 | | |
 |---|---|
-| **Aktuální fáze** | 3 – Téma A, HL: A.4–A.5 (fáze 2 je hotová) |
-| **Naposledy hotovo** | Fáze 2 celá (10. 11.). Fáze 3: celé A.4; A.5 Galilean, Spacetime diagram, Time dilation, Length contraction (10. 11.). Celkem 24 hotových simulací z 84. |
-| **Další krok** | Fáze 3: **Lorentz transformation & velocity addition** (pak B.1). Fyzika relativity je hotová v `src/physics/relativity.ts` (+ testy). |
+| **Aktuální fáze** | 5 – Téma B (fáze 2 a 3 jsou hotové; fáze 4 = mobilní laboratoř je odložená, dokud ji nepůjde zkoušet na iPhonu) |
+| **Naposledy hotovo** | Fáze 3 celá (10. 11.): A.4 (Torque & equilibrium, Rolling race, Angular momentum, Rotational dynamics) a A.5 (Galilean, Spacetime diagram, Time dilation, Length contraction, Lorentz). Celkem 25 hotových simulací z 84. |
+| **Další krok** | Fáze 5: **Heating curve** (pak Black-body, Calorimetry, Thermal conduction; Particle model jako poslední z B.1, potřebuje Worker). |
 | **Rozpracováno / poznámky** | Web je zveřejněný. Čeká na uživatele: kontrola na iPhonu (OTAZKY.md). Noční/automatické běhy pracují ve větvi `night`. Pomocníci: `src/sim/setup.svelte.ts` (useParams, usePalette, resetOn, redrawOn), `src/sim/sankey.ts`, `drawGridAxes`/`drawSymbol` v `src/sim/draw.ts`. Nová simulace = `src/sims/<id>/` (meta.ts, render.ts, Sim.svelte, vzor např. `a2-drag-buoyancy`), model v `src/physics/`, testy v `tests/physics/`, `load` v registry, id do `READY` v `tests/e2e/smoke.spec.ts`. Zatím vynecháno: editor vlastní dráhy (Roller coaster), vícestupňová raketa. |
 
 **Jak navázat v nové session:** otevři v Claude novou session ve složce `~/Projects/physics-lab`
@@ -232,7 +232,7 @@ Záloha a zveřejnění:
 - [x] **Spacetime (Minkowski) diagram** – přetahování událostí, světočáry, světelné kužely, osy ct′ a x′ pro rychlost v, čáry současnosti, invariantní hyperboly; presets: paradox dvojčat, tyč a stodola, relativita současnosti. *Test:* invariance intervalu, sklon os tanθ = v/c.
 - [x] **Time dilation** – světelné hodiny, mion letící atmosférou. *Test:* Δt = γΔt₀, podíl mionů, které doletí.
 - [x] **Length contraction** – vlak v tunelu, pohybující se tyč. *Test:* L = L₀/γ.
-- [ ] **Lorentz transformation & velocity addition** – kalkulačka událostí s vizualizací. *Test:* transformace tam a zpět = identita; skládání rychlostí nikdy nepřekročí c.
+- [x] **Lorentz transformation & velocity addition** – kalkulačka událostí s vizualizací. *Test:* transformace tam a zpět = identita; skládání rychlostí nikdy nepřekročí c.
 
 **Hotovo, když:** všech 9 simulací splňuje definici hotové simulace a testy procházejí.
 
