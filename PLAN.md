@@ -16,8 +16,8 @@ Inspirace PhET, ale vlastní kód a vlastní, modernější design.
 | | |
 |---|---|
 | **Aktuální fáze** | 5 – Téma B (fáze 2 a 3 jsou hotové; fáze 4 = mobilní laboratoř je odložená, dokud ji nepůjde zkoušet na iPhonu) |
-| **Naposledy hotovo** | Fáze 3 celá (10. 11.). Fáze 5: celé B.1, B.2 Planetary energy balance. Celkem 31 hotových simulací z 84. |
-| **Další krok** | Fáze 5: **Greenhouse photons** (B.2), pak B.3 Gas in a container. Zdroje dat zapisuj do `docs/data-sources.md`. Worker vzor: `src/workers/md.worker.ts` + klient v `src/sims/b1-particle-model/Sim.svelte`. |
+| **Naposledy hotovo** | Fáze 3 celá (10. 11.). Fáze 5: celé B.1 a B.2 (Energy balance, Greenhouse photons). Celkem 32 hotových simulací z 84. |
+| **Další krok** | Fáze 5: **B.3 Gas in a container** (3D srážky ve Workeru; vzor `src/workers/md.worker.ts` + klient v `src/sims/b1-particle-model/Sim.svelte`). Zdroje dat zapisuj do `docs/data-sources.md`. |
 | **Rozpracováno / poznámky** | Web je zveřejněný. Čeká na uživatele: kontrola na iPhonu (OTAZKY.md). Noční/automatické běhy pracují ve větvi `night`. Pomocníci: `src/sim/setup.svelte.ts` (useParams, usePalette, resetOn, redrawOn), `src/sim/sankey.ts`, `drawGridAxes`/`drawSymbol` v `src/sim/draw.ts`. Nová simulace = `src/sims/<id>/` (meta.ts, render.ts, Sim.svelte, vzor např. `a2-drag-buoyancy`), model v `src/physics/`, testy v `tests/physics/`, `load` v registry, id do `READY` v `tests/e2e/smoke.spec.ts`. Zatím vynecháno: editor vlastní dráhy (Roller coaster), vícestupňová raketa. |
 
 **Jak navázat v nové session:** otevři v Claude novou session ve složce `~/Projects/physics-lab`
@@ -299,7 +299,7 @@ Společné:
 
 **B.2 Greenhouse effect**
 - [x] **Planetary energy balance** – solární konstanta, albedo, emisivita, model vrstvy atmosféry, presets Země/Venuše/Mars, náběh k rovnovážné teplotě. *Test:* T = [(1 − α)S/(4εσ)]^(1/4); Země α = 0.3, ε = 1 → 255 K.
-- [ ] ➕ **Greenhouse photons** (kvalitativní) – viditelné a IR fotony, molekuly CO₂/H₂O/CH₄. *Test:* energetická bilance v ustáleném stavu.
+- [x] ➕ **Greenhouse photons** (kvalitativní) – viditelné a IR fotony, molekuly CO₂/H₂O/CH₄. *Test:* energetická bilance v ustáleném stavu.
 
 **B.3 Gas laws**
 - [ ] **Gas in a container** – 3D srážky částic (2D průmět) ve Workeru, píst, ohřev, tlak měřený z nárazů na stěny, teploměr, manometr. *Test:* p = NkT/V v rámci statistické chyby, ⟨½mv²⟩ = 3/2 kT, zachování energie.

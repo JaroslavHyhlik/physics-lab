@@ -190,7 +190,10 @@ export const sims: SimEntry[] = [
     ...s('b2-energy-balance', 'Planetary energy balance', 'Albedo, emissivity and equilibrium temperature.', 'none', ['albedo', 'emissivity', 'climate', 'greenhouse', 'solar constant']),
     load: () => import('../sims/b2-energy-balance/Sim.svelte'),
   },
-  s('b2-greenhouse-photons', 'Greenhouse photons', 'Visible and infrared photons meet greenhouse molecules.', 'none', ['infrared', 'CO2'], true),
+  {
+    ...s('b2-greenhouse-photons', 'Greenhouse photons', 'Visible and infrared photons meet greenhouse molecules.', 'none', ['infrared', 'CO2', 'greenhouse effect', 'methane'], true),
+    load: () => import('../sims/b2-greenhouse-photons/Sim.svelte'),
+  },
   // B.3
   s('b3-gas-container', 'Gas in a container', 'Particles colliding, pressure from wall impacts, a piston.', 'none', ['pressure', 'kinetic theory']),
   s('b3-maxwell-boltzmann', 'Maxwell–Boltzmann distribution', 'Speed histogram of a simulated gas against theory.', 'none', ['speed distribution']),
