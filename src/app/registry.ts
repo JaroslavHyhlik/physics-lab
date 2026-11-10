@@ -203,7 +203,10 @@ export const sims: SimEntry[] = [
     ...s('b3-maxwell-boltzmann', 'Maxwell–Boltzmann distribution', 'Speed histogram of a simulated gas against theory.', 'none', ['speed distribution', 'rms speed', 'mean speed']),
     load: () => import('../sims/b3-maxwell-boltzmann/Sim.svelte'),
   },
-  s('b3-gas-laws', 'Gas laws lab', "Boyle's, Charles's and Gay-Lussac's laws with graphs.", 'none', ['boyle', 'charles']),
+  {
+    ...s('b3-gas-laws', 'Gas laws lab', "Boyle's, Charles's and Gay-Lussac's laws with graphs.", 'none', ['boyle', 'charles', 'gay-lussac', 'absolute zero', 'van der waals']),
+    load: () => import('../sims/b3-gas-laws/Sim.svelte'),
+  },
   // B.4 (HL)
   s('b4-pv-processes', 'p–V diagram & processes', 'Isobaric, isochoric, isothermal and adiabatic processes.', 'full', ['first law', 'adiabatic']),
   s('b4-heat-engines', 'Heat engines & Carnot cycle', 'Build cycles and compare efficiencies.', 'full', ['carnot', 'efficiency']),
