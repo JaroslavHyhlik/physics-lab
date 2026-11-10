@@ -16,8 +16,8 @@ Inspirace PhET, ale vlastní kód a vlastní, modernější design.
 | | |
 |---|---|
 | **Aktuální fáze** | 2 – Téma A: A.1–A.3 (fáze 1 hotová kromě kontroly na iPhonu) |
-| **Naposledy hotovo** | (9.–10. 11.) Projectile motion, Inclined plane, Collisions 1D, Collisions 2D, Banked curve; sdílené pomocníky `src/sim/setup.svelte.ts`. Dříve: základ (jádro, design, grafy, nástroje, CSV, PWA, Web Worker, testy fyziky + testy webu, GitHub Actions) a 3 ukázkové simulace: kyvadlo, auto, náboje a pole |
-| **Další krok** | Fáze 2: **Drag, buoyancy & terminal velocity** (pak Motion graphs lab, Newton's laws, Rocket, Car drift, A.3; svislá smyčka přesunuta do Roller coaster) |
+| **Naposledy hotovo** | (9.–10. 11.) Projectile motion, Inclined plane, Collisions 1D, Collisions 2D, Banked curve, Drag & buoyancy; sdílené pomocníky `src/sim/setup.svelte.ts`. Dříve: základ (jádro, design, grafy, nástroje, CSV, PWA, Web Worker, testy fyziky + testy webu, GitHub Actions) a 3 ukázkové simulace: kyvadlo, auto, náboje a pole |
+| **Další krok** | Fáze 2: **Newton's laws: lift & connected bodies** (pak Motion graphs lab, Rocket, Car drift, A.3; svislá smyčka přesunuta do Roller coaster) |
 | **Rozpracováno / poznámky** | Web je zveřejněný. Čeká na uživatele: kontrola na iPhonu, zpětná vazba k designu (viz OTAZKY.md). Noční/automatické běhy pracují ve větvi `night`, do `main` až po schválení. Nová simulace = složka `src/sims/<id>/` (meta.ts, render.ts, Sim.svelte) podle vzoru `c1-pendulum`, model v `src/physics/`, testy v `tests/physics/`, v `src/app/registry.ts` přidat `load`, v `tests/e2e/smoke.spec.ts` přidat id do `READY`. |
 
 **Jak navázat v nové session:** otevři v Claude novou session ve složce `~/Projects/physics-lab`
@@ -203,7 +203,7 @@ Záloha a zveřejnění:
 **A.2 Forces and momentum**
 - [x] **Inclined plane with friction** – silový diagram s rozkladem sil, statické vs. dynamické tření, tahová síla, rozpoznání prokluzu. *Test:* a = g(sinθ − μ_d cosθ); těleso stojí právě když tanθ ≤ μ_s (F_f ≤ μ_s F_N).
 - [ ] ➕ **Newton's laws: lift & connected bodies** – zdánlivá tíha ve výtahu, Atwoodův stroj, tělesa spojená lanem. *Test:* a = (m₁ − m₂)g/(m₁ + m₂), N = m(g + a).
-- [ ] ➕ **Drag, buoyancy & terminal velocity** – kulička v oleji, vodě, medu, vzduchu; Stokesův zákon F_d = 6πηrv, vztlak F_b = ρVg. *Test:* v_t = 2r²g(ρ_s − ρ_f)/(9η) a exponenciální náběh.
+- [x] ➕ **Drag, buoyancy & terminal velocity** – kulička v oleji, vodě, medu, vzduchu; Stokesův zákon F_d = 6πηrv, vztlak F_b = ρVg. *Test:* v_t = 2r²g(ρ_s − ρ_f)/(9η) a exponenciální náběh.
 - [x] **Collisions 1D** – pružné i nepružné (koeficient restituce), hybnost a E_k ve sloupcích, graf F–t (impulz = plocha), „exploze“. *Test:* hybnost zachována na 10⁻¹², E_k zachována při pružné srážce, výsledné rychlosti podle vzorce.
 - [x] **Collisions 2D** – vzduchový stůl, puky s poloměrem, parametr srážky, vektory hybnosti, soustava těžiště. *Test:* vektor hybnosti zachován; pružná srážka stejných hmotností → úhel 90°.
 - [ ] **Rocket with variable mass** – hmotnostní tok, výtoková rychlost, tah, odpor vzduchu s hustotou klesající s výškou, g(h) = GM/(R + h)², stupně rakety. *Test:* bez gravitace a odporu Ciolkovského Δv = v_e ln(m₀/m_f); tah F = v_e·Δm/Δt.

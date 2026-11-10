@@ -37,9 +37,8 @@
 
   let text = $state('');
   let editing = $state(false);
-  const shown = $derived(
-    def.log && value >= 1000 ? Number(value.toPrecision(3)).toString() : value.toFixed(decimals),
-  );
+  // log sliders span orders of magnitude: show 3 significant figures
+  const shown = $derived(def.log ? Number(value.toPrecision(3)).toString() : value.toFixed(decimals));
 
   function commit() {
     const v = parseFloat(text.replace(',', '.').replace('−', '-'));

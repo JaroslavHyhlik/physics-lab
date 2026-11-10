@@ -83,7 +83,10 @@ export const sims: SimEntry[] = [
     load: () => import('../sims/a2-inclined-plane/Sim.svelte'),
   },
   s('a2-newton-lift', "Newton's laws: lift & connected bodies", 'Apparent weight in a lift and the Atwood machine.', 'none', ['atwood', 'apparent weight'], true),
-  s('a2-drag-buoyancy', 'Drag, buoyancy & terminal velocity', "Stokes' law and Archimedes' principle in fluids.", 'none', ['stokes', 'viscosity', 'terminal'], true),
+  {
+    ...s('a2-drag-buoyancy', 'Drag, buoyancy & terminal velocity', "Stokes' law and Archimedes' principle in fluids.", 'none', ['stokes', 'viscosity', 'terminal', 'archimedes', 'fluid'], true),
+    load: () => import('../sims/a2-drag-buoyancy/Sim.svelte'),
+  },
   {
     ...s('a2-collisions-1d', 'Collisions 1D', 'Elastic and inelastic collisions, momentum and impulse.', 'none', ['momentum', 'impulse', 'restitution', 'elastic', 'inelastic']),
     load: () => import('../sims/a2-collisions-1d/Sim.svelte'),
