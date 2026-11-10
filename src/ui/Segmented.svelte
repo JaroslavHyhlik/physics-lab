@@ -1,4 +1,4 @@
-<script lang="ts" generics="T extends string | number">
+<script lang="ts" generics="T extends string | number | boolean">
   let {
     options,
     value = $bindable(),
@@ -10,7 +10,7 @@
 <div class="wrap">
   {#if label}<span class="label">{label}</span>{/if}
   <div class="seg" class:small role="radiogroup" aria-label={label}>
-    {#each options as o (o.value)}
+    {#each options as o (String(o.value))}
       <button
         type="button"
         role="radio"

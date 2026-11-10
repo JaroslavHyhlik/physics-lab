@@ -82,7 +82,10 @@ export const sims: SimEntry[] = [
     ...s('a2-inclined-plane', 'Inclined plane with friction', 'Static and dynamic friction, free-body diagram, slipping.', 'none', ['friction', 'μ', 'free-body', 'slope']),
     load: () => import('../sims/a2-inclined-plane/Sim.svelte'),
   },
-  s('a2-newton-lift', "Newton's laws: lift & connected bodies", 'Apparent weight in a lift and the Atwood machine.', 'none', ['atwood', 'apparent weight'], true),
+  {
+    ...s('a2-newton-lift', "Newton's laws: lift & connected bodies", 'Apparent weight in a lift and the Atwood machine.', 'none', ['atwood', 'apparent weight', 'tension', 'pulley', 'weightless'], true),
+    load: () => import('../sims/a2-newton-lift/Sim.svelte'),
+  },
   {
     ...s('a2-drag-buoyancy', 'Drag, buoyancy & terminal velocity', "Stokes' law and Archimedes' principle in fluids.", 'none', ['stokes', 'viscosity', 'terminal', 'archimedes', 'fluid'], true),
     load: () => import('../sims/a2-drag-buoyancy/Sim.svelte'),
