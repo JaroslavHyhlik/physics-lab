@@ -24,7 +24,7 @@
     </select>
   </label>
   <span class="time num" aria-live="off"><i>t</i> = {ctrl.time.toFixed(2)} s</span>
-  {#if ctrl.speed !== 1}<span class="slow">slow motion</span>{/if}
+  {#if ctrl.speed < 1}<span class="slow">slow motion</span>{:else if ctrl.speed > 1}<span class="slow">fast forward</span>{/if}
 </div>
 
 <style>

@@ -23,7 +23,7 @@ export interface ControllerOptions {
   autoplay?: boolean;
 }
 
-export const SPEEDS = [0.1, 0.25, 0.5, 1, 2] as const;
+export const SPEEDS = [0.1, 0.25, 0.5, 1, 2, 5, 10] as const;
 
 /**
  * Runs a simulation: animation-frame loop, fixed physics step, pause / single step /

@@ -98,7 +98,10 @@ export const sims: SimEntry[] = [
     ...s('a2-collisions-2d', 'Collisions 2D', 'Air-table pucks, momentum vectors, centre-of-mass frame.', 'none', ['momentum', 'vector', 'glancing', 'air table']),
     load: () => import('../sims/a2-collisions-2d/Sim.svelte'),
   },
-  s('a2-rocket', 'Rocket with variable mass', 'Thrust, drag in a thinning atmosphere, gravity falling with height.', 'none', ['thrust', 'tsiolkovsky']),
+  {
+    ...s('a2-rocket', 'Rocket with variable mass', 'Thrust, drag in a thinning atmosphere, gravity falling with height.', 'none', ['thrust', 'tsiolkovsky', 'momentum', 'launch']),
+    load: () => import('../sims/a2-rocket/Sim.svelte'),
+  },
   {
     ...s('a2-banked-curve', 'Circular motion & banked curve', 'Centripetal force, banking angle and the limits of grip.', 'none', ['centripetal', 'banked', 'circular motion', 'curve']),
     load: () => import('../sims/a2-banked-curve/Sim.svelte'),
