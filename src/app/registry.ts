@@ -110,7 +110,10 @@ export const sims: SimEntry[] = [
   // A.3
   s('a3-roller-coaster', 'Roller coaster energy', 'Energy bars on an editable track, with and without friction.', 'none', ['energy', 'conservation']),
   s('a3-work-power', 'Work, power & efficiency', 'W = Fs cosθ, P = Fv and a live Sankey diagram.', 'none', ['sankey', 'efficiency']),
-  s('a3-spring-launcher', 'Spring launcher & elastic energy', "Hooke's law and elastic potential energy.", 'none', ['hooke', 'elastic'], true),
+  {
+    ...s('a3-spring-launcher', 'Spring launcher & elastic energy', "Hooke's law and elastic potential energy.", 'none', ['hooke', 'elastic', 'spring', 'energy'], true),
+    load: () => import('../sims/a3-spring-launcher/Sim.svelte'),
+  },
   // A.4 (HL)
   s('a4-torque-equilibrium', 'Torque & equilibrium', 'Beams, see-saws and ladders in rotational equilibrium.', 'full', ['torque', 'moment']),
   s('a4-rolling-race', 'Rolling race', 'Sphere, cylinder and hoop race down a slope.', 'full', ['moment of inertia', 'rolling']),

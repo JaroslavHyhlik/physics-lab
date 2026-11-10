@@ -73,6 +73,7 @@ export function drawGridAxes(
   pal: { grid: string; gridStrong: string; text3: string },
   xLabel = 'x / m',
   yLabel = 'y / m',
+  showX = true,
 ): void {
   const step = niceStep(view.scale);
   ctx.lineWidth = 1;
@@ -85,10 +86,12 @@ export function drawGridAxes(
     ctx.moveTo(px, 0);
     ctx.lineTo(px, view.height);
     ctx.stroke();
-    ctx.fillStyle = pal.text3;
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'bottom';
-    ctx.fillText(fmtTick(x).replace('-', '−'), px, view.height - 4);
+    if (showX) {
+      ctx.fillStyle = pal.text3;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'bottom';
+      ctx.fillText(fmtTick(x).replace('-', '−'), px, view.height - 4);
+    }
   }
   for (let y = Math.ceil(view.bottom / step) * step; y <= view.top; y += step) {
     const py = Math.round(view.sy(y)) + 0.5;
