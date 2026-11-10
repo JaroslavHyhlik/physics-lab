@@ -42,6 +42,8 @@ export interface GasConfig {
   Lx: number;
   T0: number;
   seed: number;
+  /** start every atom with the same speed (random directions) instead of Maxwell–Boltzmann */
+  sameSpeed?: boolean;
 }
 
 /** time step for a mixture: the fastest likely atom (≈ 4 × rms of the lightest at ≥ 1000 K) moves 0.2 diameters */
@@ -130,7 +132,8 @@ export class Gas3D {
       this.dmax = Math.max(this.dmax, sp.diameter);
     });
     this.place();
-    this.thermalize(cfg.T0);
+    if (cfg.sameSpeed) this.sameSpeed(cfg.T0);
+    else this.thermalize(cfg.T0);
   }
 
   private place(): void {
@@ -159,6 +162,19 @@ export class Gas3D {
       this.vx[i] = s * this.rng.gaussian();
       this.vy[i] = s * this.rng.gaussian();
       this.vz[i] = s * this.rng.gaussian();
+    }
+  }
+
+  /** every atom gets the speed √(3kT/m) (same mean kinetic energy as at T) in a random direction */
+  sameSpeed(T: number): void {
+    for (let i = 0; i < this.N; i++) {
+      const v = Math.sqrt((3 * k_B * T) / this.m[i]);
+      const c = 2 * this.rng.next() - 1;
+      const s = Math.sqrt(1 - c * c);
+      const ph = 2 * Math.PI * this.rng.next();
+      this.vx[i] = v * s * Math.cos(ph);
+      this.vy[i] = v * s * Math.sin(ph);
+      this.vz[i] = v * c;
     }
   }
 

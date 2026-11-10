@@ -199,7 +199,10 @@ export const sims: SimEntry[] = [
     ...s('b3-gas-container', 'Gas in a container', 'Particles colliding, pressure from wall impacts, a piston.', 'none', ['pressure', 'kinetic theory', 'piston', 'ideal gas']),
     load: () => import('../sims/b3-gas-container/Sim.svelte'),
   },
-  s('b3-maxwell-boltzmann', 'Maxwell–Boltzmann distribution', 'Speed histogram of a simulated gas against theory.', 'none', ['speed distribution']),
+  {
+    ...s('b3-maxwell-boltzmann', 'Maxwell–Boltzmann distribution', 'Speed histogram of a simulated gas against theory.', 'none', ['speed distribution', 'rms speed', 'mean speed']),
+    load: () => import('../sims/b3-maxwell-boltzmann/Sim.svelte'),
+  },
   s('b3-gas-laws', 'Gas laws lab', "Boyle's, Charles's and Gay-Lussac's laws with graphs.", 'none', ['boyle', 'charles']),
   // B.4 (HL)
   s('b4-pv-processes', 'p–V diagram & processes', 'Isobaric, isochoric, isothermal and adiabatic processes.', 'full', ['first law', 'adiabatic']),
