@@ -175,7 +175,10 @@ export const sims: SimEntry[] = [
     load: () => import('../sims/b1-black-body/Sim.svelte'),
   },
   s('b1-conduction', 'Thermal conduction', 'Heat flow through a slab: ΔQ/Δt = kAΔT/Δx.', 'none', ['conductivity'], true),
-  s('b1-calorimetry', 'Calorimetry', 'Method of mixtures for specific heat capacity.', 'none', ['mixtures'], true),
+  {
+    ...s('b1-calorimetry', 'Calorimetry', 'Method of mixtures for specific heat capacity.', 'none', ['mixtures', 'specific heat', 'equilibrium'], true),
+    load: () => import('../sims/b1-calorimetry/Sim.svelte'),
+  },
   // B.2
   s('b2-energy-balance', 'Planetary energy balance', 'Albedo, emissivity and equilibrium temperature.', 'none', ['albedo', 'emissivity', 'climate']),
   s('b2-greenhouse-photons', 'Greenhouse photons', 'Visible and infrared photons meet greenhouse molecules.', 'none', ['infrared', 'CO2'], true),
