@@ -35,6 +35,11 @@
     }
   }
   const shown = $derived(graphs.filter((g) => selected.includes(g.id)));
+  // graphs can change with a sim mode: fall back to the first graph if none of the chosen ones exist
+  $effect(() => {
+    const ids = graphs.map((g) => g.id);
+    if (!untrack(() => selected).some((id) => ids.includes(id))) selected = ids.slice(0, 1);
+  });
 </script>
 
 <div class="panel">

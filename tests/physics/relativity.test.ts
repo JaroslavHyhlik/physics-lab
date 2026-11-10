@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { gamma, galilean, lorentz, lorentzSI, velocityAdd, interval, axisAngle, muonSurvival } from '../../src/physics/relativity';
+import { gamma, galilean, lorentz, lorentzSI, velocityAdd, interval, axisAngle, muonSurvival, sampleLifetimes } from '../../src/physics/relativity';
 import { c } from '../../src/core/constants';
 import { Rng } from '../../src/core/rng';
 
@@ -71,5 +71,17 @@ describe('A.5 relativity', () => {
     expect(r.tGround).toBeCloseTo(10e3 / (0.995 * c), 15);
     expect(r.tProper).toBeCloseTo(r.tGround / gamma(0.995), 15);
     expect(r.relativistic).toBeGreaterThan(100 * r.classical);
+  });
+});
+
+describe('A.5 muon lifetimes (sampling)', () => {
+  it('sampled lifetimes: mean τ½/ln2 and half survive one half-life (within 4σ)', () => {
+    const n = 20000;
+    const t = sampleLifetimes(n, 1.56e-6, new Rng(5));
+    const mean = t.reduce((a, b) => a + b, 0) / n;
+    const mu = 1.56e-6 / Math.LN2;
+    expect(Math.abs(mean - mu)).toBeLessThan((4 * mu) / Math.sqrt(n));
+    const alive = t.filter((x) => x > 1.56e-6).length / n;
+    expect(Math.abs(alive - 0.5)).toBeLessThan(4 * Math.sqrt(0.25 / n));
   });
 });

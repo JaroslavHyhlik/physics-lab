@@ -59,3 +59,18 @@ export function muonSurvival(L: number, beta: number, tauHalf: number): { classi
     relativistic: Math.pow(0.5, tProper / tauHalf),
   };
 }
+
+/**
+ * Random proper lifetimes of n muons (exponential decay with half-life τ½), seeded so the
+ * animation and its test are reproducible.
+ */
+export function sampleLifetimes(n: number, tauHalf: number, rng: { next(): number }): Float64Array {
+  const out = new Float64Array(n);
+  const mean = tauHalf / Math.LN2;
+  for (let i = 0; i < n; i++) {
+    let u = rng.next();
+    while (u <= 1e-300) u = rng.next();
+    out[i] = -mean * Math.log(u);
+  }
+  return out;
+}

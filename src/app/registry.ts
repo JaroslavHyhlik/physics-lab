@@ -152,7 +152,10 @@ export const sims: SimEntry[] = [
     ...s('a5-spacetime-diagram', 'Spacetime diagram', 'Interactive Minkowski diagram with worldlines and light cones.', 'full', ['minkowski', 'simultaneity', 'interval', 'twin paradox', 'light cone']),
     load: () => import('../sims/a5-spacetime-diagram/Sim.svelte'),
   },
-  s('a5-time-dilation', 'Time dilation', 'Light clocks and muons reaching the ground.', 'full', ['muon', 'gamma']),
+  {
+    ...s('a5-time-dilation', 'Time dilation', 'Light clocks and muons reaching the ground.', 'full', ['muon', 'gamma', 'light clock', 'proper time']),
+    load: () => import('../sims/a5-time-dilation/Sim.svelte'),
+  },
   s('a5-length-contraction', 'Length contraction', 'A train in a tunnel and the pole-barn paradox.', 'full', ['contraction']),
   s('a5-lorentz', 'Lorentz transformation', 'Transform events and add velocities relativistically.', 'full', ['lorentz', 'interval']),
   // B.1
