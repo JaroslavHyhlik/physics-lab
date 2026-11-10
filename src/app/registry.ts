@@ -148,7 +148,10 @@ export const sims: SimEntry[] = [
     ...s('a5-galilean', 'Galilean transformation', 'A ball thrown in a moving train, seen from the train and from the platform.', 'full', ['frames', 'relative velocity', 'reference frame']),
     load: () => import('../sims/a5-galilean/Sim.svelte'),
   },
-  s('a5-spacetime-diagram', 'Spacetime diagram', 'Interactive Minkowski diagram with worldlines and light cones.', 'full', ['minkowski', 'simultaneity']),
+  {
+    ...s('a5-spacetime-diagram', 'Spacetime diagram', 'Interactive Minkowski diagram with worldlines and light cones.', 'full', ['minkowski', 'simultaneity', 'interval', 'twin paradox', 'light cone']),
+    load: () => import('../sims/a5-spacetime-diagram/Sim.svelte'),
+  },
   s('a5-time-dilation', 'Time dilation', 'Light clocks and muons reaching the ground.', 'full', ['muon', 'gamma']),
   s('a5-length-contraction', 'Length contraction', 'A train in a tunnel and the pole-barn paradox.', 'full', ['contraction']),
   s('a5-lorentz', 'Lorentz transformation', 'Transform events and add velocities relativistically.', 'full', ['lorentz', 'interval']),
