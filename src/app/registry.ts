@@ -156,7 +156,10 @@ export const sims: SimEntry[] = [
     ...s('a5-time-dilation', 'Time dilation', 'Light clocks and muons reaching the ground.', 'full', ['muon', 'gamma', 'light clock', 'proper time']),
     load: () => import('../sims/a5-time-dilation/Sim.svelte'),
   },
-  s('a5-length-contraction', 'Length contraction', 'A train in a tunnel and the pole-barn paradox.', 'full', ['contraction']),
+  {
+    ...s('a5-length-contraction', 'Length contraction', 'A train in a tunnel and the pole-barn paradox.', 'full', ['contraction', 'simultaneity', 'ladder paradox']),
+    load: () => import('../sims/a5-length-contraction/Sim.svelte'),
+  },
   s('a5-lorentz', 'Lorentz transformation', 'Transform events and add velocities relativistically.', 'full', ['lorentz', 'interval']),
   // B.1
   s('b1-particle-model', 'Particle model of matter', 'Solids, liquids and gases from interacting particles.', 'none', ['states', 'molecular dynamics']),

@@ -74,3 +74,39 @@ export function sampleLifetimes(n: number, tauHalf: number, rng: { next(): numbe
   }
   return out;
 }
+
+/**
+ * Train (proper length L0) passes through a tunnel (proper length T0) at speed βc.
+ * Frame S = tunnel, frame S′ = train. Lengths and times as x and ct in metres.
+ * The train front reaches the tunnel entrance at ct = ct′ = 0 at x = x′ = 0.
+ * If the train fits in S (L0/γ ≤ T0), both tunnel doors are closed at the same instant
+ * ctD in S, half-way between "rear in" and "front out". In S′ these two events are
+ * not simultaneous: the exit door closes earlier by γβT0.
+ */
+export function trainTunnel(beta: number, L0: number, T0: number) {
+  const g = gamma(beta);
+  const ctRearIn = L0 / (g * beta); // S: rear passes the entrance
+  const ctFrontOut = T0 / beta; // S: front reaches the exit
+  const fits = L0 / g <= T0;
+  const ctDoors = (ctRearIn + ctFrontOut) / 2;
+  const entrance = lorentz(0, ctDoors, beta); // door event at the entrance, in S′
+  const exit = lorentz(T0, ctDoors, beta); // door event at the exit, in S′
+  return {
+    gamma: g,
+    trainInS: L0 / g,
+    tunnelInSp: T0 / g,
+    fits,
+    ctRearIn,
+    ctFrontOut,
+    ctDoors,
+    /** door events in S′ as [x′, ct′] */
+    entranceSp: entrance,
+    exitSp: exit,
+    /** S: train front and rear */
+    frontS: (ct: number) => beta * ct,
+    rearS: (ct: number) => beta * ct - L0 / g,
+    /** S′: tunnel entrance and exit */
+    entranceSpAt: (ctp: number) => -beta * ctp,
+    exitSpAt: (ctp: number) => T0 / g - beta * ctp,
+  };
+}

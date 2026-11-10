@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { gamma, galilean, lorentz, lorentzSI, velocityAdd, interval, axisAngle, muonSurvival, sampleLifetimes } from '../../src/physics/relativity';
+import { gamma, galilean, lorentz, lorentzSI, velocityAdd, interval, axisAngle, muonSurvival, sampleLifetimes, trainTunnel } from '../../src/physics/relativity';
 import { c } from '../../src/core/constants';
 import { Rng } from '../../src/core/rng';
 
@@ -83,5 +83,29 @@ describe('A.5 muon lifetimes (sampling)', () => {
     expect(Math.abs(mean - mu)).toBeLessThan((4 * mu) / Math.sqrt(n));
     const alive = t.filter((x) => x > 1.56e-6).length / n;
     expect(Math.abs(alive - 0.5)).toBeLessThan(4 * Math.sqrt(0.25 / n));
+  });
+});
+
+describe('A.5 train in a tunnel (length contraction)', () => {
+  it('lengths contract by γ in the other frame; doors simultaneous in S, not in S′', () => {
+    const b = 0.8;
+    const L0 = 100;
+    const T0 = 80;
+    const r = trainTunnel(b, L0, T0);
+    expect(r.trainInS).toBeCloseTo(60, 12);
+    expect(r.tunnelInSp).toBeCloseTo(48, 12);
+    expect(r.fits).toBe(true);
+    // the exit door closes earlier in S′ by γβT0 (relativity of simultaneity)
+    expect(r.entranceSp[1] - r.exitSp[1]).toBeCloseTo(r.gamma * b * T0, 10);
+    // door events lie on the moving tunnel ends in S′
+    expect(r.entranceSp[0]).toBeCloseTo(r.entranceSpAt(r.entranceSp[1]), 10);
+    expect(r.exitSp[0]).toBeCloseTo(r.exitSpAt(r.exitSp[1]), 10);
+    // no paradox: in S′ the train (x′ from −L0 to 0) is not at either door when it closes
+    expect(r.exitSp[0]).toBeGreaterThan(0); // front has not reached the exit yet
+    expect(r.entranceSp[0]).toBeLessThan(-L0); // rear is already past the entrance
+  });
+
+  it('the train does not fit at low speed', () => {
+    expect(trainTunnel(0.3, 100, 80).fits).toBe(false);
   });
 });
