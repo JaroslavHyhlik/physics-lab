@@ -139,7 +139,10 @@ export const sims: SimEntry[] = [
     ...s('a4-angular-momentum', 'Conservation of angular momentum', 'Spinning skater, merry-go-round and rotational collisions.', 'full', ['angular momentum', 'skater', 'L = Iω']),
     load: () => import('../sims/a4-angular-momentum/Sim.svelte'),
   },
-  s('a4-rotational-dynamics', 'Rotational dynamics', 'τ = Iα with a flywheel and a falling mass.', 'full', ['torque', 'flywheel'], true),
+  {
+    ...s('a4-rotational-dynamics', 'Rotational dynamics', 'τ = Iα with a flywheel and a falling mass.', 'full', ['torque', 'flywheel', 'angular acceleration', 'moment of inertia'], true),
+    load: () => import('../sims/a4-rotational-dynamics/Sim.svelte'),
+  },
   // A.5 (HL)
   s('a5-galilean', 'Galilean transformation', 'Events and velocities seen from two frames.', 'full', ['frames', 'relative velocity']),
   s('a5-spacetime-diagram', 'Spacetime diagram', 'Interactive Minkowski diagram with worldlines and light cones.', 'full', ['minkowski', 'simultaneity']),
