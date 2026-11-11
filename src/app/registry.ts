@@ -265,8 +265,14 @@ export const sims: SimEntry[] = [
     load: () => import('../sims/c3-refraction/Sim.svelte'),
   },
   s('c3-ripple-tank', 'Ripple tank', 'Interference, diffraction and refraction of water waves.', 'none', ['interference', 'huygens']),
-  s('c3-double-slit', "Young's double slit", 'Fringe spacing s = λD/d and white light.', 'none', ['interference', 'fringes']),
-  s('c3-diffraction', 'Single slit & diffraction grating', 'First minimum θ = λ/b and nλ = d sinθ.', 'full', ['grating', 'single slit']),
+  {
+    ...s('c3-double-slit', "Young's double slit", 'Fringe spacing s = λD/d and white light.', 'none', ['interference', 'fringes', 'young', 'path difference']),
+    load: () => import('../sims/c3-double-slit/Sim.svelte'),
+  },
+  {
+    ...s('c3-diffraction', 'Single slit & diffraction grating', 'First minimum θ = λ/b and nλ = d sinθ.', 'full', ['grating', 'single slit', 'diffraction', 'spectrum']),
+    load: () => import('../sims/c3-diffraction/Sim.svelte'),
+  },
   // C.4
   s('c4-string-standing', 'Standing waves on a string', 'Harmonics, nodes and antinodes.', 'none', ['harmonics', 'nodes']),
   s('c4-pipes', 'Standing waves in pipes', 'Open and closed pipes, displacement and pressure.', 'none', ['pipe', 'resonance']),

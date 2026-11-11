@@ -7,6 +7,8 @@ export interface XYCurve {
   color: string;
   dash?: number[];
   width?: number;
+  /** number of sample points (default 300); raise it for very narrow peaks */
+  samples?: number;
 }
 export interface XYPlotOpts {
   x0: number;
@@ -71,8 +73,9 @@ export function drawXYPlot(ctx: CanvasRenderingContext2D, pal: Palette, o: XYPlo
     ctx.setLineDash(c.dash ?? []);
     ctx.beginPath();
     let started = false;
-    for (let i = 0; i <= 300; i++) {
-      const x = o.xmin + ((o.xmax - o.xmin) * i) / 300;
+    const ns = c.samples ?? 300;
+    for (let i = 0; i <= ns; i++) {
+      const x = o.xmin + ((o.xmax - o.xmin) * i) / ns;
       const y = c.fn(x);
       if (!Number.isFinite(y)) {
         started = false;
