@@ -179,7 +179,18 @@
         >
       </div>
       <div class="panel" role="tabpanel">
-        <div class="pane" hidden={tab !== 'controls'}>{@render controls()}</div>
+        <!-- any change in the controls redraws the canvas, also while the simulation is paused
+             (the div only listens to events bubbling up from its buttons and sliders) -->
+        <!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_static_element_interactions -->
+        <div
+          class="pane"
+          hidden={tab !== 'controls'}
+          oninput={() => queueMicrotask(() => ctrl.invalidate())}
+          onchange={() => queueMicrotask(() => ctrl.invalidate())}
+          onclick={() => queueMicrotask(() => ctrl.invalidate())}
+        >
+          {@render controls()}
+        </div>
         {#if media.mobile && ctrl.recorder && tab === 'graphs'}
           <div class="pane">
             <GraphPanel
