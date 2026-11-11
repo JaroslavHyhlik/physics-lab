@@ -402,7 +402,10 @@ export const sims: SimEntry[] = [
   },
   // E.5
   s('e5-hr-diagram', 'HR diagram', 'Real stars by luminosity and temperature.', 'none', ['main sequence', 'stellar evolution']),
-  s('e5-stellar-equilibrium', 'Stellar equilibrium', 'Gravity against pressure inside a star.', 'none', ['equilibrium']),
+  {
+    ...s('e5-stellar-equilibrium', 'Stellar equilibrium', 'Gravity against pressure inside a star.', 'none', ['equilibrium', 'hydrostatic', 'radiation pressure', 'pulsation', 'stability']),
+    load: () => import('../sims/e5-stellar-equilibrium/Sim.svelte'),
+  },
   {
     ...s('e5-parallax', 'Stellar parallax', 'Measure distances to nearby stars.', 'none', ['parsec', 'distance', 'arcsecond', 'light-year', 'nearby stars']),
     load: () => import('../sims/e5-parallax/Sim.svelte'),
