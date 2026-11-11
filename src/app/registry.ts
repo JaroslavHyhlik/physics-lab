@@ -324,7 +324,10 @@ export const sims: SimEntry[] = [
     ...s('d2-charges-and-fields', 'Charges and fields', 'Field lines, equipotentials, probes, dipoles and parallel plates.', 'part', ['coulomb', 'electric field', 'potential', 'dipole', 'capacitor', 'equipotential']),
     load: () => import('../sims/d2-charges-and-fields/Sim.svelte'),
   },
-  s('d2-millikan', "Parallel plates & Millikan's oil drop", 'Uniform field E = V/d and charge quantisation.', 'none', ['millikan', 'parallel plates']),
+  {
+    ...s('d2-millikan', "Parallel plates & Millikan's oil drop", 'Uniform field E = V/d and charge quantisation.', 'none', ['millikan', 'parallel plates', 'uniform field', 'elementary charge', 'quantisation']),
+    load: () => import('../sims/d2-millikan/Sim.svelte'),
+  },
   s('d2-magnetic-fields', 'Magnetic field patterns', 'Wires, loops, solenoids and bar magnets.', 'none', ['solenoid', 'magnet'], true),
   // D.3
   s('d3-charged-particle', 'Charged particle in E and B fields', 'Velocity selector, mass spectrometer and cyclotron.', 'none', ['lorentz force', 'cyclotron']),
