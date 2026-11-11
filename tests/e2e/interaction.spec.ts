@@ -57,3 +57,22 @@ test('car keeps running after the mass slider is changed mid-run', async ({ page
   await page.waitForTimeout(1000);
   expect((await simTime(page)) - t1).toBeGreaterThan(0.5);
 });
+
+test('circuit kit: tapping places a resistor and Select places a resistor and select shows it', async ({ page }, info) => {
+  test.skip(info.project.name !== 'desktop');
+  await page.goto('/#/sim/b5-circuit-kit');
+  await page.waitForTimeout(800);
+  const canvas = page.locator('.stage canvas');
+  const box = (await canvas.boundingBox())!;
+  // grid geometry as in the sim: compute from the canvas size
+  const W = box.width, H = box.height - 20;
+  const wArea = W > 760 ? W - 250 : W;
+  const s = Math.min((wArea - 60) / 8, (H - 60) / 5);
+  const ox = (wArea - s * 8) / 2, oy = 30 + (H - 60 - s * 5) / 2;
+  await page.getByRole('button', { name: 'Resistor', exact: true }).click();
+  await canvas.click({ position: { x: ox + 7.5 * s, y: oy + 5 * s } });
+  await expect(page.getByText('Resistance').first()).toBeVisible();
+  await page.getByRole('button', { name: 'Select', exact: true }).click();
+  await canvas.click({ position: { x: ox + 1.5 * s, y: oy + 1 * s } });
+  await expect(page.locator('.readouts, [class*=ro]').getByText('Ammeter').first()).toBeVisible();
+});

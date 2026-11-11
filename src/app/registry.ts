@@ -221,7 +221,10 @@ export const sims: SimEntry[] = [
     load: () => import('../sims/b4-entropy/Sim.svelte'),
   },
   // B.5
-  s('b5-circuit-kit', 'Circuit construction kit', 'Build DC circuits with meters, lamps, LDRs and thermistors.', 'none', ['kirchhoff', 'voltmeter', 'ammeter']),
+  {
+    ...s('b5-circuit-kit', 'Circuit construction kit', 'Build DC circuits with meters, lamps, LDRs and thermistors.', 'none', ['kirchhoff', 'voltmeter', 'ammeter', 'series', 'parallel', 'potential divider', 'wheatstone']),
+    load: () => import('../sims/b5-circuit-kit/Sim.svelte'),
+  },
   {
     ...s('b5-internal-resistance', 'Internal resistance & emf', 'Find ε and r from a V–I graph.', 'none', ['emf', 'internal resistance', 'terminal voltage', 'maximum power']),
     load: () => import('../sims/b5-internal-resistance/Sim.svelte'),
