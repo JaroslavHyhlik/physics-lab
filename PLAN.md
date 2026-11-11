@@ -17,7 +17,7 @@ Inspirace PhET, ale vlastní kód a vlastní, modernější design.
 |---|---|
 | **Aktuální fáze** | 5 – Téma B (fáze 2 a 3 jsou hotové; fáze 4 = mobilní laboratoř je odložená, dokud ji nepůjde zkoušet na iPhonu) |
 | **Naposledy hotovo** | Fáze 3 celá (10. 11.). Fáze 5: celé B.1–B.4, B.5 Internal resistance, Resistivity, I–V characteristics (B.3–B.5 ve větvi `night`, 11. 11.). Celkem 41 hotových simulací z 84. |
-| **Další krok** | Fáze 5: **B.5 I–V characteristics**, pak pak Circuit construction kit. Pomocníci: `src/sim/xyPlot.ts`, `src/sim/RecordTable.svelte`, `src/physics/dc.ts`. |
+| **Další krok** | Fáze 5: **B.5 Circuit construction kit** (poslední položka fáze 5). Pomocníci: `src/sim/xyPlot.ts`, `src/sim/RecordTable.svelte`, `src/physics/dc.ts`. |
 | **Rozpracováno / poznámky** | **Noční běh 11. 11. (větev `night`, čeká na kontrolu a merge do `main`):** Gas in a container, Maxwell–Boltzmann, Gas laws lab, p–V diagram, Heat engines, Entropy, Internal resistance, Resistivity, I–V characteristics (+ obecný `src/workers/stepClient.ts`, e2e retry 1×). Web je zveřejněný. Čeká na uživatele: kontrola na iPhonu (OTAZKY.md). Noční/automatické běhy pracují ve větvi `night`. Pomocníci: `src/sim/setup.svelte.ts` (useParams, usePalette, resetOn, redrawOn), `src/sim/sankey.ts`, `drawGridAxes`/`drawSymbol` v `src/sim/draw.ts`. Nová simulace = `src/sims/<id>/` (meta.ts, render.ts, Sim.svelte, vzor např. `a2-drag-buoyancy`), model v `src/physics/`, testy v `tests/physics/`, `load` v registry, id do `READY` v `tests/e2e/smoke.spec.ts`. Zatím vynecháno: editor vlastní dráhy (Roller coaster), vícestupňová raketa. |
 
 **Jak navázat v nové session:** otevři v Claude novou session ve složce `~/Projects/physics-lab`
