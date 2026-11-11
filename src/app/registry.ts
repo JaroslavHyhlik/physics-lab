@@ -407,7 +407,10 @@ export const sims: SimEntry[] = [
     ...s('e5-parallax', 'Stellar parallax', 'Measure distances to nearby stars.', 'none', ['parsec', 'distance', 'arcsecond', 'light-year', 'nearby stars']),
     load: () => import('../sims/e5-parallax/Sim.svelte'),
   },
-  s('e5-luminosity', 'Luminosity & apparent brightness', 'b = L/(4πd²) and the Stefan–Boltzmann law.', 'none', ['brightness'], true),
+  {
+    ...s('e5-luminosity', 'Luminosity & apparent brightness', 'b = L/(4πd²) and the Stefan–Boltzmann law.', 'none', ['brightness', 'stefan-boltzmann', 'inverse square', 'solar constant', 'standard candle'], true),
+    load: () => import('../sims/e5-luminosity/Sim.svelte'),
+  },
   s('e5-fusion', 'Fusion: pp chain & Coulomb barrier', 'Why stars need extreme temperatures.', 'none', ['proton-proton', 'fusion'], true),
 ];
 
