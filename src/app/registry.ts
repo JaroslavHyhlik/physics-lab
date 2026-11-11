@@ -342,7 +342,10 @@ export const sims: SimEntry[] = [
     load: () => import('../sims/d3-wire-forces/Sim.svelte'),
   },
   // D.4 (HL)
-  s('d4-magnet-coil', 'Magnet & coil', "Faraday's and Lenz's laws with flux and emf graphs.", 'full', ['faraday', 'lenz', 'flux']),
+  {
+    ...s('d4-magnet-coil', 'Magnet & coil', "Faraday's and Lenz's laws with flux and emf graphs.", 'full', ['faraday', 'lenz', 'flux', 'induced emf', 'galvanometer']),
+    load: () => import('../sims/d4-magnet-coil/Sim.svelte'),
+  },
   s('d4-generator', 'AC generator', 'A rotating coil and its sinusoidal emf.', 'full', ['alternating current', 'rms']),
   s('d4-rod-rails', 'Rod on rails', 'Motional emf and magnetic braking.', 'full', ['motional emf', 'BvL']),
   // E.1
