@@ -11,6 +11,7 @@
 
 <script lang="ts">
   import Badge from '../ui/Badge.svelte';
+  import SubText from '../ui/SubText.svelte';
   let { rows, title }: { rows: ReadoutRow[]; title?: string } = $props();
 </script>
 
@@ -21,7 +22,7 @@
       <div class="row" class:strong={r.strong}>
         <dt>
           {#if r.color}<span class="dot" style={`background:var(${r.color})`}></span>{/if}
-          {r.label}
+          <span><SubText text={r.label} /></span>
           {#if r.hl}<Badge kind="hl" />{/if}
         </dt>
         <dd class="num">{r.value}{#if r.unit}<span class="u">&nbsp;{r.unit}</span>{/if}</dd>

@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { NumberParamDef } from '../sim/params.svelte';
   import Badge from './Badge.svelte';
+  import SubText from './SubText.svelte';
 
   let {
     def,
@@ -51,8 +52,8 @@
 <div class="slider" class:disabled>
   <div class="row">
     <label for={id}>
-      {def.label}
-      {#if def.symbol}<span class="sym">{def.symbol}</span>{/if}
+      <span><SubText text={def.label} /></span>
+      {#if def.symbol}<span class="sym"><SubText text={def.symbol} /></span>{/if}
       {#if def.hl}<Badge kind="hl" />{/if}
     </label>
     <span class="value num">

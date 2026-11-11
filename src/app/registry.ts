@@ -381,7 +381,10 @@ export const sims: SimEntry[] = [
     load: () => import('../sims/e2-compton/Sim.svelte'),
   },
   // E.3
-  s('e3-decay', 'Random decay & half-life', 'Watch nuclei decay at random and measure the half-life.', 'part', ['half-life', 'activity', 'decay constant']),
+  {
+    ...s('e3-decay', 'Random decay & half-life', 'Watch nuclei decay at random and measure the half-life.', 'part', ['half-life', 'activity', 'decay constant', 'radioactivity', 'dice', 'exponential']),
+    load: () => import('../sims/e3-decay/Sim.svelte'),
+  },
   s('e3-binding-energy', 'Binding energy per nucleon', 'The binding energy curve from measured masses.', 'none', ['mass defect', 'binding energy']),
   s('e3-nuclide-chart', 'Nuclide chart & decay modes', 'α, β⁻, β⁺ and γ on the N–Z chart.', 'none', ['isotopes', 'decay series'], true),
   s('e3-penetration', 'Radiation penetration', 'α, β and γ through paper, aluminium and lead.', 'none', ['absorption', 'ionising'], true),

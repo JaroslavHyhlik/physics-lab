@@ -2,6 +2,7 @@
   import { TriangleAlert, Lightbulb } from '@lucide/svelte';
   import Formula from '../ui/Formula.svelte';
   import Badge from '../ui/Badge.svelte';
+  import SubText from '../ui/SubText.svelte';
   import type { SimInfo } from './types';
 
   let { info }: { info: SimInfo } = $props();
@@ -10,7 +11,7 @@
 <div class="info">
   <section>
     <h3>About</h3>
-    {#each info.about as p, i (i)}<p>{p}</p>{/each}
+    {#each info.about as p, i (i)}<p><SubText text={p} /></p>{/each}
   </section>
 
   <section>
@@ -33,7 +34,7 @@
   <section class="assume">
     <h3><TriangleAlert size={15} /> Model assumptions</h3>
     <ul>
-      {#each info.assumptions as a, i (i)}<li>{a}</li>{/each}
+      {#each info.assumptions as a, i (i)}<li><SubText text={a} /></li>{/each}
     </ul>
   </section>
 
@@ -41,7 +42,7 @@
     <section>
       <h3><Lightbulb size={15} /> Try this</h3>
       <ul>
-        {#each info.tryThis as a, i (i)}<li>{a}</li>{/each}
+        {#each info.tryThis as a, i (i)}<li><SubText text={a} /></li>{/each}
       </ul>
     </section>
   {/if}

@@ -20,3 +20,4 @@ External data used in the simulations (also cited in each simulation's info pane
 | e1-spectra | Air refractive index | B. Edlén, Metrologia 2, 71 (1966) | Published formula |
 | e2-photoelectric | Work functions: Cs 2.1, K 2.3, Na 2.4, Ca 2.9, Zn 4.3, Cu 4.7, Pt 5.6 eV (rounded, polycrystalline) | CRC Handbook of Chemistry and Physics, "Electron work function of the elements" (typical values) | Physical facts |
 | e2-de-broglie | Graphite plane spacings 0.213 nm and 0.123 nm; double-slit geometry (slits 62 nm wide, 272 nm apart, 600 eV electrons) | Standard school electron-diffraction tube values; R. Bach et al., "Controlled double-slit electron diffraction", New J. Phys. 15, 033018 (2013) | Physical facts |
+| e3-decay | Half-lives: Rn-220 55.6 s, Ba-137m 2.55 min, I-131 8.02 d, Co-60 5.27 y, C-14 5700 y | NUBASE2020 (F. G. Kondev et al., Chinese Phys. C 45, 030001, 2021), rounded | Physical facts |
