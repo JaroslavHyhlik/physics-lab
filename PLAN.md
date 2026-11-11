@@ -16,8 +16,8 @@ Inspirace PhET, ale vlastní kód a vlastní, modernější design.
 | | |
 |---|---|
 | **Aktuální fáze** | 8 – Téma E (fáze 2, 3, 5, 6 a 7 jsou hotové; fáze 4 = mobilní laboratoř je odložená, dokud ji nepůjde zkoušet na iPhonu) |
-| **Naposledy hotovo** | Fáze 5, 6, 7 celé (11. 11.). Fáze 8: celé E.1. Celkem 70 hotových simulací z 84. |
-| **Další krok** | Fáze 8: **E.2 Photoelectric effect**, Matter waves, Compton; pak E.3–E.5. |
+| **Naposledy hotovo** | Fáze 5, 6, 7 celé (11. 11.). Fáze 8: celé E.1, z E.2 Photoelectric effect. Celkem 71 hotových simulací z 84. |
+| **Další krok** | Fáze 8: **E.2 Matter waves (de Broglie)**, Compton; pak E.3–E.5. |
 | **Rozpracováno / poznámky** | **Noční běh 11. 11. (sloučeno do `main` a zveřejněno 11. 11.):** Gas in a container, Maxwell–Boltzmann, Gas laws lab, p–V diagram, Heat engines, Entropy, Internal resistance, Resistivity, I–V characteristics, Circuit construction kit, Mass–spring oscillator, SHM phase, Wave types, Wave on a string, Reflection & refraction, Double slit, Single slit & grating, Standing waves string + pipes, Resonance, Doppler, Shock waves, Redshift, Ripple tank, Orbits, Escape velocity, Gravitational field, N-body, Millikan, Magnetic fields, Charged particle, Wire forces, Magnet & coil, AC generator, Rod on rails, Rutherford, Atomic spectra, Bohr model (+ obecný `src/workers/stepClient.ts`, e2e retry 1×). Nový test `tests/e2e/controls.spec.ts`: ve všech simulacích projde všechny posuvníky (min/max/střed) a předvolby a hlídá chyby, NaN a prázdné plátno; změny ovládání se překreslí i v pauze. Web je zveřejněný. Čeká na uživatele: kontrola na iPhonu (OTAZKY.md). Noční/automatické běhy pracují ve větvi `night`. Pomocníci: `src/sim/setup.svelte.ts` (useParams, usePalette, resetOn, redrawOn), `src/sim/sankey.ts`, `drawGridAxes`/`drawSymbol` v `src/sim/draw.ts`. Nová simulace = `src/sims/<id>/` (meta.ts, render.ts, Sim.svelte, vzor např. `a2-drag-buoyancy`), model v `src/physics/`, testy v `tests/physics/`, `load` v registry, id do `READY` v `tests/e2e/smoke.spec.ts`. Zatím vynecháno: editor vlastní dráhy (Roller coaster), vícestupňová raketa; ve stavebnici obvodů potenciometr (3 vývody) a dioda; mřížka stavebnice je na mobilu malá (ověřit na iPhonu); Ripple tank počítá na CPU (mřížka 200×150, < 1 ms/snímek) – WebGL2 zrychlení lze doplnit později. |
 
 **Jak navázat v nové session:** otevři v Claude novou session ve složce `~/Projects/physics-lab`
@@ -384,7 +384,7 @@ Společné:
 - [x] **Bohr model (HL)** – energetické hladiny, přechody, vyzáření/pohlcení fotonu, poloměry drah. *Test:* E = −13.6/n² eV, mvr = nh/(2π).
 
 **E.2 Quantum physics (HL)**
-- [ ] **Photoelectric effect** – vlnová délka a intenzita světla, výstupní práce kovu, brzdné napětí, V–A charakteristika, graf E_k,max vs. f (Planckova konstanta ze směrnice). *Test:* E_k,max = hf − Φ, mezní frekvence Φ/h.
+- [x] **Photoelectric effect** – vlnová délka a intenzita světla, výstupní práce kovu, brzdné napětí, V–A charakteristika, graf E_k,max vs. f (Planckova konstanta ze směrnice). *Test:* E_k,max = hf − Φ, mezní frekvence Φ/h.
 - [ ] **Matter waves (de Broglie)** – difrakce elektronů na krystalu (kroužky), urychlovací napětí, dvouštěrbinový pokus s jednotlivými elektrony. *Test:* λ = h/p = h/√(2m_e eV).
 - [ ] **Compton scattering** – srážka fotonu s elektronem, úhel, změna vlnové délky. *Test:* Δλ = h/(m_e c)·(1 − cosθ), zachování energie a hybnosti.
 

@@ -18,3 +18,4 @@ External data used in the simulations (also cited in each simulation's info pane
 | d2-millikan | Oil density 875 kg m⁻³, air density 1.2 kg m⁻³, air viscosity 1.81 × 10⁻⁵ Pa s | Typical textbook values (CRC Handbook) | Physical facts |
 | e1-spectra | Wavelengths (air) of strong visible lines of H, He, Hg, Na, Ne; relative intensities approximate | NIST Atomic Spectra Database (physics.nist.gov/asd), strong-lines tables | US government work, public domain |
 | e1-spectra | Air refractive index | B. Edlén, Metrologia 2, 71 (1966) | Published formula |
+| e2-photoelectric | Work functions: Cs 2.1, K 2.3, Na 2.4, Ca 2.9, Zn 4.3, Cu 4.7, Pt 5.6 eV (rounded, polycrystalline) | CRC Handbook of Chemistry and Physics, "Electron work function of the elements" (typical values) | Physical facts |
