@@ -387,7 +387,10 @@ export const sims: SimEntry[] = [
   },
   s('e3-binding-energy', 'Binding energy per nucleon', 'The binding energy curve from measured masses.', 'none', ['mass defect', 'binding energy']),
   s('e3-nuclide-chart', 'Nuclide chart & decay modes', 'α, β⁻, β⁺ and γ on the N–Z chart.', 'none', ['isotopes', 'decay series'], true),
-  s('e3-penetration', 'Radiation penetration', 'α, β and γ through paper, aluminium and lead.', 'none', ['absorption', 'ionising'], true),
+  {
+    ...s('e3-penetration', 'Radiation penetration', 'α, β and γ through paper, aluminium and lead.', 'none', ['absorption', 'ionising', 'geiger counter', 'background', 'inverse square', 'half-value thickness'], true),
+    load: () => import('../sims/e3-penetration/Sim.svelte'),
+  },
   // E.4
   s('e4-chain-reaction', 'Chain reaction', 'Neutrons, critical mass and the multiplication factor.', 'none', ['critical mass', 'neutrons']),
   s('e4-reactor', 'Nuclear reactor', 'Moderator, control rods and power output.', 'none', ['moderator', 'control rods']),
