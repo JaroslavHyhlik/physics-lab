@@ -333,7 +333,10 @@ export const sims: SimEntry[] = [
     load: () => import('../sims/d2-magnetic-fields/Sim.svelte'),
   },
   // D.3
-  s('d3-charged-particle', 'Charged particle in E and B fields', 'Velocity selector, mass spectrometer and cyclotron.', 'none', ['lorentz force', 'cyclotron']),
+  {
+    ...s('d3-charged-particle', 'Charged particle in E and B fields', 'Velocity selector, mass spectrometer and cyclotron.', 'none', ['lorentz force', 'cyclotron', 'velocity selector', 'mass spectrometer', 'qvB']),
+    load: () => import('../sims/d3-charged-particle/Sim.svelte'),
+  },
   s('d3-wire-forces', 'Force on a conductor & between wires', 'Motor effect and parallel currents.', 'none', ['motor effect', 'BIL']),
   // D.4 (HL)
   s('d4-magnet-coil', 'Magnet & coil', "Faraday's and Lenz's laws with flux and emf graphs.", 'full', ['faraday', 'lenz', 'flux']),
