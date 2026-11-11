@@ -376,7 +376,10 @@ export const sims: SimEntry[] = [
     ...s('e2-de-broglie', 'Matter waves', 'Electron diffraction and λ = h/p.', 'full', ['de broglie', 'electron diffraction', 'wave-particle duality', 'double slit', 'graphite']),
     load: () => import('../sims/e2-de-broglie/Sim.svelte'),
   },
-  s('e2-compton', 'Compton scattering', 'Photon–electron collisions and Δλ.', 'full', ['compton']),
+  {
+    ...s('e2-compton', 'Compton scattering', 'Photon–electron collisions and Δλ.', 'full', ['compton', 'photon momentum', 'x-rays', 'gamma', 'wavelength shift']),
+    load: () => import('../sims/e2-compton/Sim.svelte'),
+  },
   // E.3
   s('e3-decay', 'Random decay & half-life', 'Watch nuclei decay at random and measure the half-life.', 'part', ['half-life', 'activity', 'decay constant']),
   s('e3-binding-energy', 'Binding energy per nucleon', 'The binding energy curve from measured masses.', 'none', ['mass defect', 'binding energy']),
