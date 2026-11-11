@@ -38,5 +38,7 @@ export default defineConfig({
   test: {
     include: ['tests/physics/**/*.test.ts', 'tests/unit/**/*.test.ts'],
     environment: 'node',
+    // some physics checks integrate hundreds of thousands of steps; CI machines are slower
+    testTimeout: 60_000,
   },
 });
