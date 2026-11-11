@@ -389,7 +389,10 @@ export const sims: SimEntry[] = [
     ...s('e3-binding-energy', 'Binding energy per nucleon', 'The binding energy curve from measured masses.', 'none', ['mass defect', 'binding energy', 'iron', 'fission', 'fusion', 'ame2020']),
     load: () => import('../sims/e3-binding-energy/Sim.svelte'),
   },
-  s('e3-nuclide-chart', 'Nuclide chart & decay modes', 'α, β⁻, β⁺ and γ on the N–Z chart.', 'none', ['isotopes', 'decay series'], true),
+  {
+    ...s('e3-nuclide-chart', 'Nuclide chart & decay modes', 'α, β⁻, β⁺ and γ on the N–Z chart.', 'none', ['isotopes', 'decay series', 'valley of stability', 'uranium series', 'nubase'], true),
+    load: () => import('../sims/e3-nuclide-chart/Sim.svelte'),
+  },
   {
     ...s('e3-penetration', 'Radiation penetration', 'α, β and γ through paper, aluminium and lead.', 'none', ['absorption', 'ionising', 'geiger counter', 'background', 'inverse square', 'half-value thickness'], true),
     load: () => import('../sims/e3-penetration/Sim.svelte'),
