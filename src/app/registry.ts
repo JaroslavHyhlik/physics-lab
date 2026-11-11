@@ -407,7 +407,10 @@ export const sims: SimEntry[] = [
     load: () => import('../sims/e4-reactor/Sim.svelte'),
   },
   // E.5
-  s('e5-hr-diagram', 'HR diagram', 'Real stars by luminosity and temperature.', 'none', ['main sequence', 'stellar evolution']),
+  {
+    ...s('e5-hr-diagram', 'HR diagram', 'Real stars by luminosity and temperature.', 'none', ['main sequence', 'stellar evolution', 'hertzsprung-russell', 'red giant', 'white dwarf', 'supergiant']),
+    load: () => import('../sims/e5-hr-diagram/Sim.svelte'),
+  },
   {
     ...s('e5-stellar-equilibrium', 'Stellar equilibrium', 'Gravity against pressure inside a star.', 'none', ['equilibrium', 'hydrostatic', 'radiation pressure', 'pulsation', 'stability']),
     load: () => import('../sims/e5-stellar-equilibrium/Sim.svelte'),
