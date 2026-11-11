@@ -251,7 +251,10 @@ export const sims: SimEntry[] = [
     load: () => import('../sims/c1-phase/Sim.svelte'),
   },
   // C.2
-  s('c2-wave-types', 'Transverse & longitudinal waves', 'Particles in a medium and wave graphs.', 'none', ['wavelength', 'frequency']),
+  {
+    ...s('c2-wave-types', 'Transverse & longitudinal waves', 'Particles in a medium and wave graphs.', 'none', ['wavelength', 'frequency', 'compression', 'rarefaction', 'wave speed']),
+    load: () => import('../sims/c2-wave-types/Sim.svelte'),
+  },
   s('c2-wave-string', 'Wave on a string', 'Pulses and reflection at fixed and free ends.', 'none', ['pulse', 'reflection'], true),
   // C.3
   s('c3-refraction', 'Reflection & refraction', "Snell's law, critical angle and total internal reflection.", 'none', ['snell', 'TIR', 'optical fibre']),

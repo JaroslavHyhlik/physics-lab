@@ -16,9 +16,9 @@ Inspirace PhET, ale vlastní kód a vlastní, modernější design.
 | | |
 |---|---|
 | **Aktuální fáze** | 6 – Téma C (fáze 2, 3 a 5 jsou hotové; fáze 4 = mobilní laboratoř je odložená, dokud ji nepůjde zkoušet na iPhonu) |
-| **Naposledy hotovo** | Fáze 5 celá (11. 11.). Fáze 6: celé C.1 (Mass–spring, SHM phase; větev `night`). Celkem 44 hotových simulací z 84. |
-| **Další krok** | Fáze 6: **C.2 Transverse & longitudinal waves**, pak Wave on a string. |
-| **Rozpracováno / poznámky** | **Noční běh 11. 11. (větev `night`, čeká na kontrolu a merge do `main`):** Gas in a container, Maxwell–Boltzmann, Gas laws lab, p–V diagram, Heat engines, Entropy, Internal resistance, Resistivity, I–V characteristics, Circuit construction kit, Mass–spring oscillator, SHM phase (+ obecný `src/workers/stepClient.ts`, e2e retry 1×). Web je zveřejněný. Čeká na uživatele: kontrola na iPhonu (OTAZKY.md). Noční/automatické běhy pracují ve větvi `night`. Pomocníci: `src/sim/setup.svelte.ts` (useParams, usePalette, resetOn, redrawOn), `src/sim/sankey.ts`, `drawGridAxes`/`drawSymbol` v `src/sim/draw.ts`. Nová simulace = `src/sims/<id>/` (meta.ts, render.ts, Sim.svelte, vzor např. `a2-drag-buoyancy`), model v `src/physics/`, testy v `tests/physics/`, `load` v registry, id do `READY` v `tests/e2e/smoke.spec.ts`. Zatím vynecháno: editor vlastní dráhy (Roller coaster), vícestupňová raketa; ve stavebnici obvodů potenciometr (3 vývody) a dioda; mřížka stavebnice je na mobilu malá (ověřit na iPhonu). |
+| **Naposledy hotovo** | Fáze 5 celá (11. 11.). Fáze 6: celé C.1, C.2 Transverse & longitudinal (větev `night`). Celkem 45 hotových simulací z 84. |
+| **Další krok** | Fáze 6: **C.2 Wave on a string** (pulzy, odrazy, dvě struny). |
+| **Rozpracováno / poznámky** | **Noční běh 11. 11. (větev `night`, čeká na kontrolu a merge do `main`):** Gas in a container, Maxwell–Boltzmann, Gas laws lab, p–V diagram, Heat engines, Entropy, Internal resistance, Resistivity, I–V characteristics, Circuit construction kit, Mass–spring oscillator, SHM phase, Wave types (+ obecný `src/workers/stepClient.ts`, e2e retry 1×). Web je zveřejněný. Čeká na uživatele: kontrola na iPhonu (OTAZKY.md). Noční/automatické běhy pracují ve větvi `night`. Pomocníci: `src/sim/setup.svelte.ts` (useParams, usePalette, resetOn, redrawOn), `src/sim/sankey.ts`, `drawGridAxes`/`drawSymbol` v `src/sim/draw.ts`. Nová simulace = `src/sims/<id>/` (meta.ts, render.ts, Sim.svelte, vzor např. `a2-drag-buoyancy`), model v `src/physics/`, testy v `tests/physics/`, `load` v registry, id do `READY` v `tests/e2e/smoke.spec.ts`. Zatím vynecháno: editor vlastní dráhy (Roller coaster), vícestupňová raketa; ve stavebnici obvodů potenciometr (3 vývody) a dioda; mřížka stavebnice je na mobilu malá (ověřit na iPhonu). |
 
 **Jak navázat v nové session:** otevři v Claude novou session ve složce `~/Projects/physics-lab`
 a napiš: *„Pokračuj podle PLAN.md.“* Pravidla v CLAUDE.md se načtou automaticky.
@@ -328,7 +328,7 @@ Společné:
 - [x] **SHM, phase & reference circle (HL)** – fázory, dva oscilátory s fázovým rozdílem, a = −ω²x. *Test:* v = ±ω√(x₀² − x²), energie ½mω²(x₀² − x²).
 
 **C.2 Wave model**
-- [ ] **Transverse & longitudinal waves** – řetízek částic, přepínání typu, f, A, v; grafy výchylka–vzdálenost a výchylka–čas, zhuštění a zředění. *Test:* v = fλ, každá částice koná SHM.
+- [x] **Transverse & longitudinal waves** – řetízek částic, přepínání typu, f, A, v; grafy výchylka–vzdálenost a výchylka–čas, zhuštění a zředění. *Test:* v = fλ, každá částice koná SHM.
 - [ ] ➕ **Wave on a string** – pulzy, odraz na pevném/volném konci, přechod mezi dvěma strunami. *Test:* rychlost pulzu √(T/μ), obrácení fáze na pevném konci.
 
 **C.3 Wave phenomena**
