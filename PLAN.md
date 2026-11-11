@@ -16,9 +16,9 @@ Inspirace PhET, ale vlastní kód a vlastní, modernější design.
 | | |
 |---|---|
 | **Aktuální fáze** | 6 – Téma C (fáze 2, 3 a 5 jsou hotové; fáze 4 = mobilní laboratoř je odložená, dokud ji nepůjde zkoušet na iPhonu) |
-| **Naposledy hotovo** | Fáze 5 celá (11. 11.). Fáze 6: celé C.1, C.2, C.4; C.3 bez Ripple tank (větev `night`). Celkem 52 hotových simulací z 84. |
-| **Další krok** | Fáze 6: **C.5 Doppler effect**, Shock waves, Redshift; nakonec C.3 Ripple tank (WebGL). |
-| **Rozpracováno / poznámky** | **Noční běh 11. 11. (větev `night`, čeká na kontrolu a merge do `main`):** Gas in a container, Maxwell–Boltzmann, Gas laws lab, p–V diagram, Heat engines, Entropy, Internal resistance, Resistivity, I–V characteristics, Circuit construction kit, Mass–spring oscillator, SHM phase, Wave types, Wave on a string, Reflection & refraction, Double slit, Single slit & grating, Standing waves string + pipes, Resonance (+ obecný `src/workers/stepClient.ts`, e2e retry 1×). Web je zveřejněný. Čeká na uživatele: kontrola na iPhonu (OTAZKY.md). Noční/automatické běhy pracují ve větvi `night`. Pomocníci: `src/sim/setup.svelte.ts` (useParams, usePalette, resetOn, redrawOn), `src/sim/sankey.ts`, `drawGridAxes`/`drawSymbol` v `src/sim/draw.ts`. Nová simulace = `src/sims/<id>/` (meta.ts, render.ts, Sim.svelte, vzor např. `a2-drag-buoyancy`), model v `src/physics/`, testy v `tests/physics/`, `load` v registry, id do `READY` v `tests/e2e/smoke.spec.ts`. Zatím vynecháno: editor vlastní dráhy (Roller coaster), vícestupňová raketa; ve stavebnici obvodů potenciometr (3 vývody) a dioda; mřížka stavebnice je na mobilu malá (ověřit na iPhonu). |
+| **Naposledy hotovo** | Fáze 5 celá (11. 11.). Fáze 6: vše kromě Ripple tank (C.3) (větev `night`). Celkem 55 hotových simulací z 84. |
+| **Další krok** | Fáze 6: **C.3 Ripple tank** (2D vlnová rovnice, WebGL2 s Canvas fallbackem) – poslední položka fáze 6. |
+| **Rozpracováno / poznámky** | **Noční běh 11. 11. (větev `night`, čeká na kontrolu a merge do `main`):** Gas in a container, Maxwell–Boltzmann, Gas laws lab, p–V diagram, Heat engines, Entropy, Internal resistance, Resistivity, I–V characteristics, Circuit construction kit, Mass–spring oscillator, SHM phase, Wave types, Wave on a string, Reflection & refraction, Double slit, Single slit & grating, Standing waves string + pipes, Resonance, Doppler, Shock waves, Redshift (+ obecný `src/workers/stepClient.ts`, e2e retry 1×). Web je zveřejněný. Čeká na uživatele: kontrola na iPhonu (OTAZKY.md). Noční/automatické běhy pracují ve větvi `night`. Pomocníci: `src/sim/setup.svelte.ts` (useParams, usePalette, resetOn, redrawOn), `src/sim/sankey.ts`, `drawGridAxes`/`drawSymbol` v `src/sim/draw.ts`. Nová simulace = `src/sims/<id>/` (meta.ts, render.ts, Sim.svelte, vzor např. `a2-drag-buoyancy`), model v `src/physics/`, testy v `tests/physics/`, `load` v registry, id do `READY` v `tests/e2e/smoke.spec.ts`. Zatím vynecháno: editor vlastní dráhy (Roller coaster), vícestupňová raketa; ve stavebnici obvodů potenciometr (3 vývody) a dioda; mřížka stavebnice je na mobilu malá (ověřit na iPhonu). |
 
 **Jak navázat v nové session:** otevři v Claude novou session ve složce `~/Projects/physics-lab`
 a napiš: *„Pokračuj podle PLAN.md.“* Pravidla v CLAUDE.md se načtou automaticky.
@@ -343,9 +343,9 @@ Společné:
 - [x] **Resonance & damping** – buzený tlumený oscilátor, rezonanční křivka živě, fázové zpoždění; preset Bartonova kyvadla. *Test:* ustálená amplituda podle analytického vzorce A(ω).
 
 **C.5 Doppler effect**
-- [ ] **Doppler effect** – pohyblivý zdroj i pozorovatel, vlnoplochy, frekvence, zvuk; kvalitativně SL, rovnice HL. *Test:* (HL) f′ = f·v/(v ± u_s), f′ = f·(v ± u_o)/v.
-- [ ] **Shock waves** – nadzvukový zdroj, Machův kužel. *Test:* sinθ = v/u_s.
-- [ ] **Redshift of light** – galaxie, posun spektrálních čar. *Test:* Δλ/λ ≈ v/c.
+- [x] **Doppler effect** – pohyblivý zdroj i pozorovatel, vlnoplochy, frekvence, zvuk; kvalitativně SL, rovnice HL. *Test:* (HL) f′ = f·v/(v ± u_s), f′ = f·(v ± u_o)/v.
+- [x] **Shock waves** – nadzvukový zdroj, Machův kužel. *Test:* sinθ = v/u_s.
+- [x] **Redshift of light** – galaxie, posun spektrálních čar. *Test:* Δλ/λ ≈ v/c.
 
 **Hotovo, když:** všech 14 simulací splňuje definici hotové simulace a testy procházejí.
 

@@ -287,9 +287,18 @@ export const sims: SimEntry[] = [
     load: () => import('../sims/c4-resonance/Sim.svelte'),
   },
   // C.5
-  s('c5-doppler', 'Doppler effect', 'Moving source and observer, wavefronts and sound.', 'part', ['frequency shift']),
-  s('c5-shock-waves', 'Shock waves', 'Supersonic source and the Mach cone.', 'none', ['mach', 'sonic boom']),
-  s('c5-redshift', 'Redshift of light', 'Spectral lines of a receding galaxy.', 'none', ['redshift', 'galaxy']),
+  {
+    ...s('c5-doppler', 'Doppler effect', 'Moving source and observer, wavefronts and sound.', 'part', ['frequency shift', 'doppler', 'siren', 'moving source']),
+    load: () => import('../sims/c5-doppler/Sim.svelte'),
+  },
+  {
+    ...s('c5-shock-waves', 'Shock waves', 'Supersonic source and the Mach cone.', 'none', ['mach', 'sonic boom', 'supersonic']),
+    load: () => import('../sims/c5-shock-waves/Sim.svelte'),
+  },
+  {
+    ...s('c5-redshift', 'Redshift of light', 'Spectral lines of a receding galaxy.', 'none', ['redshift', 'galaxy', 'spectral lines', 'blueshift']),
+    load: () => import('../sims/c5-redshift/Sim.svelte'),
+  },
   // D.1
   s('d1-orbits', "Orbits & Kepler's laws", 'Elliptical orbits, equal areas and T² ∝ r³.', 'part', ['kepler', 'satellite']),
   s('d1-escape-velocity', 'Escape velocity', "Newton's cannon from orbit to escape.", 'full', ['escape', 'orbital speed']),
