@@ -242,7 +242,10 @@ export const sims: SimEntry[] = [
     ...s('c1-pendulum', 'Pendulum', 'Large-amplitude pendulum with damping, energy and exact period.', 'part', ['period', 'SHM', 'damping', 'energy']),
     load: () => import('../sims/c1-pendulum/Sim.svelte'),
   },
-  s('c1-mass-spring', 'Mass–spring oscillator', 'Displacement, velocity and acceleration of SHM.', 'part', ['spring', 'SHM']),
+  {
+    ...s('c1-mass-spring', 'Mass–spring oscillator', 'Displacement, velocity and acceleration of SHM.', 'part', ['spring', 'SHM', 'damping', 'period', 'energy']),
+    load: () => import('../sims/c1-mass-spring/Sim.svelte'),
+  },
   s('c1-phase', 'SHM, phase & reference circle', 'Phasors and phase difference between oscillators.', 'full', ['phase', 'phasor']),
   // C.2
   s('c2-wave-types', 'Transverse & longitudinal waves', 'Particles in a medium and wave graphs.', 'none', ['wavelength', 'frequency']),
