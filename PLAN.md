@@ -16,8 +16,8 @@ Inspirace PhET, ale vlastní kód a vlastní, modernější design.
 | | |
 |---|---|
 | **Aktuální fáze** | 5 – Téma B (fáze 2 a 3 jsou hotové; fáze 4 = mobilní laboratoř je odložená, dokud ji nepůjde zkoušet na iPhonu) |
-| **Naposledy hotovo** | Fáze 3 celá (10. 11.). Fáze 5: celé B.1–B.3; B.4 p–V diagram (větev `night`, 11. 11.). Celkem 36 hotových simulací z 84. |
-| **Další krok** | Fáze 5: **B.4 Heat engines & Carnot cycle** (využij `src/physics/thermoProcess.ts` a `src/sim/pvPlot.ts`). |
+| **Naposledy hotovo** | Fáze 3 celá (10. 11.). Fáze 5: celé B.1–B.3; B.4 p–V diagram, Heat engines (větev `night`, 11. 11.). Celkem 37 hotových simulací z 84. |
+| **Další krok** | Fáze 5: **B.4 Entropy** (mikrostavy, S = k ln Ω, volná expanze, ΔS = Q/T). |
 | **Rozpracováno / poznámky** | Web je zveřejněný. Čeká na uživatele: kontrola na iPhonu (OTAZKY.md). Noční/automatické běhy pracují ve větvi `night`. Pomocníci: `src/sim/setup.svelte.ts` (useParams, usePalette, resetOn, redrawOn), `src/sim/sankey.ts`, `drawGridAxes`/`drawSymbol` v `src/sim/draw.ts`. Nová simulace = `src/sims/<id>/` (meta.ts, render.ts, Sim.svelte, vzor např. `a2-drag-buoyancy`), model v `src/physics/`, testy v `tests/physics/`, `load` v registry, id do `READY` v `tests/e2e/smoke.spec.ts`. Zatím vynecháno: editor vlastní dráhy (Roller coaster), vícestupňová raketa. |
 
 **Jak navázat v nové session:** otevři v Claude novou session ve složce `~/Projects/physics-lab`
@@ -308,7 +308,7 @@ Společné:
 
 **B.4 Thermodynamics (HL)**
 - [x] **p–V diagram & processes** – izobarický, izochorický, izotermický, adiabatický děj; Q, W, ΔU živě. *Test:* pV^(5/3) = konst. (jednoatomový plyn), W = nRT ln(V₂/V₁), první termodynamický zákon Q = ΔU + W.
-- [ ] **Heat engines & Carnot cycle** – skládání cyklů, účinnost, srovnání s Carnotem; presets Carnot, Otto, Stirling. *Test:* η_Carnot = 1 − T_c/T_h, práce = plocha cyklu.
+- [x] **Heat engines & Carnot cycle** – skládání cyklů, účinnost, srovnání s Carnotem; presets Carnot, Otto, Stirling. *Test:* η_Carnot = 1 − T_c/T_h, práce = plocha cyklu.
 - [ ] **Entropy** – mikrostavy (částice v přihrádkách, Ω, S = k ln Ω), volná expanze, ΔS = Q/T při tepelné výměně. *Test:* přesná kombinatorika, ΔS volné expanze = nR ln(V₂/V₁).
 
 **B.5 Current and circuits**
