@@ -22,3 +22,28 @@ export function downloadCsv(recorder: Recorder, simId: string, format: CsvFormat
   a.remove();
   setTimeout(() => URL.revokeObjectURL(a.href), 2000);
 }
+
+/** CSV file of all recorded channels (for the share sheet) */
+export function csvFile(recorder: Recorder, name: string, format: CsvFormat = 'en'): File {
+  const columns = recorder.channels.map((c, i) => ({ label: c.label, unit: c.unit, data: recorder.view(i) }));
+  const d = new Date();
+  const pad = (n: number) => String(n).padStart(2, '0');
+  const stamp = `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}_${pad(d.getHours())}${pad(d.getMinutes())}`;
+  return new File(['\uFEFF', toCsv(columns, format)], `${name}_${stamp}.csv`, { type: 'text/csv' });
+}
+
+/** Share the CSV through the system share sheet (AirDrop, Mail, Files …) or download it. */
+export async function shareCsv(recorder: Recorder, name: string): Promise<'shared' | 'downloaded' | 'cancelled'> {
+  const file = csvFile(recorder, name);
+  const nav = navigator as Navigator & { canShare?: (d: ShareData) => boolean };
+  if (nav.share && nav.canShare?.({ files: [file] })) {
+    try {
+      await nav.share({ files: [file], title: file.name });
+      return 'shared';
+    } catch (e) {
+      if ((e as { name?: string })?.name === 'AbortError') return 'cancelled';
+    }
+  }
+  downloadCsv(recorder, name, 'en');
+  return 'downloaded';
+}

@@ -76,9 +76,8 @@
     <span class="labicon"><Smartphone size={22} /></span>
     <span class="labtext">
       <strong>Mobile Lab</strong>
-      <span>Measure with your phone: accelerometer, gyroscope, microphone, GPS — and compare with simulations.</span>
+      <span>Measure with your phone: accelerometer, gyroscope, tilt and compass, microphone, GPS and a tone generator — 13 experiments.</span>
     </span>
-    <Badge kind="soon" />
   </a>
 
   {#each topics as t (t.id)}

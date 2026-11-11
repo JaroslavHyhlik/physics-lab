@@ -122,9 +122,26 @@ blank canvas, running time; dragged and tapped with the mouse over a 4 × 3 grid
 events over a 3 × 3 grid; switched through the Info tab and the theme; checked at 375, 768 and 1440 px
 on a 2× screen (sharp canvas, no sideways scrolling) and while resizing.
 
+## Mobile sensor lab (built after the audit, phase 4)
+
+`tests/e2e/lab.spec.ts` (runs with every `npm run test:e2e`) fires simulated sensor events and checks
+the results against known values: g from a phone at rest (9.81), pendulum period 1.419 s → g ≈ 9.8,
+gyroscope angle, centripetal a–ω² fit → r = 10 cm, spring k = 31.6 N m⁻¹, tilt and compass, a 440 Hz tone
+found by the FFT, two clicks 0.25 s apart on the acoustic stopwatch, GPS distance while moving, the
+measured sample rate, refused permissions (motion, microphone, location), a laptop without sensors and
+a sensor that never sends data. The lab pages are also in the width check (375/768/1440 px).
+
+Bugs found while testing the lab and fixed: a single empty (null) sensor event could turn the
+gyroscope angle into NaN and stop the recording, and made a device without sensors look as if it
+had one; readouts could freeze while the browser decided about keeping the screen on; switching
+quickly between lab pages could briefly show the previous tool with the new tool’s data; the CSV
+button stayed disabled after recording.
+
 ## Not covered automatically (check by hand, ideally on the iPhone)
 
-- **Mobile sensor lab**: not built yet (`#/lab` is a “soon” page), so there was nothing to test.
+- **Mobile lab on the real iPhone**: the permission prompt, real sensor values and sign conventions,
+  the sample rate, the microphone (with the iPhone’s own filtering), GPS outdoors, the share sheet
+  (AirDrop), the tone generator with the silent switch on, the screen staying on while measuring.
 - How it feels on a real iPhone: touch precision on small targets (ruler ends, circuit-kit grid),
   scrolling in the Controls tab, the readouts box covering part of the picture on a narrow screen.
 - Real performance: 60 fps on the iPhone and an older laptop (heavy ones: particle model, gas,

@@ -1,4 +1,5 @@
 <script lang="ts">
+  import SubText from '../ui/SubText.svelte';
   import { untrack } from 'svelte';
   import { Download } from '@lucide/svelte';
   import Plot from '../ui/Plot.svelte';
@@ -51,7 +52,7 @@
           class="chip"
           class:on={selected.includes(g.id)}
           aria-pressed={selected.includes(g.id)}
-          onclick={() => toggle(g.id)}>{g.title}</button
+          onclick={() => toggle(g.id)}><SubText text={g.title} /></button
         >
       {/each}
     </div>

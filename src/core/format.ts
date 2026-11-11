@@ -46,3 +46,19 @@ export function fixed(value: number, decimals: number): string {
   const s = value.toFixed(decimals);
   return (s === `-${(0).toFixed(decimals)}` ? s.slice(1) : s).replace('-', '−');
 }
+
+const SUB: Record<string, string> = {
+  '0': '₀', '1': '₁', '2': '₂', '3': '₃', '4': '₄', '5': '₅', '6': '₆', '7': '₇', '8': '₈', '9': '₉',
+  a: 'ₐ', e: 'ₑ', h: 'ₕ', i: 'ᵢ', j: 'ⱼ', k: 'ₖ', l: 'ₗ', m: 'ₘ', n: 'ₙ', o: 'ₒ', p: 'ₚ', r: 'ᵣ', s: 'ₛ', t: 'ₜ', u: 'ᵤ', v: 'ᵥ', x: 'ₓ',
+};
+
+/**
+ * Plain-text subscripts for places that cannot show HTML (graph legends, canvas text):
+ * "v_t" → "vₜ"; letters without a Unicode subscript keep their size: "a_y" → "ay", "F_N" → "FN".
+ */
+export function subscriptText(s: string): string {
+  return s.replace(/_([A-Za-z0-9]+)/g, (_m, g: string) => {
+    const all = [...g].every((c) => SUB[c]);
+    return all ? [...g].map((c) => SUB[c]).join('') : g;
+  });
+}

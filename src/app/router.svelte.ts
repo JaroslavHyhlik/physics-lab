@@ -2,12 +2,13 @@
  * Hash router (works on GitHub Pages without server rewrites).
  *   #/                 home
  *   #/sim/<id>?k=v     simulation with parameters
- *   #/lab              mobile sensor lab
+ *   #/lab              mobile sensor lab (list of experiments)
+ *   #/lab/<tool>       one lab experiment
  */
 export type Route =
   | { name: 'home' }
   | { name: 'sim'; id: string; query: URLSearchParams }
-  | { name: 'lab'; query: URLSearchParams }
+  | { name: 'lab'; tool: string | null; query: URLSearchParams }
   | { name: 'notfound'; path: string };
 
 function parse(hash: string): Route {
@@ -17,7 +18,7 @@ function parse(hash: string): Route {
   const parts = path.split('/').filter(Boolean);
   if (parts.length === 0) return { name: 'home' };
   if (parts[0] === 'sim' && parts[1]) return { name: 'sim', id: decodeURIComponent(parts[1]), query };
-  if (parts[0] === 'lab') return { name: 'lab', query };
+  if (parts[0] === 'lab') return { name: 'lab', tool: parts[1] ? decodeURIComponent(parts[1]) : null, query };
   return { name: 'notfound', path };
 }
 

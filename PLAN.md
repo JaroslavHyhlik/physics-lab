@@ -15,9 +15,9 @@ Inspirace PhET, ale vlastní kód a vlastní, modernější design.
 
 | | |
 |---|---|
-| **Aktuální fáze** | 9 – Závěrečná kontrola (fáze 2, 3, 5, 6, 7 a 8 jsou hotové; fáze 4 = mobilní laboratoř je odložená, dokud ji nepůjde zkoušet na iPhonu) |
-| **Naposledy hotovo** | Fáze 8 celá (11. 11.), všech 84 simulací. Důkladný audit (11. 11.): `npm run test:audit` (každý ovládací prvek, myš i dotyk, 375/768/1440 px, navigace, úniky smyček) + dlouhé fyzikální běhy; 3 chyby nalezeny a opraveny, zpráva v `docs/audit-report.md`. |
-| **Další krok** | Fáze 9: závěrečná kontrola přesnosti, výkonu a přístupnosti (mobil 375 px, tmavý režim, iPhone). Potom fáze 4 (mobilní laboratoř). |
+| **Aktuální fáze** | 9 – Závěrečná kontrola. Fáze 4 (mobilní laboratoř) je postavená; čeká na vyzkoušení na skutečném iPhonu přes zveřejněný web. |
+| **Naposledy hotovo** | Fáze 4 (11. 11.): mobilní laboratoř `#/lab` s 13 nástroji (`src/lab/`), testy s nasimulovanými senzory `tests/e2e/lab.spec.ts`. Předtím: všech 84 simulací a důkladný audit (`docs/audit-report.md`). |
+| **Další krok** | Uživatel vyzkouší laboratoř na iPhonu (zveřejněný web) a nahlásí, co nefunguje; pak fáze 9: kontrola výkonu na iPhonu a přístupnosti. Případně překryv naměřených dat v grafu simulace. |
 | **Rozpracováno / poznámky** | **Noční běh 11. 11. (sloučeno do `main` a zveřejněno 11. 11.):** Gas in a container, Maxwell–Boltzmann, Gas laws lab, p–V diagram, Heat engines, Entropy, Internal resistance, Resistivity, I–V characteristics, Circuit construction kit, Mass–spring oscillator, SHM phase, Wave types, Wave on a string, Reflection & refraction, Double slit, Single slit & grating, Standing waves string + pipes, Resonance, Doppler, Shock waves, Redshift, Ripple tank, Orbits, Escape velocity, Gravitational field, N-body, Millikan, Magnetic fields, Charged particle, Wire forces, Magnet & coil, AC generator, Rod on rails, Rutherford, Atomic spectra, Bohr model (+ obecný `src/workers/stepClient.ts`, e2e retry 1×). Nový test `tests/e2e/controls.spec.ts`: ve všech simulacích projde všechny posuvníky (min/max/střed) a předvolby a hlídá chyby, NaN a prázdné plátno; změny ovládání se překreslí i v pauze. Web je zveřejněný. Čeká na uživatele: kontrola na iPhonu (OTAZKY.md). Noční/automatické běhy pracují ve větvi `night`. Pomocníci: `src/sim/setup.svelte.ts` (useParams, usePalette, resetOn, redrawOn), `src/sim/sankey.ts`, `drawGridAxes`/`drawSymbol` v `src/sim/draw.ts`. Nová simulace = `src/sims/<id>/` (meta.ts, render.ts, Sim.svelte, vzor např. `a2-drag-buoyancy`), model v `src/physics/`, testy v `tests/physics/`, `load` v registry, id do `READY` v `tests/e2e/smoke.spec.ts`. Zatím vynecháno: editor vlastní dráhy (Roller coaster), vícestupňová raketa; ve stavebnici obvodů potenciometr (3 vývody) a dioda; mřížka stavebnice je na mobilu malá (ověřit na iPhonu); Ripple tank počítá na CPU (mřížka 200×150, < 1 ms/snímek) – WebGL2 zrychlení lze doplnit později. |
 
 **Jak navázat v nové session:** otevři v Claude novou session ve složce `~/Projects/physics-lab`
@@ -262,27 +262,27 @@ Vzorkovací frekvence pohybových senzorů není v prohlížeči zaručená (typ
 aplikace ji bude **měřit a zobrazovat**, aby bylo jasné, jak přesná data jsou.
 
 Senzory:
-- [ ] Kontrola senzorů: co tohle zařízení umí, žádost o povolení (iPhone), kontrola HTTPS, naměřená frekvence
-- [ ] Akcelerometr: x, y, z, |a|, s g i bez g
-- [ ] Gyroskop: úhlová rychlost x, y, z (rad s⁻¹), integrovaný úhel
-- [ ] Orientace a kompas: sklon (sklonoměr), kurz; magnetometr jen tam, kde jde (Android s flagem)
-- [ ] Mikrofon: průběh signálu (osciloskop), relativní hladina zvuku
-- [ ] GPS: poloha, rychlost, výška, přesnost, trasa (bez mapového podkladu)
+- [x] Kontrola senzorů: co tohle zařízení umí, žádost o povolení (iPhone), kontrola HTTPS, naměřená frekvence
+- [x] Akcelerometr: x, y, z, |a|, s g i bez g
+- [x] Gyroskop: úhlová rychlost x, y, z (rad s⁻¹), integrovaný úhel
+- [x] Orientace a kompas: sklon (sklonoměr), kurz; magnetometr jen tam, kde jde (Android s flagem)
+- [x] Mikrofon: průběh signálu (osciloskop), relativní hladina zvuku
+- [x] GPS: poloha, rychlost, výška, přesnost, trasa (bez mapového podkladu)
 
 Nástroje:
-- [ ] Akustické stopky (start a stop zvukem nad prahem; např. rychlost zvuku)
-- [ ] Zvukové spektrum (FFT) s přesnou špičkovou frekvencí a spektrogramem
-- [ ] Generátor tónu (sinus, obdélník, trojúhelník, pila; přeladění; dva tóny → rázy)
-- [ ] Měření g (telefon v klidu, průměr a nejistota)
-- [ ] Perioda kyvadla (telefon jako závaží; perioda → g)
-- [ ] Dostředivé zrychlení (odstředivka na salát: a vs. ω², proložení → poloměr)
-- [ ] Rychlost z GPS (rychlost, ujetá vzdálenost)
-- [ ] ➕ Pružina (telefon na pružině → perioda → tuhost k) a výtah (zdánlivá tíha)
+- [x] Akustické stopky (start a stop zvukem nad prahem; např. rychlost zvuku)
+- [x] Zvukové spektrum (FFT) s přesnou špičkovou frekvencí a spektrogramem
+- [x] Generátor tónu (sinus, obdélník, trojúhelník, pila; přeladění; dva tóny → rázy)
+- [x] Měření g (telefon v klidu, průměr a nejistota)
+- [x] Perioda kyvadla (telefon jako závaží; perioda → g)
+- [x] Dostředivé zrychlení (odstředivka na salát: a vs. ω², proložení → poloměr)
+- [x] Rychlost z GPS (rychlost, ujetá vzdálenost)
+- [x] ➕ Pružina (telefon na pružině → perioda → tuhost k) a výtah (zdánlivá tíha)
 
 Společné:
-- [ ] Start/stop, časové značky, živé grafy, export CSV, sdílení souboru (AirDrop) přes nabídku Sdílet
-- [ ] **Porovnání se simulací:** otevření naměřených dat v odpovídající simulaci (kyvadlo, pružina, kruhový pohyb, volný pád) jako překryv v grafu + proložení parametrů
-- [ ] QR kód „otevřít na telefonu“ na počítači
+- [x] Start/stop, časové značky, živé grafy, export CSV, sdílení souboru (AirDrop) přes nabídku Sdílet
+- [ ] **Porovnání se simulací:** (ČÁSTEČNĚ: kyvadlo a pružina otevřou simulaci se stejnými parametry a ukážou teoretickou hodnotu, odstředivka porovná proložené r; překryv naměřených dat přímo v grafu simulace zatím chybí) otevření naměřených dat v odpovídající simulaci (kyvadlo, pružina, kruhový pohyb, volný pád) jako překryv v grafu + proložení parametrů
+- [x] QR kód „otevřít na telefonu“ na počítači
 
 **Hotovo, když:** všechno výše funguje na tvém iPhonu přes zveřejněný web.
 

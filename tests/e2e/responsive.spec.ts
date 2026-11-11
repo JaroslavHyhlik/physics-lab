@@ -72,3 +72,25 @@ for (const id of READY) {
     expect(problems, problems.join('\n')).toEqual([]);
   });
 }
+
+// the mobile lab pages: same checks (no sideways scrolling, no errors) at every width
+test('responsive mobile lab pages', async ({ page }, info) => {
+  test.skip(!process.env.AUDIT, 'long audit: run with npm run test:audit');
+  test.skip(info.project.name !== 'desktop');
+  const problems: string[] = [];
+  page.on('pageerror', (e) => problems.push(`pageerror: ${e.message}`));
+  page.on('console', (m) => {
+    if (m.type() === 'error') problems.push(`console.error: ${m.text()}`);
+  });
+  await page.goto('/#/lab');
+  const links = await page.locator('a.card').evaluateAll((as) => as.map((a) => (a as HTMLAnchorElement).getAttribute('href')!));
+  for (const { w, h } of SIZES)
+    for (const href of ['#/lab', ...links]) {
+      await page.setViewportSize({ width: w, height: h });
+      await page.goto(`/${href}`);
+      await page.waitForTimeout(150);
+      const over = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+      if (over > 1) problems.push(`${href} at ${w} px scrolls sideways by ${over} px`);
+    }
+  expect(problems, problems.join('\n')).toEqual([]);
+});

@@ -4,6 +4,8 @@
   import { onMount } from 'svelte';
   import type { Recorder } from '../core/recorder';
   import { theme, cssVar } from '../app/theme.svelte';
+  import { subscriptText } from '../core/format';
+  import SubText from './SubText.svelte';
 
   let {
     recorder,
@@ -36,7 +38,7 @@
     const grid = cssVar('--grid-strong');
     const font = '11px Inter Variable, system-ui, sans-serif';
     const unit = chans[0]?.unit ?? '';
-    const yLabel = chans.length === 1 ? (unit ? `${chans[0].label} / ${unit}` : chans[0].label) : unit ? `/ ${unit}` : '';
+    const yLabel = subscriptText(chans.length === 1 ? (unit ? `${chans[0].label} / ${unit}` : chans[0].label) : unit ? `/ ${unit}` : '');
     const opts: uPlot.Options = {
       width,
       height,
@@ -84,7 +86,7 @@
       series: [
         { label: `${t.label} (${t.unit})`, value: (_u, v) => (v == null ? '—' : v.toFixed(2)) },
         ...chans.map((c, n) => ({
-          label: c.unit ? `${c.label} (${c.unit})` : c.label,
+          label: subscriptText(c.unit ? `${c.label} (${c.unit})` : c.label),
           stroke: cssVar(c.color ?? `--series-${(n % 6) + 1}`),
           width: 2,
           dash: c.dash,
@@ -152,7 +154,7 @@
 </script>
 
 <figure class="plot">
-  <figcaption>{title}</figcaption>
+  <figcaption><SubText text={title} /></figcaption>
   <div bind:this={el} class="host"></div>
 </figure>
 
