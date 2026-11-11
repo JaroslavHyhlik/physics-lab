@@ -372,7 +372,10 @@ export const sims: SimEntry[] = [
     ...s('e2-photoelectric', 'Photoelectric effect', 'Work function, stopping potential and Planck’s constant.', 'full', ['work function', 'photon', 'stopping voltage', 'threshold frequency', 'planck']),
     load: () => import('../sims/e2-photoelectric/Sim.svelte'),
   },
-  s('e2-de-broglie', 'Matter waves', 'Electron diffraction and λ = h/p.', 'full', ['de broglie', 'electron diffraction']),
+  {
+    ...s('e2-de-broglie', 'Matter waves', 'Electron diffraction and λ = h/p.', 'full', ['de broglie', 'electron diffraction', 'wave-particle duality', 'double slit', 'graphite']),
+    load: () => import('../sims/e2-de-broglie/Sim.svelte'),
+  },
   s('e2-compton', 'Compton scattering', 'Photon–electron collisions and Δλ.', 'full', ['compton']),
   // E.3
   s('e3-decay', 'Random decay & half-life', 'Watch nuclei decay at random and measure the half-life.', 'part', ['half-life', 'activity', 'decay constant']),
