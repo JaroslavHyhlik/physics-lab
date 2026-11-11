@@ -303,7 +303,10 @@ export const sims: SimEntry[] = [
     load: () => import('../sims/c5-redshift/Sim.svelte'),
   },
   // D.1
-  s('d1-orbits', "Orbits & Kepler's laws", 'Elliptical orbits, equal areas and T² ∝ r³.', 'part', ['kepler', 'satellite']),
+  {
+    ...s('d1-orbits', "Orbits & Kepler's laws", 'Elliptical orbits, equal areas and T² ∝ r³.', 'part', ['kepler', 'satellite', 'ellipse', 'equal areas', 'period']),
+    load: () => import('../sims/d1-orbits/Sim.svelte'),
+  },
   s('d1-escape-velocity', 'Escape velocity', "Newton's cannon from orbit to escape.", 'full', ['escape', 'orbital speed']),
   s('d1-grav-potential', 'Gravitational field & potential', 'Field lines, potential and equipotentials of masses.', 'full', ['potential', 'equipotential']),
   s('d1-n-body', 'N-body sandbox', 'Build your own planetary systems.', 'none', ['three-body', 'binary']),

@@ -14,3 +14,4 @@ External data used in the simulations (also cited in each simulation's info pane
 | b3-gas-container | Kinetic diameters He 0.26, Ne 0.275, Ar 0.34, Xe 0.396 nm; atomic masses | D. W. Breck, Zeolite Molecular Sieves (Wiley, 1974); IUPAC standard atomic weights | Physical facts |
 | b3-gas-laws | van der Waals constants a, b for He, N₂, CO₂ | CRC Handbook of Chemistry and Physics (converted to SI) | Physical facts |
 | b5-resistivity | Resistivities at 20 °C: Cu 1.68 × 10⁻⁸, Al 2.65 × 10⁻⁸, W 5.6 × 10⁻⁸, Fe 9.7 × 10⁻⁸, constantan 4.9 × 10⁻⁷, nichrome 1.1 × 10⁻⁶ Ω m | CRC Handbook of Chemistry and Physics (typical values) | Physical facts |
+| d1-orbits, d1-escape-velocity | Solar mass 1.989 × 10³⁰ kg; Earth mass 5.97 × 10²⁴ kg, radius 6.37 × 10⁶ m | IAU nominal values; NASA Earth Fact Sheet | Physical facts |
