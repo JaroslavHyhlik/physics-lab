@@ -16,9 +16,9 @@ Inspirace PhET, ale vlastní kód a vlastní, modernější design.
 | | |
 |---|---|
 | **Aktuální fáze** | 6 – Téma C (fáze 2, 3 a 5 jsou hotové; fáze 4 = mobilní laboratoř je odložená, dokud ji nepůjde zkoušet na iPhonu) |
-| **Naposledy hotovo** | Fáze 5 celá (11. 11.). Fáze 6: celé C.1, C.2; C.3 bez Ripple tank; C.4 Standing waves string + pipes (větev `night`). Celkem 51 hotových simulací z 84. |
-| **Další krok** | Fáze 6: **C.4 Resonance & damping**; C.5 Doppler, Shock waves, Redshift; nakonec C.3 Ripple tank (WebGL). |
-| **Rozpracováno / poznámky** | **Noční běh 11. 11. (větev `night`, čeká na kontrolu a merge do `main`):** Gas in a container, Maxwell–Boltzmann, Gas laws lab, p–V diagram, Heat engines, Entropy, Internal resistance, Resistivity, I–V characteristics, Circuit construction kit, Mass–spring oscillator, SHM phase, Wave types, Wave on a string, Reflection & refraction, Double slit, Single slit & grating, Standing waves string + pipes (+ obecný `src/workers/stepClient.ts`, e2e retry 1×). Web je zveřejněný. Čeká na uživatele: kontrola na iPhonu (OTAZKY.md). Noční/automatické běhy pracují ve větvi `night`. Pomocníci: `src/sim/setup.svelte.ts` (useParams, usePalette, resetOn, redrawOn), `src/sim/sankey.ts`, `drawGridAxes`/`drawSymbol` v `src/sim/draw.ts`. Nová simulace = `src/sims/<id>/` (meta.ts, render.ts, Sim.svelte, vzor např. `a2-drag-buoyancy`), model v `src/physics/`, testy v `tests/physics/`, `load` v registry, id do `READY` v `tests/e2e/smoke.spec.ts`. Zatím vynecháno: editor vlastní dráhy (Roller coaster), vícestupňová raketa; ve stavebnici obvodů potenciometr (3 vývody) a dioda; mřížka stavebnice je na mobilu malá (ověřit na iPhonu). |
+| **Naposledy hotovo** | Fáze 5 celá (11. 11.). Fáze 6: celé C.1, C.2, C.4; C.3 bez Ripple tank (větev `night`). Celkem 52 hotových simulací z 84. |
+| **Další krok** | Fáze 6: **C.5 Doppler effect**, Shock waves, Redshift; nakonec C.3 Ripple tank (WebGL). |
+| **Rozpracováno / poznámky** | **Noční běh 11. 11. (větev `night`, čeká na kontrolu a merge do `main`):** Gas in a container, Maxwell–Boltzmann, Gas laws lab, p–V diagram, Heat engines, Entropy, Internal resistance, Resistivity, I–V characteristics, Circuit construction kit, Mass–spring oscillator, SHM phase, Wave types, Wave on a string, Reflection & refraction, Double slit, Single slit & grating, Standing waves string + pipes, Resonance (+ obecný `src/workers/stepClient.ts`, e2e retry 1×). Web je zveřejněný. Čeká na uživatele: kontrola na iPhonu (OTAZKY.md). Noční/automatické běhy pracují ve větvi `night`. Pomocníci: `src/sim/setup.svelte.ts` (useParams, usePalette, resetOn, redrawOn), `src/sim/sankey.ts`, `drawGridAxes`/`drawSymbol` v `src/sim/draw.ts`. Nová simulace = `src/sims/<id>/` (meta.ts, render.ts, Sim.svelte, vzor např. `a2-drag-buoyancy`), model v `src/physics/`, testy v `tests/physics/`, `load` v registry, id do `READY` v `tests/e2e/smoke.spec.ts`. Zatím vynecháno: editor vlastní dráhy (Roller coaster), vícestupňová raketa; ve stavebnici obvodů potenciometr (3 vývody) a dioda; mřížka stavebnice je na mobilu malá (ověřit na iPhonu). |
 
 **Jak navázat v nové session:** otevři v Claude novou session ve složce `~/Projects/physics-lab`
 a napiš: *„Pokračuj podle PLAN.md.“* Pravidla v CLAUDE.md se načtou automaticky.
@@ -340,7 +340,7 @@ Společné:
 **C.4 Standing waves and resonance**
 - [x] **Standing waves on a string** – harmonické, uzly a kmitny, napětí a lineární hustota, skládání dvou postupných vln. *Test:* f_n = nv/(2L).
 - [x] **Standing waves in pipes** – otevřená–otevřená, otevřená–zavřená, výchylka vs. tlak, přehrání zvuku. *Test:* f_n = nv/(2L) a f = (2n − 1)v/(4L).
-- [ ] **Resonance & damping** – buzený tlumený oscilátor, rezonanční křivka živě, fázové zpoždění; preset Bartonova kyvadla. *Test:* ustálená amplituda podle analytického vzorce A(ω).
+- [x] **Resonance & damping** – buzený tlumený oscilátor, rezonanční křivka živě, fázové zpoždění; preset Bartonova kyvadla. *Test:* ustálená amplituda podle analytického vzorce A(ω).
 
 **C.5 Doppler effect**
 - [ ] **Doppler effect** – pohyblivý zdroj i pozorovatel, vlnoplochy, frekvence, zvuk; kvalitativně SL, rovnice HL. *Test:* (HL) f′ = f·v/(v ± u_s), f′ = f·(v ± u_o)/v.

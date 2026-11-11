@@ -282,7 +282,10 @@ export const sims: SimEntry[] = [
     ...s('c4-pipes', 'Standing waves in pipes', 'Open and closed pipes, displacement and pressure.', 'none', ['pipe', 'resonance', 'harmonics', 'sound']),
     load: () => import('../sims/c4-pipes/Sim.svelte'),
   },
-  s('c4-resonance', 'Resonance & damping', 'A driven damped oscillator and its resonance curve.', 'none', ['driven', 'damping']),
+  {
+    ...s('c4-resonance', 'Resonance & damping', 'A driven damped oscillator and its resonance curve.', 'none', ['driven', 'damping', 'resonance curve', 'barton', 'natural frequency']),
+    load: () => import('../sims/c4-resonance/Sim.svelte'),
+  },
   // C.5
   s('c5-doppler', 'Doppler effect', 'Moving source and observer, wavefronts and sound.', 'part', ['frequency shift']),
   s('c5-shock-waves', 'Shock waves', 'Supersonic source and the Mach cone.', 'none', ['mach', 'sonic boom']),
