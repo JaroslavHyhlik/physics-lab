@@ -226,7 +226,10 @@ export const sims: SimEntry[] = [
     ...s('b5-internal-resistance', 'Internal resistance & emf', 'Find ε and r from a V–I graph.', 'none', ['emf', 'internal resistance', 'terminal voltage', 'maximum power']),
     load: () => import('../sims/b5-internal-resistance/Sim.svelte'),
   },
-  s('b5-resistivity', 'Resistivity', 'R = ρL/A for different wires.', 'none', ['resistivity'], true),
+  {
+    ...s('b5-resistivity', 'Resistivity', 'R = ρL/A for different wires.', 'none', ['resistivity', 'wire', 'length', 'area'], true),
+    load: () => import('../sims/b5-resistivity/Sim.svelte'),
+  },
   s('b5-iv-characteristics', 'I–V characteristics', 'Resistor, filament lamp and diode.', 'none', ['ohmic', 'non-ohmic'], true),
   // C.1
   {
