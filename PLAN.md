@@ -16,9 +16,9 @@ Inspirace PhET, ale vlastní kód a vlastní, modernější design.
 | | |
 |---|---|
 | **Aktuální fáze** | 5 – Téma B (fáze 2 a 3 jsou hotové; fáze 4 = mobilní laboratoř je odložená, dokud ji nepůjde zkoušet na iPhonu) |
-| **Naposledy hotovo** | Fáze 3 celá (10. 11.). Fáze 5: celé B.1–B.4, B.5 Internal resistance, Resistivity (B.3–B.5 ve větvi `night`, 11. 11.). Celkem 40 hotových simulací z 84. |
+| **Naposledy hotovo** | Fáze 3 celá (10. 11.). Fáze 5: celé B.1–B.4, B.5 Internal resistance, Resistivity, I–V characteristics (B.3–B.5 ve větvi `night`, 11. 11.). Celkem 41 hotových simulací z 84. |
 | **Další krok** | Fáze 5: **B.5 I–V characteristics**, pak pak Circuit construction kit. Pomocníci: `src/sim/xyPlot.ts`, `src/sim/RecordTable.svelte`, `src/physics/dc.ts`. |
-| **Rozpracováno / poznámky** | **Noční běh 11. 11. (větev `night`, čeká na kontrolu a merge do `main`):** Gas in a container, Maxwell–Boltzmann, Gas laws lab, p–V diagram, Heat engines, Entropy, Internal resistance, Resistivity (+ obecný `src/workers/stepClient.ts`, e2e retry 1×). Web je zveřejněný. Čeká na uživatele: kontrola na iPhonu (OTAZKY.md). Noční/automatické běhy pracují ve větvi `night`. Pomocníci: `src/sim/setup.svelte.ts` (useParams, usePalette, resetOn, redrawOn), `src/sim/sankey.ts`, `drawGridAxes`/`drawSymbol` v `src/sim/draw.ts`. Nová simulace = `src/sims/<id>/` (meta.ts, render.ts, Sim.svelte, vzor např. `a2-drag-buoyancy`), model v `src/physics/`, testy v `tests/physics/`, `load` v registry, id do `READY` v `tests/e2e/smoke.spec.ts`. Zatím vynecháno: editor vlastní dráhy (Roller coaster), vícestupňová raketa. |
+| **Rozpracováno / poznámky** | **Noční běh 11. 11. (větev `night`, čeká na kontrolu a merge do `main`):** Gas in a container, Maxwell–Boltzmann, Gas laws lab, p–V diagram, Heat engines, Entropy, Internal resistance, Resistivity, I–V characteristics (+ obecný `src/workers/stepClient.ts`, e2e retry 1×). Web je zveřejněný. Čeká na uživatele: kontrola na iPhonu (OTAZKY.md). Noční/automatické běhy pracují ve větvi `night`. Pomocníci: `src/sim/setup.svelte.ts` (useParams, usePalette, resetOn, redrawOn), `src/sim/sankey.ts`, `drawGridAxes`/`drawSymbol` v `src/sim/draw.ts`. Nová simulace = `src/sims/<id>/` (meta.ts, render.ts, Sim.svelte, vzor např. `a2-drag-buoyancy`), model v `src/physics/`, testy v `tests/physics/`, `load` v registry, id do `READY` v `tests/e2e/smoke.spec.ts`. Zatím vynecháno: editor vlastní dráhy (Roller coaster), vícestupňová raketa. |
 
 **Jak navázat v nové session:** otevři v Claude novou session ve složce `~/Projects/physics-lab`
 a napiš: *„Pokračuj podle PLAN.md.“* Pravidla v CLAUDE.md se načtou automaticky.
@@ -315,7 +315,7 @@ Společné:
 - [ ] **Circuit construction kit** – zdroje s vnitřním odporem, rezistory, žárovky (neohmické), spínače, reostat, potenciometr, LDR, termistor; voltmetr a ampérmetr (ideální/reálné); animace proudu (konvenční směr/elektrony). *Test:* sériové/paralelní zapojení, 1. a 2. Kirchhoffův zákon (na 10⁻¹²), dělič napětí, vyvážený Wheatstoneův můstek, P = VI.
 - [x] **Internal resistance & emf** – měnitelná zátěž, graf V–I, směrnice = −r, průsečík = ε. *Test:* V = ε − Ir, max. výkon při R = r.
 - [x] ➕ **Resistivity** – délka, průřez a materiál drátu. *Test:* R = ρL/A.
-- [ ] ➕ **I–V characteristics** – rezistor, žárovka, dioda. *Test:* ohmický prvek lineární, model žárovky konzistentní s odporem při teplotě.
+- [x] ➕ **I–V characteristics** – rezistor, žárovka, dioda. *Test:* ohmický prvek lineární, model žárovky konzistentní s odporem při teplotě.
 
 **Hotovo, když:** všech 17 simulací splňuje definici hotové simulace a testy procházejí.
 

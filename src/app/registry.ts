@@ -230,7 +230,10 @@ export const sims: SimEntry[] = [
     ...s('b5-resistivity', 'Resistivity', 'R = ρL/A for different wires.', 'none', ['resistivity', 'wire', 'length', 'area'], true),
     load: () => import('../sims/b5-resistivity/Sim.svelte'),
   },
-  s('b5-iv-characteristics', 'I–V characteristics', 'Resistor, filament lamp and diode.', 'none', ['ohmic', 'non-ohmic'], true),
+  {
+    ...s('b5-iv-characteristics', 'I–V characteristics', 'Resistor, filament lamp and diode.', 'none', ['ohmic', 'non-ohmic', 'filament lamp', 'diode'], true),
+    load: () => import('../sims/b5-iv-characteristics/Sim.svelte'),
+  },
   // C.1
   {
     ...s('c1-pendulum', 'Pendulum', 'Large-amplitude pendulum with damping, energy and exact period.', 'part', ['period', 'SHM', 'damping', 'energy']),
