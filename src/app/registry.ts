@@ -315,7 +315,10 @@ export const sims: SimEntry[] = [
     ...s('d1-grav-potential', 'Gravitational field & potential', 'Field lines, potential and equipotentials of masses.', 'full', ['potential', 'equipotential', 'field strength', 'neutral point']),
     load: () => import('../sims/d1-grav-potential/Sim.svelte'),
   },
-  s('d1-n-body', 'N-body sandbox', 'Build your own planetary systems.', 'none', ['three-body', 'binary']),
+  {
+    ...s('d1-n-body', 'N-body sandbox', 'Build your own planetary systems.', 'none', ['three-body', 'binary', 'figure eight', 'chaos', 'momentum']),
+    load: () => import('../sims/d1-n-body/Sim.svelte'),
+  },
   // D.2
   {
     ...s('d2-charges-and-fields', 'Charges and fields', 'Field lines, equipotentials, probes, dipoles and parallel plates.', 'part', ['coulomb', 'electric field', 'potential', 'dipole', 'capacitor', 'equipotential']),
