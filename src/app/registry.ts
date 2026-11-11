@@ -208,7 +208,10 @@ export const sims: SimEntry[] = [
     load: () => import('../sims/b3-gas-laws/Sim.svelte'),
   },
   // B.4 (HL)
-  s('b4-pv-processes', 'p–V diagram & processes', 'Isobaric, isochoric, isothermal and adiabatic processes.', 'full', ['first law', 'adiabatic']),
+  {
+    ...s('b4-pv-processes', 'p–V diagram & processes', 'Isobaric, isochoric, isothermal and adiabatic processes.', 'full', ['first law', 'adiabatic', 'isothermal', 'isobaric', 'work']),
+    load: () => import('../sims/b4-pv-processes/Sim.svelte'),
+  },
   s('b4-heat-engines', 'Heat engines & Carnot cycle', 'Build cycles and compare efficiencies.', 'full', ['carnot', 'efficiency']),
   s('b4-entropy', 'Entropy', 'Microstates, S = k ln Ω and irreversible processes.', 'full', ['microstates', 'second law']),
   // B.5
