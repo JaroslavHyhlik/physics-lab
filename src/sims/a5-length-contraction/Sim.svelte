@@ -107,7 +107,7 @@
     ctx.textAlign = 'center';
     for (let x = Math.ceil(xLo / step) * step; X(x) < W; x += step) {
       ctx.fillRect(X(x) - 0.5, base, 1, 5);
-      ctx.fillText(`${x}`, X(x), base + 7);
+      ctx.fillText(`${+x.toPrecision(6)}`.replace('-', '−'), X(x), base + 7);
     }
     ctx.fillText(frame === 'S' ? 'x / m' : 'x′ / m', W - 24, base + 18);
     // tunnel

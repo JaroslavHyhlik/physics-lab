@@ -411,7 +411,10 @@ export const sims: SimEntry[] = [
     ...s('e5-luminosity', 'Luminosity & apparent brightness', 'b = L/(4πd²) and the Stefan–Boltzmann law.', 'none', ['brightness', 'stefan-boltzmann', 'inverse square', 'solar constant', 'standard candle'], true),
     load: () => import('../sims/e5-luminosity/Sim.svelte'),
   },
-  s('e5-fusion', 'Fusion: pp chain & Coulomb barrier', 'Why stars need extreme temperatures.', 'none', ['proton-proton', 'fusion'], true),
+  {
+    ...s('e5-fusion', 'Fusion: pp chain & Coulomb barrier', 'Why stars need extreme temperatures.', 'none', ['proton-proton', 'fusion', 'mass defect', 'tunnelling', 'gamow peak', 'sun'], true),
+    load: () => import('../sims/e5-fusion/Sim.svelte'),
+  },
 ];
 
 export function findSim(id: string): SimEntry | undefined {

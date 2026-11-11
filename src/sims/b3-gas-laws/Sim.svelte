@@ -178,7 +178,7 @@
       ctx.fillStyle = pal.text3;
       ctx.textAlign = 'center';
       ctx.textBaseline = 'top';
-      ctx.fillText(`${x}`, X(x), gy1 + 4);
+      ctx.fillText(`${+x.toPrecision(6)}`, X(x), gy1 + 4);
     }
     const ys1 = niceStep((gy1 - gy0) / ymax, 36);
     for (let y = 0; y <= ymax; y += ys1) {

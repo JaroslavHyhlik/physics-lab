@@ -28,6 +28,12 @@ export interface XYPlotOpts {
   fit?: { slope: number; intercept: number; color: string } | null;
 }
 
+/** tick label: values within rounding error of zero show as 0 (not 5.55e-17) */
+function tick(v: number, step: number): string {
+  if (Math.abs(v) < step * 1e-6) return '0';
+  return `${+v.toPrecision(6)}`.replace('-', '−');
+}
+
 export function drawXYPlot(ctx: CanvasRenderingContext2D, pal: Palette, o: XYPlotOpts): { X: (x: number) => number; Y: (y: number) => number } {
   const X = (x: number) => o.x0 + ((x - o.xmin) / (o.xmax - o.xmin)) * (o.x1 - o.x0);
   const Y = (y: number) => o.y1 - ((y - o.ymin) / (o.ymax - o.ymin)) * (o.y1 - o.y0);
@@ -43,7 +49,7 @@ export function drawXYPlot(ctx: CanvasRenderingContext2D, pal: Palette, o: XYPlo
     ctx.fillStyle = pal.text3;
     ctx.textAlign = 'center';
     ctx.textBaseline = 'top';
-    ctx.fillText(`${+x.toPrecision(6)}`.replace('-', '−'), X(x), o.y1 + 4);
+    ctx.fillText(tick(x, xs), X(x), o.y1 + 4);
   }
   const ys = niceStep((o.y1 - o.y0) / (o.ymax - o.ymin), 34);
   for (let y = Math.ceil(o.ymin / ys) * ys; y <= o.ymax + 1e-12; y += ys) {
@@ -55,7 +61,7 @@ export function drawXYPlot(ctx: CanvasRenderingContext2D, pal: Palette, o: XYPlo
     ctx.fillStyle = pal.text3;
     ctx.textAlign = 'right';
     ctx.textBaseline = 'middle';
-    ctx.fillText(`${+y.toPrecision(6)}`.replace('-', '−'), o.x0 - 6, Y(y));
+    ctx.fillText(tick(y, ys), o.x0 - 6, Y(y));
   }
   ctx.textAlign = 'right';
   ctx.textBaseline = 'top';
