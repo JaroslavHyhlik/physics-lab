@@ -12,9 +12,11 @@ describe('C.3 ripple tank (2D wave equation)', () => {
     // find successive crests along the middle row, away from the source and the sponge
     const j = Math.round(tank.ny / 2);
     const row = (i: number) => tank.u[j * tank.nx + i];
+    let amax = 0;
+    for (let i = 60; i < 300; i++) amax = Math.max(amax, Math.abs(row(i)));
     const crests: number[] = [];
     for (let i = 60; i < 300; i++) {
-      if (row(i) > row(i - 1) && row(i) >= row(i + 1) && row(i) > 0.3) {
+      if (row(i) > row(i - 1) && row(i) >= row(i + 1) && row(i) > 0.3 * amax) {
         // parabolic refinement of the peak
         const a = row(i - 1);
         const b = row(i);

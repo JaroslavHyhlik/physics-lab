@@ -15,10 +15,10 @@ Inspirace PhET, ale vlastní kód a vlastní, modernější design.
 
 | | |
 |---|---|
-| **Aktuální fáze** | 6 – Téma C (fáze 2, 3 a 5 jsou hotové; fáze 4 = mobilní laboratoř je odložená, dokud ji nepůjde zkoušet na iPhonu) |
-| **Naposledy hotovo** | Fáze 5 celá (11. 11.). Fáze 6: vše kromě Ripple tank (C.3) (větev `night`). Celkem 55 hotových simulací z 84. |
-| **Další krok** | Fáze 6: **C.3 Ripple tank** (2D vlnová rovnice, WebGL2 s Canvas fallbackem) – poslední položka fáze 6. |
-| **Rozpracováno / poznámky** | **Noční běh 11. 11. (větev `night`, čeká na kontrolu a merge do `main`):** Gas in a container, Maxwell–Boltzmann, Gas laws lab, p–V diagram, Heat engines, Entropy, Internal resistance, Resistivity, I–V characteristics, Circuit construction kit, Mass–spring oscillator, SHM phase, Wave types, Wave on a string, Reflection & refraction, Double slit, Single slit & grating, Standing waves string + pipes, Resonance, Doppler, Shock waves, Redshift (+ obecný `src/workers/stepClient.ts`, e2e retry 1×). Web je zveřejněný. Čeká na uživatele: kontrola na iPhonu (OTAZKY.md). Noční/automatické běhy pracují ve větvi `night`. Pomocníci: `src/sim/setup.svelte.ts` (useParams, usePalette, resetOn, redrawOn), `src/sim/sankey.ts`, `drawGridAxes`/`drawSymbol` v `src/sim/draw.ts`. Nová simulace = `src/sims/<id>/` (meta.ts, render.ts, Sim.svelte, vzor např. `a2-drag-buoyancy`), model v `src/physics/`, testy v `tests/physics/`, `load` v registry, id do `READY` v `tests/e2e/smoke.spec.ts`. Zatím vynecháno: editor vlastní dráhy (Roller coaster), vícestupňová raketa; ve stavebnici obvodů potenciometr (3 vývody) a dioda; mřížka stavebnice je na mobilu malá (ověřit na iPhonu). |
+| **Aktuální fáze** | 7 – Téma D (fáze 2, 3, 5 a 6 jsou hotové; fáze 4 = mobilní laboratoř je odložená, dokud ji nepůjde zkoušet na iPhonu) |
+| **Naposledy hotovo** | Fáze 5 a 6 celé (B a C, ve větvi `night`, 11. 11.). Celkem 56 hotových simulací z 84. |
+| **Další krok** | Fáze 7: první položka tématu D v PLAN.md (pozn.: D.2 Charges and fields je hotové z fáze 1). |
+| **Rozpracováno / poznámky** | **Noční běh 11. 11. (větev `night`, čeká na kontrolu a merge do `main`):** Gas in a container, Maxwell–Boltzmann, Gas laws lab, p–V diagram, Heat engines, Entropy, Internal resistance, Resistivity, I–V characteristics, Circuit construction kit, Mass–spring oscillator, SHM phase, Wave types, Wave on a string, Reflection & refraction, Double slit, Single slit & grating, Standing waves string + pipes, Resonance, Doppler, Shock waves, Redshift, Ripple tank (+ obecný `src/workers/stepClient.ts`, e2e retry 1×). Web je zveřejněný. Čeká na uživatele: kontrola na iPhonu (OTAZKY.md). Noční/automatické běhy pracují ve větvi `night`. Pomocníci: `src/sim/setup.svelte.ts` (useParams, usePalette, resetOn, redrawOn), `src/sim/sankey.ts`, `drawGridAxes`/`drawSymbol` v `src/sim/draw.ts`. Nová simulace = `src/sims/<id>/` (meta.ts, render.ts, Sim.svelte, vzor např. `a2-drag-buoyancy`), model v `src/physics/`, testy v `tests/physics/`, `load` v registry, id do `READY` v `tests/e2e/smoke.spec.ts`. Zatím vynecháno: editor vlastní dráhy (Roller coaster), vícestupňová raketa; ve stavebnici obvodů potenciometr (3 vývody) a dioda; mřížka stavebnice je na mobilu malá (ověřit na iPhonu); Ripple tank počítá na CPU (mřížka 200×150, < 1 ms/snímek) – WebGL2 zrychlení lze doplnit později. |
 
 **Jak navázat v nové session:** otevři v Claude novou session ve složce `~/Projects/physics-lab`
 a napiš: *„Pokračuj podle PLAN.md.“* Pravidla v CLAUDE.md se načtou automaticky.
@@ -333,7 +333,7 @@ Společné:
 
 **C.3 Wave phenomena**
 - [x] **Reflection & refraction** – paprsek, prostředí s indexem n, Snellův zákon, mezní úhel a totální odraz, optické vlákno, úhloměr. *Test:* n₁sinθ₁ = n₂sinθ₂, sinθ_c = n₂/n₁.
-- [ ] **Ripple tank** – 2D vlnová rovnice na GPU (WebGL2), bodové zdroje s fází, překážky, štěrbiny, mělčina (lom), měření dráhového rozdílu; presets ohyb na mezeře, Huygensův princip, interference dvou zdrojů. *Test:* rychlost vln v simulaci vs. nastavená (chyba < 1 %), polohy interferenčních maxim.
+- [x] **Ripple tank** – 2D vlnová rovnice na GPU (WebGL2), bodové zdroje s fází, překážky, štěrbiny, mělčina (lom), měření dráhového rozdílu; presets ohyb na mezeře, Huygensův princip, interference dvou zdrojů. *Test:* rychlost vln v simulaci vs. nastavená (chyba < 1 %), polohy interferenčních maxim.
 - [x] **Young's double slit** – intenzita na stínítku (včetně obálky ohybu na jedné štěrbině), λ (barva), d, D, šířka štěrbiny, bílé světlo. *Test:* vzdálenost proužků s = λD/d.
 - [x] **Single slit & diffraction grating (HL)** – intenzita, první minimum θ = λ/b, mřížka nλ = d sinθ, zužování maxim s počtem štěrbin. *Test:* polohy minim a maxim z numerického výpočtu vs. vzorce.
 

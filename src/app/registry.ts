@@ -264,7 +264,10 @@ export const sims: SimEntry[] = [
     ...s('c3-refraction', 'Reflection & refraction', "Snell's law, critical angle and total internal reflection.", 'none', ['snell', 'TIR', 'optical fibre', 'refractive index', 'critical angle']),
     load: () => import('../sims/c3-refraction/Sim.svelte'),
   },
-  s('c3-ripple-tank', 'Ripple tank', 'Interference, diffraction and refraction of water waves.', 'none', ['interference', 'huygens']),
+  {
+    ...s('c3-ripple-tank', 'Ripple tank', 'Interference, diffraction and refraction of water waves.', 'none', ['interference', 'huygens', 'diffraction', 'refraction', 'water waves']),
+    load: () => import('../sims/c3-ripple-tank/Sim.svelte'),
+  },
   {
     ...s('c3-double-slit', "Young's double slit", 'Fringe spacing s = λD/d and white light.', 'none', ['interference', 'fringes', 'young', 'path difference']),
     load: () => import('../sims/c3-double-slit/Sim.svelte'),

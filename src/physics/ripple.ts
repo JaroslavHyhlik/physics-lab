@@ -3,8 +3,9 @@
  * Finite differences (5-point Laplacian, leapfrog in time); the Courant number c·Δt/Δx is kept
  * ≤ 0.5 (stability needs ≤ 1/√2). Waves leave the tank through an absorbing sponge layer
  * (damping that grows towards the edges). Walls (barriers with slits) hold u = 0. A shallow
- * region is modelled by a lower wave speed (refraction). Sources drive u = A sin(ωt + φ) at
- * a point or along a line (plane waves). The time-averaged u² shows the interference pattern.
+ * region is modelled by a lower wave speed (refraction). Sources are “soft”: they add A sin(ωt + φ)
+ * to the surface at a point or along a line (plane waves), so other waves pass through them
+ * instead of being reflected. The time-averaged u² shows the interference pattern.
  */
 export interface RippleSource {
   kind: 'point' | 'line';
@@ -79,6 +80,15 @@ export class RippleTank {
       for (let i = 0; i < this.nx; i++) if (pred(i * this.dx, j * this.dx)) this.c2[j * this.nx + i] = speed * speed;
   }
 
+  /** set the wave speed at every cell from a function of position */
+  setSpeedFn(fn: (x: number, y: number) => number): void {
+    for (let j = 0; j < this.ny; j++)
+      for (let i = 0; i < this.nx; i++) {
+        const v = fn(i * this.dx, j * this.dx);
+        this.c2[j * this.nx + i] = v * v;
+      }
+  }
+
   /** vertical barrier at x with gaps given as [yCentre, width] pairs */
   setBarrier(x: number, gaps: [number, number][], thickness = 0.006): void {
     for (let j = 0; j < this.ny; j++) {
@@ -108,10 +118,10 @@ export class RippleTank {
     this.t += dt;
     for (const src of this.sources) {
       const v = this.amp * Math.sin(2 * Math.PI * this.f * this.t + src.phase);
-      if (src.kind === 'point') uNext[this.idx(src.x, src.y)] = v;
+      if (src.kind === 'point') uNext[this.idx(src.x, src.y)] += v;
       else {
         const i = Math.round(src.x / dx);
-        for (let j = 1; j < ny - 1; j++) if (!wall[j * nx + i]) uNext[j * nx + i] = v;
+        for (let j = 1; j < ny - 1; j++) if (!wall[j * nx + i]) uNext[j * nx + i] += 0.25 * v;
       }
     }
     // rotate buffers
