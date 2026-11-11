@@ -396,7 +396,10 @@ export const sims: SimEntry[] = [
     ...s('e4-chain-reaction', 'Chain reaction', 'Neutrons, critical mass and the multiplication factor.', 'none', ['critical mass', 'neutrons', 'fission', 'enrichment', 'multiplication factor']),
     load: () => import('../sims/e4-chain-reaction/Sim.svelte'),
   },
-  s('e4-reactor', 'Nuclear reactor', 'Moderator, control rods and power output.', 'none', ['moderator', 'control rods']),
+  {
+    ...s('e4-reactor', 'Nuclear reactor', 'Moderator, control rods and power output.', 'none', ['moderator', 'control rods', 'coolant', 'delayed neutrons', 'scram', 'power station']),
+    load: () => import('../sims/e4-reactor/Sim.svelte'),
+  },
   // E.5
   s('e5-hr-diagram', 'HR diagram', 'Real stars by luminosity and temperature.', 'none', ['main sequence', 'stellar evolution']),
   s('e5-stellar-equilibrium', 'Stellar equilibrium', 'Gravity against pressure inside a star.', 'none', ['equilibrium']),
