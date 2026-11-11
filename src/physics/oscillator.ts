@@ -45,3 +45,17 @@ export function dampedMotion(m: number, k: number, b: number, x0: number, v0: nu
 }
 
 export const period = (m: number, k: number) => 2 * Math.PI * Math.sqrt(m / k);
+
+/** Undamped SHM written the IB way: x = x₀ sin(ωt + φ). */
+export function shm(x0: number, omega: number, phi: number, t: number): OscState {
+  const th = omega * t + phi;
+  return { x: x0 * Math.sin(th), v: omega * x0 * Math.cos(th), a: -omega * omega * x0 * Math.sin(th) };
+}
+
+/** phase difference wrapped to (−π, π] */
+export function wrapPhase(p: number): number {
+  let q = p % (2 * Math.PI);
+  if (q > Math.PI) q -= 2 * Math.PI;
+  if (q <= -Math.PI) q += 2 * Math.PI;
+  return q;
+}

@@ -246,7 +246,10 @@ export const sims: SimEntry[] = [
     ...s('c1-mass-spring', 'Mass–spring oscillator', 'Displacement, velocity and acceleration of SHM.', 'part', ['spring', 'SHM', 'damping', 'period', 'energy']),
     load: () => import('../sims/c1-mass-spring/Sim.svelte'),
   },
-  s('c1-phase', 'SHM, phase & reference circle', 'Phasors and phase difference between oscillators.', 'full', ['phase', 'phasor']),
+  {
+    ...s('c1-phase', 'SHM, phase & reference circle', 'Phasors and phase difference between oscillators.', 'full', ['phase', 'phasor', 'phase difference', 'antiphase']),
+    load: () => import('../sims/c1-phase/Sim.svelte'),
+  },
   // C.2
   s('c2-wave-types', 'Transverse & longitudinal waves', 'Particles in a medium and wave graphs.', 'none', ['wavelength', 'frequency']),
   s('c2-wave-string', 'Wave on a string', 'Pulses and reflection at fixed and free ends.', 'none', ['pulse', 'reflection'], true),

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { dampedMotion, period } from '../../src/physics/oscillator';
+import { dampedMotion, period, shm, wrapPhase } from '../../src/physics/oscillator';
 import { RK4 } from '../../src/core/integrators';
 
 describe('C.1 mass–spring oscillator', () => {
@@ -58,5 +58,31 @@ describe('C.1 mass–spring oscillator', () => {
     const r = dampedMotion(m, k, b, 0.1, -g * 0.1, Td).x / 0.1;
     expect(r).toBeCloseTo(Math.exp(-g * Td), 10);
     expect(Td).toBeGreaterThan(T);
+  });
+});
+
+
+describe('C.1 (HL) SHM, phase and the reference circle', () => {
+  const x0 = 0.05;
+  const w = 4;
+  it('v = ±ω√(x₀² − x²), a = −ω²x, Eₖ = ½mω²(x₀² − x²), E_T = ½mω²x₀²', () => {
+    const m = 0.3;
+    for (const t of [0, 0.2, 0.9, 2.5]) {
+      const s = shm(x0, w, 0.4, t);
+      expect(Math.abs(s.v)).toBeCloseTo(w * Math.sqrt(x0 * x0 - s.x * s.x), 12);
+      expect(s.a).toBeCloseTo(-w * w * s.x, 12);
+      expect(0.5 * m * s.v * s.v).toBeCloseTo(0.5 * m * w * w * (x0 * x0 - s.x * s.x), 14);
+      expect(0.5 * m * s.v * s.v + 0.5 * m * w * w * s.x * s.x).toBeCloseTo(0.5 * m * w * w * x0 * x0, 14);
+    }
+  });
+
+  it('the projection of a point moving round a circle at ω is SHM; a phase difference Δφ shifts it by Δφ/ω in time', () => {
+    for (const t of [0.1, 0.7, 1.3]) {
+      const ang = w * t + 0.4;
+      expect(shm(x0, w, 0.4, t).x).toBeCloseTo(x0 * Math.sin(ang), 14); // y-projection of the phasor
+      expect(shm(x0, w, 0.4 + Math.PI / 2, t).x).toBeCloseTo(shm(x0, w, 0.4, t + Math.PI / 2 / w).x, 12);
+    }
+    expect(wrapPhase(3 * Math.PI / 2)).toBeCloseTo(-Math.PI / 2, 14);
+    expect(wrapPhase(-Math.PI)).toBeCloseTo(Math.PI, 14);
   });
 });
