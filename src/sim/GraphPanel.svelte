@@ -155,7 +155,8 @@
   .menu {
     position: absolute;
     right: 0;
-    bottom: calc(100% + 6px);
+    /* opens downwards: the graph panel scrolls (overflow: auto) and would clip a menu that opens upwards */
+    top: calc(100% + 6px);
     z-index: 20;
     background: var(--surface);
     border: 1px solid var(--border);

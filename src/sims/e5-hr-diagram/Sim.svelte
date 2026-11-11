@@ -72,7 +72,8 @@
     COL.push(colCache.get(key)!);
   }
   const FAMOUS = new Set(['Sol', 'Sirius', 'Vega', 'Betelgeuse', 'Rigel', 'Antares', 'Arcturus', 'Aldebaran', 'Polaris', 'Deneb', 'Spica', 'Procyon', 'Capella', 'Proxima Centauri', "Barnard's Star", 'Altair', 'Canopus', 'Sirius B', 'Procyon B', 'Mira', 'Regulus']);
-  const inSet = (i: number) => (params.set === 'near' ? DIST[i] <= 20 : MAG[i] <= 6.0 || NAME[i] === 'Sol' || FAMOUS.has(NAME[i]));
+  // a star needs a positive luminosity to be placed on the logarithmic axis
+  const inSet = (i: number) => LL[i] > 0 && (params.set === 'near' ? DIST[i] <= 20 : MAG[i] <= 6.0 || NAME[i] === 'Sol' || FAMOUS.has(NAME[i]));
   const sun = NAME.indexOf('Sol');
   if (params.pick === 0 && sun >= 0) params.pick = sun;
 

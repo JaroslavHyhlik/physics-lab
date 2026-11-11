@@ -98,7 +98,8 @@
       mk(part.q, part.m, field, -0.15, 0, params.v, 0, cols[0], part.name);
     } else if (params.mode === 'EB') {
       size = 0.4;
-      const v0 = params.E / params.B;
+      // with E = 0 no speed is selected (E/B = 0): spread the test particles around a reference speed instead
+      const v0 = params.E > 0 ? params.E / params.B : 1e5;
       tScale = 0.35 / v0 / 3;
       const field: FieldFn = (x, y, _t, E, B) => {
         if (x > -0.1 && x < 0.15 && Math.abs(y) < 0.08) {
@@ -106,7 +107,7 @@
           B[2] = Bz;
         }
       };
-      [0.7, 0.85, 1, 1.15, 1.3].forEach((k, i) => mk(e, m_p, field, -0.18, 0, k * v0, 0, cols[i], `${k.toFixed(2)} E/B`));
+      [0.7, 0.85, 1, 1.15, 1.3].forEach((k, i) => mk(e, m_p, field, -0.18, 0, k * v0, 0, cols[i], params.E > 0 ? `${k.toFixed(2)} E/B` : `${fmt(k * v0, 3)} m s⁻¹`));
     } else if (params.mode === 'spec') {
       const isotopes = [
         { A: 20, m: 19.992 * u, label: 'neon-20' },
@@ -293,7 +294,8 @@
       out.push({ label: 'force qE', value: fmt(Math.abs(part.q) * params.E, 3), unit: 'N' });
       out.push({ label: 'acceleration qE/m', value: fmt((Math.abs(part.q) * params.E) / part.m, 3), unit: 'm s⁻²' });
     } else if (params.mode === 'EB') {
-      out.push({ label: 'selected speed v = E/B', value: fmt(params.E / params.B, 3), unit: 'm s⁻¹', strong: true });
+      if (params.E > 0) out.push({ label: 'selected speed v = E/B', value: fmt(params.E / params.B, 3), unit: 'm s⁻¹', strong: true });
+      else out.push({ label: 'selected speed v = E/B', value: '0: with no electric field every particle is bent away', strong: true });
     } else {
       out.push({ label: 'ion speed', value: fmt(params.v, 3), unit: 'm s⁻¹' });
       detector.forEach((d) => out.push({ label: `${d.label}: diameter 2r`, value: fmt((d.x + 0.4 * size) * 100, 4), unit: 'cm' }));

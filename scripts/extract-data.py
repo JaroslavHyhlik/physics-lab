@@ -95,7 +95,7 @@ with open(f'{dl}/hyg.csv', newline='', encoding='utf-8') as f:
         if not keep:
             continue
         name = (r['proper'] or '').strip()
-        rows.append((name, round(lum, 5 if lum < 1 else 3), round(ci, 3), (round(dist, 2) if dist > 0.01 else dist), round(mag, 2), (r['spect'] or '')[:3]))
+        rows.append((name, float(f'{lum:.4g}'), round(ci, 3), (round(dist, 2) if dist > 0.01 else dist), round(mag, 2), (r['spect'] or '')[:3]))
 print('HYG stars:', len(rows), 'named:', sum(1 for r in rows if r[0]))
 with open(f'{out}/hyg.ts', 'w') as f:
     f.write('// Generated from the HYG database v4.1 (D. Nash, astronexus/HYG-Database), CC BY-SA 4.0.\n')

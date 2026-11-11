@@ -12,6 +12,9 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:e2e": "playwright test",
+    "test:audit": "AUDIT=1 playwright test tests/e2e/audit.spec.ts tests/e2e/responsive.spec.ts tests/e2e/navigation.spec.ts",
+    "test:inventory": "AUDIT=1 playwright test tests/e2e/inventory.spec.ts --project=desktop --workers=1",
+    "test:all": "npm test && npm run check && npm run test:e2e && npm run test:audit",
     "check": "svelte-check --tsconfig ./tsconfig.json --fail-on-warnings",
     "format": "prettier --write ."
   },
