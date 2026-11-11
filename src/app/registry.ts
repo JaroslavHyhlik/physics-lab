@@ -363,7 +363,10 @@ export const sims: SimEntry[] = [
     ...s('e1-spectra', 'Atomic spectra', 'Emission and absorption spectra of gases.', 'none', ['emission', 'absorption', 'spectral lines', 'spectroscope', 'balmer']),
     load: () => import('../sims/e1-spectra/Sim.svelte'),
   },
-  s('e1-bohr', 'Bohr model', 'Energy levels and photon transitions in hydrogen.', 'full', ['energy levels', 'hydrogen']),
+  {
+    ...s('e1-bohr', 'Bohr model', 'Energy levels and photon transitions in hydrogen.', 'full', ['energy levels', 'hydrogen', 'photon', 'transition', 'lyman', 'balmer']),
+    load: () => import('../sims/e1-bohr/Sim.svelte'),
+  },
   // E.2 (HL)
   s('e2-photoelectric', 'Photoelectric effect', 'Work function, stopping potential and Planck’s constant.', 'full', ['work function', 'photon']),
   s('e2-de-broglie', 'Matter waves', 'Electron diffraction and λ = h/p.', 'full', ['de broglie', 'electron diffraction']),
