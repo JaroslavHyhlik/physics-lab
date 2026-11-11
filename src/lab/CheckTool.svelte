@@ -30,7 +30,7 @@
     const p = await requestMotionPermission();
     if (p === 'denied') {
       motionState = 'refused';
-      status = 'Access to the motion sensors was refused. On iPhone: Settings → Safari → Motion & Orientation Access, then reload the page.';
+      status = 'No access to the motion sensors: access was refused, or this device has none. On iPhone: Settings → Safari → Motion & Orientation Access, then reload the page.';
     } else if (p === 'unsupported') motionState = 'not available';
     else {
       offM = listenMotion(() => mRate.tick());

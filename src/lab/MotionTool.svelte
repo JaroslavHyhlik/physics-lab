@@ -131,7 +131,7 @@
     const p = await requestMotionPermission();
     if (destroyed) return;
     if (p === 'denied') {
-      status = 'Access to the motion sensors was refused. On iPhone: close the tab, open the page again and tap “Allow” (or Settings → Safari → Motion & Orientation Access).';
+      status = 'No access to the motion sensors: access was refused, or this device has none (for example a laptop). On iPhone: close the tab, open the page again and tap “Allow” (or Settings → Safari → Motion & Orientation Access).';
       return;
     }
     running = true;

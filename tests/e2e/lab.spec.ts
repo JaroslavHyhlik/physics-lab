@@ -216,7 +216,7 @@ test('no motion sensor at all (laptop) and a sensor that never sends data', asyn
     await mock(page, m);
     await page.goto('http://localhost:4173/#/lab/g');
     await page.locator('button.go').click();
-    await expect(page.getByRole('alert')).toContainText(/no motion sensor|No data arrives/, { timeout: 5000 });
+    await expect(page.getByRole('alert')).toContainText(/no motion sensor|No data arrives|has none/, { timeout: 5000 });
     expect(errors).toEqual([]);
     await page.close();
   }

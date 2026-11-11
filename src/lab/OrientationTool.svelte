@@ -49,7 +49,7 @@
     const p = await requestMotionPermission();
     if (destroyed) return;
     if (p === 'denied') {
-      status = 'Access to motion and orientation was refused. On iPhone: Settings → Safari → Motion & Orientation Access, then reload the page.';
+      status = 'No access to orientation: access was refused, or this device has no such sensor. On iPhone: Settings → Safari → Motion & Orientation Access, then reload the page.';
       return;
     }
     running = true;
