@@ -311,7 +311,10 @@ export const sims: SimEntry[] = [
     ...s('d1-escape-velocity', 'Escape velocity', "Newton's cannon from orbit to escape.", 'full', ['escape', 'orbital speed', 'newton cannon', 'satellite']),
     load: () => import('../sims/d1-escape-velocity/Sim.svelte'),
   },
-  s('d1-grav-potential', 'Gravitational field & potential', 'Field lines, potential and equipotentials of masses.', 'full', ['potential', 'equipotential']),
+  {
+    ...s('d1-grav-potential', 'Gravitational field & potential', 'Field lines, potential and equipotentials of masses.', 'full', ['potential', 'equipotential', 'field strength', 'neutral point']),
+    load: () => import('../sims/d1-grav-potential/Sim.svelte'),
+  },
   s('d1-n-body', 'N-body sandbox', 'Build your own planetary systems.', 'none', ['three-body', 'binary']),
   // D.2
   {
