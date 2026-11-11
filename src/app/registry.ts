@@ -216,7 +216,10 @@ export const sims: SimEntry[] = [
     ...s('b4-heat-engines', 'Heat engines & Carnot cycle', 'Build cycles and compare efficiencies.', 'full', ['carnot', 'efficiency', 'otto', 'stirling', 'second law']),
     load: () => import('../sims/b4-heat-engines/Sim.svelte'),
   },
-  s('b4-entropy', 'Entropy', 'Microstates, S = k ln Ω and irreversible processes.', 'full', ['microstates', 'second law']),
+  {
+    ...s('b4-entropy', 'Entropy', 'Microstates, S = k ln Ω and irreversible processes.', 'full', ['microstates', 'second law', 'free expansion', 'irreversible']),
+    load: () => import('../sims/b4-entropy/Sim.svelte'),
+  },
   // B.5
   s('b5-circuit-kit', 'Circuit construction kit', 'Build DC circuits with meters, lamps, LDRs and thermistors.', 'none', ['kirchhoff', 'voltmeter', 'ammeter']),
   s('b5-internal-resistance', 'Internal resistance & emf', 'Find ε and r from a V–I graph.', 'none', ['emf', 'internal resistance']),
