@@ -15,10 +15,10 @@ Inspirace PhET, ale vlastní kód a vlastní, modernější design.
 
 | | |
 |---|---|
-| **Aktuální fáze** | 7 – Téma D (fáze 2, 3, 5 a 6 jsou hotové; fáze 4 = mobilní laboratoř je odložená, dokud ji nepůjde zkoušet na iPhonu) |
-| **Naposledy hotovo** | Fáze 5 a 6 celé (11. 11.). Fáze 7: D.1–D.3, D.4 Magnet & coil (větev `night`). Celkem 65 hotových simulací z 84. |
-| **Další krok** | Fáze 7: **D.4 AC generator**, Rod on rails (model `src/physics/induction.ts` hotový). |
-| **Rozpracováno / poznámky** | **Noční běh 11. 11. (větev `night`, čeká na kontrolu a merge do `main`):** Gas in a container, Maxwell–Boltzmann, Gas laws lab, p–V diagram, Heat engines, Entropy, Internal resistance, Resistivity, I–V characteristics, Circuit construction kit, Mass–spring oscillator, SHM phase, Wave types, Wave on a string, Reflection & refraction, Double slit, Single slit & grating, Standing waves string + pipes, Resonance, Doppler, Shock waves, Redshift, Ripple tank, Orbits, Escape velocity, Gravitational field, N-body, Millikan, Magnetic fields, Charged particle, Wire forces, Magnet & coil (+ obecný `src/workers/stepClient.ts`, e2e retry 1×). Web je zveřejněný. Čeká na uživatele: kontrola na iPhonu (OTAZKY.md). Noční/automatické běhy pracují ve větvi `night`. Pomocníci: `src/sim/setup.svelte.ts` (useParams, usePalette, resetOn, redrawOn), `src/sim/sankey.ts`, `drawGridAxes`/`drawSymbol` v `src/sim/draw.ts`. Nová simulace = `src/sims/<id>/` (meta.ts, render.ts, Sim.svelte, vzor např. `a2-drag-buoyancy`), model v `src/physics/`, testy v `tests/physics/`, `load` v registry, id do `READY` v `tests/e2e/smoke.spec.ts`. Zatím vynecháno: editor vlastní dráhy (Roller coaster), vícestupňová raketa; ve stavebnici obvodů potenciometr (3 vývody) a dioda; mřížka stavebnice je na mobilu malá (ověřit na iPhonu); Ripple tank počítá na CPU (mřížka 200×150, < 1 ms/snímek) – WebGL2 zrychlení lze doplnit později. |
+| **Aktuální fáze** | 8 – Téma E (fáze 2, 3, 5, 6 a 7 jsou hotové; fáze 4 = mobilní laboratoř je odložená, dokud ji nepůjde zkoušet na iPhonu) |
+| **Naposledy hotovo** | Fáze 5, 6 a 7 celé (B, C, D; ve větvi `night`, 11. 11.). Celkem 67 hotových simulací z 84. |
+| **Další krok** | Fáze 8: první položka tématu E v PLAN.md. |
+| **Rozpracováno / poznámky** | **Noční běh 11. 11. (větev `night`, čeká na kontrolu a merge do `main`):** Gas in a container, Maxwell–Boltzmann, Gas laws lab, p–V diagram, Heat engines, Entropy, Internal resistance, Resistivity, I–V characteristics, Circuit construction kit, Mass–spring oscillator, SHM phase, Wave types, Wave on a string, Reflection & refraction, Double slit, Single slit & grating, Standing waves string + pipes, Resonance, Doppler, Shock waves, Redshift, Ripple tank, Orbits, Escape velocity, Gravitational field, N-body, Millikan, Magnetic fields, Charged particle, Wire forces, Magnet & coil, AC generator, Rod on rails (+ obecný `src/workers/stepClient.ts`, e2e retry 1×). Web je zveřejněný. Čeká na uživatele: kontrola na iPhonu (OTAZKY.md). Noční/automatické běhy pracují ve větvi `night`. Pomocníci: `src/sim/setup.svelte.ts` (useParams, usePalette, resetOn, redrawOn), `src/sim/sankey.ts`, `drawGridAxes`/`drawSymbol` v `src/sim/draw.ts`. Nová simulace = `src/sims/<id>/` (meta.ts, render.ts, Sim.svelte, vzor např. `a2-drag-buoyancy`), model v `src/physics/`, testy v `tests/physics/`, `load` v registry, id do `READY` v `tests/e2e/smoke.spec.ts`. Zatím vynecháno: editor vlastní dráhy (Roller coaster), vícestupňová raketa; ve stavebnici obvodů potenciometr (3 vývody) a dioda; mřížka stavebnice je na mobilu malá (ověřit na iPhonu); Ripple tank počítá na CPU (mřížka 200×150, < 1 ms/snímek) – WebGL2 zrychlení lze doplnit později. |
 
 **Jak navázat v nové session:** otevři v Claude novou session ve složce `~/Projects/physics-lab`
 a napiš: *„Pokračuj podle PLAN.md.“* Pravidla v CLAUDE.md se načtou automaticky.
@@ -369,8 +369,8 @@ Společné:
 
 **D.4 Induction (HL)**
 - [x] **Magnet & coil (Faraday, Lenz)** – pohyb magnetu cívkou s N závity, grafy toku a emn, galvanometr, směr proudu, žárovka. *Test:* ε = −NΔΦ/Δt proti numerické derivaci toku, znaménko podle Lenze.
-- [ ] **AC generator** – rotující cívka v poli, N, A, ω, sinusové emn, efektivní hodnota. *Test:* ε₀ = BANω, ε_rms = ε₀/√2.
-- [ ] **Rod on rails** – pohybové emn BLv, proud, magnetické brzdění, mezní rychlost. *Test:* v(t) se blíží v_t = FR/(B²L²) podle analytického řešení.
+- [x] **AC generator** – rotující cívka v poli, N, A, ω, sinusové emn, efektivní hodnota. *Test:* ε₀ = BANω, ε_rms = ε₀/√2.
+- [x] **Rod on rails** – pohybové emn BLv, proud, magnetické brzdění, mezní rychlost. *Test:* v(t) se blíží v_t = FR/(B²L²) podle analytického řešení.
 
 **Hotovo, když:** všech 11 simulací splňuje definici hotové simulace a testy procházejí.
 

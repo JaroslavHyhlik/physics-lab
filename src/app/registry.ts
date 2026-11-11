@@ -346,8 +346,14 @@ export const sims: SimEntry[] = [
     ...s('d4-magnet-coil', 'Magnet & coil', "Faraday's and Lenz's laws with flux and emf graphs.", 'full', ['faraday', 'lenz', 'flux', 'induced emf', 'galvanometer']),
     load: () => import('../sims/d4-magnet-coil/Sim.svelte'),
   },
-  s('d4-generator', 'AC generator', 'A rotating coil and its sinusoidal emf.', 'full', ['alternating current', 'rms']),
-  s('d4-rod-rails', 'Rod on rails', 'Motional emf and magnetic braking.', 'full', ['motional emf', 'BvL']),
+  {
+    ...s('d4-generator', 'AC generator', 'A rotating coil and its sinusoidal emf.', 'full', ['alternating current', 'rms', 'generator', 'flux linkage']),
+    load: () => import('../sims/d4-generator/Sim.svelte'),
+  },
+  {
+    ...s('d4-rod-rails', 'Rod on rails', 'Motional emf and magnetic braking.', 'full', ['motional emf', 'BvL', 'magnetic braking', 'terminal velocity']),
+    load: () => import('../sims/d4-rod-rails/Sim.svelte'),
+  },
   // E.1
   s('e1-rutherford', 'Rutherford scattering', 'Alpha particles deflected by a nucleus.', 'part', ['gold foil', 'closest approach']),
   s('e1-spectra', 'Atomic spectra', 'Emission and absorption spectra of gases.', 'none', ['emission', 'absorption', 'spectral lines']),
