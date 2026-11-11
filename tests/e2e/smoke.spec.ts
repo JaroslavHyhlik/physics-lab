@@ -19,7 +19,8 @@ async function canvasColours(page: Page): Promise<number> {
     const ctx = c.getContext('2d')!;
     const { data } = ctx.getImageData(0, 0, c.width, c.height);
     const seen = new Set<number>();
-    for (let i = 0; i < data.length; i += 4 * 97) seen.add((data[i] << 16) | (data[i + 1] << 8) | data[i + 2]);
+    // fine sampling: some simulations start with only a small dot drawn (e.g. the shock-wave source)
+    for (let i = 0; i < data.length && seen.size < 6; i += 4 * 7) seen.add((data[i] << 16) | (data[i + 1] << 8) | data[i + 2]);
     return seen.size;
   });
 }
