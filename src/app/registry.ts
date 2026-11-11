@@ -274,8 +274,14 @@ export const sims: SimEntry[] = [
     load: () => import('../sims/c3-diffraction/Sim.svelte'),
   },
   // C.4
-  s('c4-string-standing', 'Standing waves on a string', 'Harmonics, nodes and antinodes.', 'none', ['harmonics', 'nodes']),
-  s('c4-pipes', 'Standing waves in pipes', 'Open and closed pipes, displacement and pressure.', 'none', ['pipe', 'resonance']),
+  {
+    ...s('c4-string-standing', 'Standing waves on a string', 'Harmonics, nodes and antinodes.', 'none', ['harmonics', 'nodes', 'antinodes', 'fundamental']),
+    load: () => import('../sims/c4-string-standing/Sim.svelte'),
+  },
+  {
+    ...s('c4-pipes', 'Standing waves in pipes', 'Open and closed pipes, displacement and pressure.', 'none', ['pipe', 'resonance', 'harmonics', 'sound']),
+    load: () => import('../sims/c4-pipes/Sim.svelte'),
+  },
   s('c4-resonance', 'Resonance & damping', 'A driven damped oscillator and its resonance curve.', 'none', ['driven', 'damping']),
   // C.5
   s('c5-doppler', 'Doppler effect', 'Moving source and observer, wavefronts and sound.', 'part', ['frequency shift']),
