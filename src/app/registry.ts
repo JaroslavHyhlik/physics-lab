@@ -359,7 +359,10 @@ export const sims: SimEntry[] = [
     ...s('e1-rutherford', 'Rutherford scattering', 'Alpha particles deflected by a nucleus.', 'part', ['alpha', 'nucleus', 'geiger marsden', 'gold foil', 'closest approach']),
     load: () => import('../sims/e1-rutherford/Sim.svelte'),
   },
-  s('e1-spectra', 'Atomic spectra', 'Emission and absorption spectra of gases.', 'none', ['emission', 'absorption', 'spectral lines']),
+  {
+    ...s('e1-spectra', 'Atomic spectra', 'Emission and absorption spectra of gases.', 'none', ['emission', 'absorption', 'spectral lines', 'spectroscope', 'balmer']),
+    load: () => import('../sims/e1-spectra/Sim.svelte'),
+  },
   s('e1-bohr', 'Bohr model', 'Energy levels and photon transitions in hydrogen.', 'full', ['energy levels', 'hydrogen']),
   // E.2 (HL)
   s('e2-photoelectric', 'Photoelectric effect', 'Work function, stopping potential and Planck’s constant.', 'full', ['work function', 'photon']),
