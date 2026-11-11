@@ -36,7 +36,7 @@
     const grid = cssVar('--grid-strong');
     const font = '11px Inter Variable, system-ui, sans-serif';
     const unit = chans[0]?.unit ?? '';
-    const yLabel = chans.length === 1 ? `${chans[0].label} / ${unit}` : unit ? `/ ${unit}` : '';
+    const yLabel = chans.length === 1 ? (unit ? `${chans[0].label} / ${unit}` : chans[0].label) : unit ? `/ ${unit}` : '';
     const opts: uPlot.Options = {
       width,
       height,
