@@ -147,7 +147,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 64px;
+    height: calc(64px + env(safe-area-inset-top));
     padding-top: env(safe-area-inset-top);
   }
   .brand {

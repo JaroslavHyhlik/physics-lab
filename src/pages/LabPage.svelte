@@ -78,7 +78,8 @@
   .page {
     max-width: 960px;
     margin: 0 auto;
-    padding: var(--space-5) var(--space-4) var(--space-7);
+    padding: calc(var(--space-5) + env(safe-area-inset-top)) max(var(--space-4), env(safe-area-inset-right))
+      calc(var(--space-7) + env(safe-area-inset-bottom)) max(var(--space-4), env(safe-area-inset-left));
     display: flex;
     flex-direction: column;
     gap: var(--space-3);

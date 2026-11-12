@@ -218,7 +218,8 @@
     background: var(--bg);
   }
   .bar {
-    height: var(--header-h);
+    /* iPhone: the page reaches under the status bar (viewport-fit=cover), so add its height */
+    height: calc(var(--header-h) + env(safe-area-inset-top));
     flex: none;
     display: flex;
     align-items: center;

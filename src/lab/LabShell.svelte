@@ -106,15 +106,24 @@
   .lab {
     max-width: 900px;
     margin: 0 auto;
-    padding: var(--space-3) var(--space-4) var(--space-7);
+    padding: 0 max(var(--space-4), env(safe-area-inset-right)) calc(var(--space-7) + env(safe-area-inset-bottom))
+      max(var(--space-4), env(safe-area-inset-left));
     display: flex;
     flex-direction: column;
     gap: var(--space-3);
   }
   .bar {
+    /* stays visible while scrolling (in a home-screen app there is no browser back button) */
+    position: sticky;
+    top: 0;
+    z-index: 10;
     display: flex;
     align-items: center;
     gap: var(--space-3);
+    margin: 0 calc(-1 * var(--space-4));
+    padding: calc(env(safe-area-inset-top) + var(--space-2)) var(--space-4) var(--space-2);
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
   }
   .back {
     display: grid;

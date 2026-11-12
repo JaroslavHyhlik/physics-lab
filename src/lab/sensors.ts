@@ -121,14 +121,26 @@ export interface Mic {
   stop: () => void;
 }
 
-/** Open the microphone with all automatic processing switched off (raw signal). */
+/**
+ * Open the microphone with all automatic processing switched off (raw signal).
+ * Must be called straight from a tap: the AudioContext is created and resumed before anything is
+ * awaited, because iPhone keeps audio that is started later (after the permission prompt) silent.
+ */
 export async function openMic(fftSize = 4096): Promise<Mic> {
-  const stream = await navigator.mediaDevices.getUserMedia({
-    audio: { echoCancellation: false, noiseSuppression: false, autoGainControl: false },
-  });
   const AC = window.AudioContext ?? (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
   const ctx = new AC();
-  if (ctx.state === 'suspended') await ctx.resume();
+  const resumed = ctx.resume().catch(() => {});
+  let stream: MediaStream;
+  try {
+    stream = await navigator.mediaDevices.getUserMedia({
+      audio: { echoCancellation: false, noiseSuppression: false, autoGainControl: false },
+    });
+  } catch (e) {
+    void ctx.close();
+    throw e;
+  }
+  await resumed;
+  if (ctx.state !== 'running') await ctx.resume().catch(() => {});
   const src = ctx.createMediaStreamSource(stream);
   const analyser = ctx.createAnalyser();
   analyser.fftSize = fftSize;
